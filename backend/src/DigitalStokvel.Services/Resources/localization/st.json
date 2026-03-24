@@ -1,0 +1,19 @@
+{
+  "app.name": "Digital Stokvel Banking",
+  "app.welcome": "O amohelehile ho sehlopha sa hao",
+  "payment.reminder.3days": "Tefo ea hao ea {0} e tlameha ho etsoa matsatsing a mararo",
+  "payment.reminder.1day": "Tefo ea hao ea {0} e tlameha ho etsoa hosane",
+  "payment.confirmation": "Tefo ea {0} e amohelitsoe. Re a leboha!",
+  "payment.receipt": "Resiti ea seabo sa hao sa {0} ho {1}",
+  "payment.failed": "Tefo ea hao ha ea atlehe nako ena—ha re lekeng hape",
+  "group.created": "Sehlopha sa hao '{0}' se entsoe ka katleho",
+  "group.member.invited": "{0} o memiloetsoe ho kena sehlopha sa hao",
+  "payout.initiated": "Tefo ea {0} e qadile",
+  "payout.completed": "Tefo ea {0} e romelitsoe ho {1}",
+  "balance.current": "Tekanyo ea sehlopha sa hao ke {0}",
+  "interest.earned": "Tswala e fumanehileng khoeling ena: {0}",
+  "error.general": "Ho bile le bothata. Ka kopo leka hape.",
+  "error.unauthorized": "Ha u na tumello ea ho etsa sena",
+  "error.notfound": "Se u se batlang ha sea fumanneha",
+  "error.validation": "Ka kopo hlahloba lintlha tsa hao ebe u leka hape"
+}

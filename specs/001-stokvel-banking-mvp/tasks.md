@@ -212,22 +212,22 @@ Multi-platform project structure:
 
 ### Implementation for User Story 7
 
-- [ ] T108 [P] [US7] Create English resource files for all UI strings in backend/src/DigitalStokvel.Services/Resources/localization/en.json
-- [ ] T109 [P] [US7] Create isiZulu translation files in backend/src/DigitalStokvel.Services/Resources/localization/zu.json
-- [ ] T110 [P] [US7] Create Sesotho translation files in backend/src/DigitalStokvel.Services/Resources/localization/st.json
-- [ ] T111 [P] [US7] Create Xhosa translation files in backend/src/DigitalStokvel.Services/Resources/localization/xh.json
-- [ ] T112 [P] [US7] Create Afrikaans translation files in backend/src/DigitalStokvel.Services/Resources/localization/af.json
-- [ ] T113 [US7] Update LocalizationService to load JSON resource files dynamically based on user preference in backend/src/DigitalStokvel.Services/LocalizationService.cs
+- [X] T108 [P] [US7] Create English resource files for all UI strings in backend/src/DigitalStokvel.Services/Resources/localization/en.json
+- [X] T109 [P] [US7] Create isiZulu translation files in backend/src/DigitalStokvel.Services/Resources/localization/zu.json
+- [X] T110 [P] [US7] Create Sesotho translation files in backend/src/DigitalStokvel.Services/Resources/localization/st.json
+- [X] T111 [P] [US7] Create Xhosa translation files in backend/src/DigitalStokvel.Services/Resources/localization/xh.json
+- [X] T112 [P] [US7] Create Afrikaans translation files in backend/src/DigitalStokvel.Services/Resources/localization/af.json
+- [X] T113 [US7] Update LocalizationService to load JSON resource files dynamically based on user preference in backend/src/DigitalStokvel.Services/LocalizationService.cs
 - [ ] T114 [US7] Implement language selection screen at onboarding (5 options) for Android in android/app/src/main/java/za/co/stokvel/ui/onboarding/LanguageSelectionScreen.kt
 - [ ] T115 [US7] Implement language selection at onboarding for iOS in ios/DigitalStokvel/Views/LanguageSelectionView.swift
 - [ ] T116 [US7] Implement language settings screen with immediate language switch for Android in android/app/src/main/java/za/co/stokvel/ui/settings/LanguageSettingsScreen.kt
 - [ ] T117 [US7] Implement language settings for iOS with immediate refresh in ios/DigitalStokvel/Views/LanguageSettingsView.swift
-- [ ] T118 [US7] Configure i18n for React web dashboard with 5 language support in web/src/i18n/config.ts
+- [X] T118 [US7] Configure i18n for React web dashboard with 5 language support in web/src/i18n/config.ts
 - [ ] T119 [US7] Update all notification templates (SMS, push, USSD) to use localized strings in backend/src/DigitalStokvel.Infrastructure/Notifications/
 - [ ] T120 [US7] Update error messages to use LocalizationService (encouraging messages per FR-051) in backend/src/DigitalStokvel.API/Middleware/ErrorHandlingMiddleware.cs
 - [ ] T121 [P] [US7] Translate all Android UI strings to 5 languages in android/app/src/main/res/values-zu/, values-st/, values-xh/, values-af/
 - [ ] T122 [P] [US7] Translate all iOS UI strings to 5 languages in ios/DigitalStokvel/Resources/zu.lproj/, st.lproj/, xh.lproj/, af.lproj/
-- [ ] T123 [US7] Add language detection from phone settings as default fallback in all platforms
+- [X] T123 [US7] Add language detection from phone settings as default fallback in all platforms
 
 **Checkpoint**: At this point, User Story 7 should be fully functional - Full 5-language support across all platforms
 

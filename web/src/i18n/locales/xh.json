@@ -1,0 +1,84 @@
+{
+  "common": {
+    "appName": "Digital Stokvel",
+    "loading": "Iyalayisha...",
+    "error": "Impazamo",
+    "success": "Impumelelo",
+    "cancel": "Rhoxisa",
+    "confirm": "Qinisekisa",
+    "save": "Gcina",
+    "logout": "Phuma",
+    "login": "Ngena"
+  },
+  "auth": {
+    "phoneNumber": "Inombolo Yomnxeba",
+    "phoneNumberPlaceholder": "27812345678",
+    "phoneNumberHelp": "Faka inombolo yakho yomnxeba ngefomathi: 27XXXXXXXXX",
+    "phoneNumberRequired": "Inombolo yomnxeba iyafuneka",
+    "phoneNumberInvalid": "Inombolo yomnxeba kufuneka ibe ngefomathi 27XXXXXXXXX (amanani ali-11 aqala ngo-27)",
+    "signIn": "Ngena",
+    "signingIn": "Iyangena..."
+  },
+  "navigation": {
+    "createGroup": "Yenza Iqela",
+    "myGroups": "Amaqela Am"
+  },
+  "groups": {
+    "title": "Amaqela Am",
+    "createNew": "Yenza Iqela Elitsha",
+    "noGroups": "Akukho maqela okwangoku",
+    "noGroupsMessage": "Awuzange ujoyine naliphi na iqela le-stokvel okwangoku. Yenza iqela lakho lokuqala ukuze uqalise!",
+    "balance": "Ibhalansi",
+    "members": "amalungu"
+  },
+  "groupCreation": {
+    "title": "Yenza Iqela Elitsha",
+    "groupName": "Igama Leqela",
+    "groupNamePlaceholder": "Isangqa Sokonga Sase-Ubuntu",
+    "groupNameRequired": "Igama leqela liyafuneka",
+    "description": "Inkcazo",
+    "descriptionPlaceholder": "Iqela lokonga lenyanga lamalungu oluntu",
+    "groupType": "Uhlobo Lweqela",
+    "contributionAmount": "Igalelo Lenyanga (R)",
+    "frequency": "Ukuphindaphinda Kwegalelo",
+    "createButton": "Yenza Iqela",
+    "creating": "Iyenza iqela..."
+  },
+  "groupDashboard": {
+    "balance": "Ibhalansi Yeqela",
+    "accountNumber": "Inombolo Ye-akhawunti",
+    "roster": "Uluhlu Lwamalungu",
+    "searchMembers": "Khangela amalungu...",
+    "inviteMember": "Mema Ilungu",
+    "myContributions": "Amagalelo Am",
+    "groupLedger": "Incwadi Yamarekodi Yeqela"
+  },
+  "wallet": {
+    "title": "Isikhwama Seqela",
+    "currentBalance": "Ibhalansi Yangoku",
+    "accruedInterest": "Inzala Eqokelelweyo",
+    "totalValue": "Ixabiso Elipheleleyo",
+    "interestRate": "Izinga Lenzala"
+  },
+  "contributions": {
+    "makeContribution": "Yenza Igalelo",
+    "amount": "Isixa (R)",
+    "paymentMethod": "Indlela Yokuhlawula",
+    "payButton": "Hlawula Ngoku",
+    "paying": "Iyalungisa intlawulo..."
+  },
+  "contributionHistory": {
+    "title": "Imbali Yamagalelo Am",
+    "totalContributions": "Amagalelo Ewonke",
+    "totalContributed": "Okuphiwe Konke",
+    "noContributions": "Akukho magalelo okwangoku",
+    "downloadReceipt": "Khuphela Irisithi"
+  },
+  "groupLedger": {
+    "title": "Incwadi Yamarekodi Emali",
+    "totalTransactions": "Iintengiselwano Zonke",
+    "totalCollected": "Okuqokelelweyo Konke",
+    "filterByStatus": "Hlela Ngokwemeko:",
+    "allTransactions": "Zonke Iintengiselwano"
+  }
+}

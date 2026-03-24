@@ -1,0 +1,19 @@
+{
+  "app.name": "Digital Stokvel Banking",
+  "app.welcome": "Wamkelekile kwiqela lakho",
+  "payment.reminder.3days": "Intlawulo yakho ye-{0} ifuneka kwiintsuku ezintathu",
+  "payment.reminder.1day": "Intlawulo yakho ye-{0} ifuneka ngomso",
+  "payment.confirmation": "Intlawulo ye-{0} yamkelwe. Siyabulela!",
+  "payment.receipt": "Irisithi yegalelo lakho le-{0} kwi-{1}",
+  "payment.failed": "Intlawulo yakho ayiphumelelanga ngeli xesha—masizame kwakhona",
+  "group.created": "Iqela lakho le-'{0}' lenziwe ngempumelelo",
+  "group.member.invited": "U-{0} umenyiwe ukuba ajoyine iqela lakho",
+  "payout.initiated": "Intlawulo ye-{0} iqalisiwe",
+  "payout.completed": "Intlawulo ye-{0} ithunyelwe ku-{1}",
+  "balance.current": "Ibhalansi yeqela lakho ngu-{0}",
+  "interest.earned": "Inzala efunyenweyo kule nyanga: {0}",
+  "error.general": "Kubekho ingxaki. Nceda uzame kwakhona.",
+  "error.unauthorized": "Awunamvume yokwenza oku",
+  "error.notfound": "Into oyifunayo ayifumaneki",
+  "error.validation": "Nceda uhlole iinkcukacha zakho uze uzame kwakhona"
+}

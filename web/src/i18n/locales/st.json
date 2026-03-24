@@ -1,0 +1,84 @@
+{
+  "common": {
+    "appName": "Digital Stokvel",
+    "loading": "E jarisa...",
+    "error": "Phoso",
+    "success": "Katlehollo",
+    "cancel": "Hlakola",
+    "confirm": "Tiisa",
+    "save": "Boloka",
+    "logout": "Tswa",
+    "login": "Kena"
+  },
+  "auth": {
+    "phoneNumber": "Nomoro ea Mohala",
+    "phoneNumberPlaceholder": "27812345678",
+    "phoneNumberHelp": "Kenya nomoro ea hao ea mohala ka sebopeho: 27XXXXXXXXX",
+    "phoneNumberRequired": "Nomoro ea mohala ea hlokahala",
+    "phoneNumberInvalid": "Nomoro ea mohala e tlameha ho ba ka sebopeho sa 27XXXXXXXXX (linomoro tse 11 tse qalang ka 27)",
+    "signIn": "Kena",
+    "signingIn": "E kena..."
+  },
+  "navigation": {
+    "createGroup": "Theha Sehlopha",
+    "myGroups": "Lihlopha Tsa Ka"
+  },
+  "groups": {
+    "title": "Lihlopha Tsa Ka",
+    "createNew": "Theha Sehlopha se Secha",
+    "noGroups": "Ha ho lihlopha hona joale",
+    "noGroupsMessage": "Ha ua kena sehlopha sa stokvel haesale. Theha sehlopha sa hao sa pele ho qala!",
+    "balance": "Tekanyo",
+    "members": "litho"
+  },
+  "groupCreation": {
+    "title": "Theha Sehlopha se Secha",
+    "groupName": "Lebitso la Sehlopha",
+    "groupNamePlaceholder": "Sehlopha sa Poloko sa Ubuntu",
+    "groupNameRequired": "Lebitso la sehlopha le hlokahala",
+    "description": "Tlhaloso",
+    "descriptionPlaceholder": "Sehlopha sa poloko sa khoeli sa litho tsa sechaba",
+    "groupType": "Mofuta oa Sehlopha",
+    "contributionAmount": "Seabo sa Khoeli (R)",
+    "frequency": "Maqhubu a Seabo",
+    "createButton": "Theha Sehlopha",
+    "creating": "E theha sehlopha..."
+  },
+  "groupDashboard": {
+    "balance": "Tekanyo ea Sehlopha",
+    "accountNumber": "Nomoro ea Ak'haonte",
+    "roster": "Lenane la Litho",
+    "searchMembers": "Batla litho...",
+    "inviteMember": "Mema Setho",
+    "myContributions": "Liseabo Tsa Ka",
+    "groupLedger": "Buka ea Lirekoto tsa Sehlopha"
+  },
+  "wallet": {
+    "title": "Mokotla oa Sehlopha",
+    "currentBalance": "Tekanyo ea Joale",
+    "accruedInterest": "Tswala e Bokeletsoeng",
+    "totalValue": "Boleng Bohle",
+    "interestRate": "Sekhahla sa Tswala"
+  },
+  "contributions": {
+    "makeContribution": "Etsa Seabo",
+    "amount": "Chelete (R)",
+    "paymentMethod": "Mokhoa oa ho Lefa",
+    "payButton": "Lefa Hona Joale",
+    "paying": "E sebetsana le tefo..."
+  },
+  "contributionHistory": {
+    "title": "Nalane ea Liseabo Tsa Ka",
+    "totalContributions": "Liseabo Kaofela",
+    "totalContributed": "Se Faneng Kaofela",
+    "noContributions": "Ha ho liseabo hona joale",
+    "downloadReceipt": "Jarolla Resiti"
+  },
+  "groupLedger": {
+    "title": "Buka ea Lirekoto tsa Chelete",
+    "totalTransactions": "Litransekshene Kaofela",
+    "totalCollected": "Se Bokelotsoeng Kaofela",
+    "filterByStatus": "Hlophisa ka Seemo:",
+    "allTransactions": "Litransekshene Tsohle"
+  }
+}

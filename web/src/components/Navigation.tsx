@@ -1,3 +1,4 @@
+import LanguageSelector from './LanguageSelector';
 import './Navigation.css';
 
 interface NavigationProps {
@@ -23,6 +24,7 @@ export default function Navigation({ onLogout }: NavigationProps) {
         </div>
 
         <div className="nav-actions">
+          <LanguageSelector />
           <button onClick={onLogout} className="btn-logout">
             🚪 Logout
           </button>

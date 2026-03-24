@@ -1,0 +1,84 @@
+{
+  "common": {
+    "appName": "Digital Stokvel",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "logout": "Logout",
+    "login": "Sign In"
+  },
+  "auth": {
+    "phoneNumber": "Phone Number",
+    "phoneNumberPlaceholder": "27812345678",
+    "phoneNumberHelp": "Enter your phone number in format: 27XXXXXXXXX",
+    "phoneNumberRequired": "Phone number is required",
+    "phoneNumberInvalid": "Phone number must be in format 27XXXXXXXXX (11 digits starting with 27)",
+    "signIn": "Sign In",
+    "signingIn": "Signing in..."
+  },
+  "navigation": {
+    "createGroup": "Create Group",
+    "myGroups": "My Groups"
+  },
+  "groups": {
+    "title": "My Groups",
+    "createNew": "Create New Group",
+    "noGroups": "No groups yet",
+    "noGroupsMessage": "You haven't joined any stokvel groups yet. Create your first group to get started!",
+    "balance": "Balance",
+    "members": "members"
+  },
+  "groupCreation": {
+    "title": "Create New Group",
+    "groupName": "Group Name",
+    "groupNamePlaceholder": "Ubuntu Savings Circle",
+    "groupNameRequired": "Group name is required",
+    "description": "Description",
+    "descriptionPlaceholder": "Monthly savings group for community members",
+    "groupType": "Group Type",
+    "contributionAmount": "Monthly Contribution (R)",
+    "frequency": "Contribution Frequency",
+    "createButton": "Create Group",
+    "creating": "Creating group..."
+  },
+  "groupDashboard": {
+    "balance": "Group Balance",
+    "accountNumber": "Account Number",
+    "roster": "Group Roster",
+    "searchMembers": "Search members...",
+    "inviteMember": "Invite Member",
+    "myContributions": "My Contributions",
+    "groupLedger": "Group Ledger"
+  },
+  "wallet": {
+    "title": "Group Wallet",
+    "currentBalance": "Current Balance",
+    "accruedInterest": "Accrued Interest",
+    "totalValue": "Total Value",
+    "interestRate": "Interest Rate"
+  },
+  "contributions": {
+    "makeContribution": "Make Contribution",
+    "amount": "Amount (R)",
+    "paymentMethod": "Payment Method",
+    "payButton": "Pay Now",
+    "paying": "Processing payment..."
+  },
+  "contributionHistory": {
+    "title": "My Contribution History",
+    "totalContributions": "Total Contributions",
+    "totalContributed": "Total Contributed",
+    "noContributions": "No contributions yet",
+    "downloadReceipt": "Download Receipt"
+  },
+  "groupLedger": {
+    "title": "Transaction Ledger",
+    "totalTransactions": "Total Transactions",
+    "totalCollected": "Total Collected",
+    "filterByStatus": "Filter by Status:",
+    "allTransactions": "All Transactions"
+  }
+}

@@ -8,6 +8,7 @@ import GroupWallet from './components/GroupWallet';
 import ContributionHistory from './components/ContributionHistory';
 import GroupLedger from './components/GroupLedger';
 import Login from './components/Login';
+import './i18n/config'; // Initialize i18n
 import './App.css';
 
 function App() {

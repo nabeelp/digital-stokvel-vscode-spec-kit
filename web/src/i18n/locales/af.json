@@ -1,0 +1,84 @@
+{
+  "common": {
+    "appName": "Digital Stokvel",
+    "loading": "Laai...",
+    "error": "Fout",
+    "success": "Sukses",
+    "cancel": "Kanselleer",
+    "confirm": "Bevestig",
+    "save": "Stoor",
+    "logout": "Teken Uit",
+    "login": "Teken In"
+  },
+  "auth": {
+    "phoneNumber": "Foonnommer",
+    "phoneNumberPlaceholder": "27812345678",
+    "phoneNumberHelp": "Voer jou foonnommer in formaat: 27XXXXXXXXX",
+    "phoneNumberRequired": "Foonnommer is nodig",
+    "phoneNumberInvalid": "Foonnommer moet in formaat 27XXXXXXXXX wees (11 syfers wat begin met 27)",
+    "signIn": "Teken In",
+    "signingIn": "Teken in..."
+  },
+  "navigation": {
+    "createGroup": "Skep Groep",
+    "myGroups": "My Groepe"
+  },
+  "groups": {
+    "title": "My Groepe",
+    "createNew": "Skep Nuwe Groep",
+    "noGroups": "Nog geen groepe nie",
+    "noGroupsMessage": "Jy het nog nie by enige stokvel-groepe aangesluit nie. Skep jou eerste groep om te begin!",
+    "balance": "Balans",
+    "members": "lede"
+  },
+  "groupCreation": {
+    "title": "Skep Nuwe Groep",
+    "groupName": "Groepnaam",
+    "groupNamePlaceholder": "Ubuntu Spaarsirkel",
+    "groupNameRequired": "Groepnaam is nodig",
+    "description": "Beskrywing",
+    "descriptionPlaceholder": "Maandelikse spaargroep vir gemeenskapslede",
+    "groupType": "Groeptipe",
+    "contributionAmount": "Maandelikse Bydrae (R)",
+    "frequency": "Bydraefreekwensie",
+    "createButton": "Skep Groep",
+    "creating": "Skep groep..."
+  },
+  "groupDashboard": {
+    "balance": "Groepbalans",
+    "accountNumber": "Rekeningnommer",
+    "roster": "Ledelys",
+    "searchMembers": "Soek lede...",
+    "inviteMember": "Nooi Lid",
+    "myContributions": "My Bydraes",
+    "groupLedger": "Groeprekords"
+  },
+  "wallet": {
+    "title": "Groepbeursie",
+    "currentBalance": "Huidige Balans",
+    "accruedInterest": "Opgelope Rente",
+    "totalValue": "Totale Waarde",
+    "interestRate": "Rentekoers"
+  },
+  "contributions": {
+    "makeContribution": "Maak Bydrae",
+    "amount": "Bedrag (R)",
+    "paymentMethod": "Betaalmetode",
+    "payButton": "Betaal Nou",
+    "paying": "Verwerk betaling..."
+  },
+  "contributionHistory": {
+    "title": "My Bydraesgeskiedenis",
+    "totalContributions": "Totale Bydraes",
+    "totalContributed": "Totaal Bygedra",
+    "noContributions": "Nog geen bydraes nie",
+    "downloadReceipt": "Laai Kwitansie Af"
+  },
+  "groupLedger": {
+    "title": "Transaksierekord",
+    "totalTransactions": "Totale Transaksies",
+    "totalCollected": "Totaal Ingesamel",
+    "filterByStatus": "Filtreer volgens Status:",
+    "allTransactions": "Alle Transaksies"
+  }
+}

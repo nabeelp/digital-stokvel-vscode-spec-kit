@@ -1,0 +1,84 @@
+{
+  "common": {
+    "appName": "Digital Stokvel",
+    "loading": "Iyalayisha...",
+    "error": "Iphutha",
+    "success": "Impumelelo",
+    "cancel": "Khansela",
+    "confirm": "Qinisekisa",
+    "save": "Gcina",
+    "logout": "Phuma",
+    "login": "Ngena"
+  },
+  "auth": {
+    "phoneNumber": "Inombolo Yocingo",
+    "phoneNumberPlaceholder": "27812345678",
+    "phoneNumberHelp": "Faka inombolo yakho yocingo ngefomethi: 27XXXXXXXXX",
+    "phoneNumberRequired": "Inombolo yocingo iyadingeka",
+    "phoneNumberInvalid": "Inombolo yocingo kumele ibe ngefomethi 27XXXXXXXXX (izinombolo eziyi-11 eziqala ngo-27)",
+    "signIn": "Ngena",
+    "signingIn": "Iyangena..."
+  },
+  "navigation": {
+    "createGroup": "Dala Iqembu",
+    "myGroups": "Amaqembu Ami"
+  },
+  "groups": {
+    "title": "Amaqembu Ami",
+    "createNew": "Dala Iqembu Elisha",
+    "noGroups": "Ayikho imiqembu okwamanje",
+    "noGroupsMessage": "Awukajoyini noma yiliphi iqembu le-stokvel okwamanje. Dala iqembu lakho lokuqala ukuze uqale!",
+    "balance": "Ibhalansi",
+    "members": "amalungu"
+  },
+  "groupCreation": {
+    "title": "Dala Iqembu Elisha",
+    "groupName": "Igama Leqembu",
+    "groupNamePlaceholder": "Isikolo Sokonga Sase-Ubuntu",
+    "groupNameRequired": "Igama leqembu liyadingeka",
+    "description": "Incazelo",
+    "descriptionPlaceholder": "Iqembu lokonga lenyanga lamalungu omphakathi",
+    "groupType": "Uhlobo Lweqembu",
+    "contributionAmount": "Umnikelo Wenyanga (R)",
+    "frequency": "Imvamisa Yomnikelo",
+    "createButton": "Dala Iqembu",
+    "creating": "Kudala iqembu..."
+  },
+  "groupDashboard": {
+    "balance": "Ibhalansi Yeqembu",
+    "accountNumber": "Inombolo Ye-akhawunti",
+    "roster": "Uhla Lwamalungu",
+    "searchMembers": "Sesha amalungu...",
+    "inviteMember": "Mema Ilungu",
+    "myContributions": "Iminikelo Yami",
+    "groupLedger": "Incwadi Yamarekodi Yeqembu"
+  },
+  "wallet": {
+    "title": "Isikhwama Seqembu",
+    "currentBalance": "Ibhalansi Yamanje",
+    "accruedInterest": "Inzuzo Eqoqiwe",
+    "totalValue": "Inani Eliphelele",
+    "interestRate": "Izinga Lenzuzo"
+  },
+  "contributions": {
+    "makeContribution": "Yenza Umnikelo",
+    "amount": "Inani (R)",
+    "paymentMethod": "Indlela Yokukhokha",
+    "payButton": "Khokha Manje",
+    "paying": "Kucubungula inkokhelo..."
+  },
+  "contributionHistory": {
+    "title": "Umlando Weminikelo Yami",
+    "totalContributions": "Iminikelo Ephelele",
+    "totalContributed": "Okunikwe Konke",
+    "noContributions": "Ayikho iminikelo okwamanje",
+    "downloadReceipt": "Landa Irisidi"
+  },
+  "groupLedger": {
+    "title": "Incwadi Yamarekhodi Emali",
+    "totalTransactions": "Okwenziwayo Konke",
+    "totalCollected": "Okuqoqwe Konke",
+    "filterByStatus": "Hlungisa Ngesimo:",
+    "allTransactions": "Konke Okwenziwayo"
+  }
+}

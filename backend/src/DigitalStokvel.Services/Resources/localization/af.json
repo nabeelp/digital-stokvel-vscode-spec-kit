@@ -1,0 +1,19 @@
+{
+  "app.name": "Digital Stokvel Banking",
+  "app.welcome": "Welkom by jou groep",
+  "payment.reminder.3days": "Jou betaling van {0} is binne 3 dae verskuldig",
+  "payment.reminder.1day": "Jou betaling van {0} is môre verskuldig",
+  "payment.confirmation": "Betaling van {0} ontvang. Dankie!",
+  "payment.receipt": "Kwitansie vir jou bydrae van {0} tot {1}",
+  "payment.failed": "Jou betaling het nie hierdie keer gewerk nie—kom ons probeer weer",
+  "group.created": "Jou groep '{0}' is suksesvol geskep",
+  "group.member.invited": "{0} is genooi om by jou groep aan te sluit",
+  "payout.initiated": "Uitbetaling van {0} is begin",
+  "payout.completed": "Uitbetaling van {0} gestuur na {1}",
+  "balance.current": "Jou groepbalans is {0}",
+  "interest.earned": "Rente hierdie maand verdien: {0}",
+  "error.general": "Iets het verkeerd geloop. Probeer asseblief weer.",
+  "error.unauthorized": "Jy het nie toestemming om dit te doen nie",
+  "error.notfound": "Die aangevraagde hulpbron is nie gevind nie",
+  "error.validation": "Gaan asseblief jou inligting na en probeer weer"
+}
