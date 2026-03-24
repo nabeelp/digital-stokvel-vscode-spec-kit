@@ -36,23 +36,23 @@ public class AuthController : ControllerBase
             _logger.LogWarning("Registration failed for phone {PhoneNumber}: {Error}", 
                 request.PhoneNumber, error);
             
-            return BadRequest(new ErrorResponse(
-                Success: false,
-                Message: "We couldn't create your account this time. Let's try again!",
-                Timestamp: DateTime.UtcNow,
-                ErrorCode: "REGISTRATION_FAILED",
-                Errors: new Dictionary<string, string[]> { { "registration", new[] { error ?? "Unknown error" } } }));
+            return BadRequest(new ErrorResponse
+            {
+                Message = "We couldn't create your account this time. Let's try again!",
+                ErrorCode = "REGISTRATION_FAILED",
+                Errors = new Dictionary<string, string[]> { { "registration", new[] { error ?? "Unknown error" } } }
+            });
         }
 
         _logger.LogInformation("User registered successfully: {UserId}", userId);
 
-        return Ok(new ApiResponse<RegisterResponse>(
-            Success: true,
-            Message: "Welcome to Digital Stokvel! Your account is ready.",
-            Timestamp: DateTime.UtcNow,
-            Data: new RegisterResponse(
+        return Ok(new ApiResponse<RegisterResponse>
+        {
+            Message = "Welcome to Digital Stokvel! Your account is ready.",
+            Data = new RegisterResponse(
                 UserId: userId!,
-                Message: "Account created successfully")));
+                Message: "Account created successfully")
+        });
     }
 
     /// <summary>
@@ -70,21 +70,21 @@ public class AuthController : ControllerBase
             _logger.LogWarning("Login failed for phone {PhoneNumber}: {Error}", 
                 request.PhoneNumber, error);
             
-            return Unauthorized(new ErrorResponse(
-                Success: false,
-                Message: "We couldn't log you in this time. Please check your details and try again.",
-                Timestamp: DateTime.UtcNow,
-                ErrorCode: "LOGIN_FAILED",
-                Errors: new Dictionary<string, string[]> { { "authentication", new[] { error ?? "Invalid credentials" } } }));
+            return Unauthorized(new ErrorResponse
+            {
+                Message = "We couldn't log you in this time. Please check your details and try again.",
+                ErrorCode = "LOGIN_FAILED",
+                Errors = new Dictionary<string, string[]> { { "authentication", new[] { error ?? "Invalid credentials" } } }
+            });
         }
 
         _logger.LogInformation("User logged in successfully: {UserId}", response!.User.UserId);
 
-        return Ok(new ApiResponse<LoginResponse>(
-            Success: true,
-            Message: "Welcome back! You're now signed in.",
-            Timestamp: DateTime.UtcNow,
-            Data: response));
+        return Ok(new ApiResponse<LoginResponse>
+        {
+            Message = "Welcome back! You're now signed in.",
+            Data = response
+        });
     }
 
     /// <summary>
@@ -101,19 +101,19 @@ public class AuthController : ControllerBase
         {
             _logger.LogWarning("Token refresh failed: {Error}", error);
             
-            return Unauthorized(new ErrorResponse(
-                Success: false,
-                Message: "Your session has expired. Please log in again.",
-                Timestamp: DateTime.UtcNow,
-                ErrorCode: "TOKEN_REFRESH_FAILED",
-                Errors: new Dictionary<string, string[]> { { "token", new[] { error ?? "Invalid token" } } }));
+            return Unauthorized(new ErrorResponse
+            {
+                Message = "Your session has expired. Please log in again.",
+                ErrorCode = "TOKEN_REFRESH_FAILED",
+                Errors = new Dictionary<string, string[]> { { "token", new[] { error ?? "Invalid token" } } }
+            });
         }
 
-        return Ok(new ApiResponse<LoginResponse>(
-            Success: true,
-            Message: "Your session has been refreshed.",
-            Timestamp: DateTime.UtcNow,
-            Data: response));
+        return Ok(new ApiResponse<LoginResponse>
+        {
+            Message = "Your session has been refreshed.",
+            Data = response
+        });
     }
 
     /// <summary>
@@ -128,15 +128,15 @@ public class AuthController : ControllerBase
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
         var phoneNumber = User.FindFirst(System.Security.Claims.ClaimTypes.MobilePhone)?.Value;
 
-        return Ok(new ApiResponse<object>(
-            Success: true,
-            Message: "Authentication verified",
-            Timestamp: DateTime.UtcNow,
-            Data: new
+        return Ok(new ApiResponse<object>
+        {
+            Message = "Authentication verified",
+            Data = new
             {
                 UserId = userId,
                 PhoneNumber = phoneNumber,
                 Claims = User.Claims.Select(c => new { c.Type, c.Value })
-            }));
+            }
+        });
     }
 }

@@ -65,9 +65,7 @@ try
     var jwtSettings = builder.Configuration.GetSection("JwtSettings");
     var secretKey = jwtSettings["SecretKey"] ?? throw new InvalidOperationException("JWT SecretKey not configured");
     
-    builder.Services.AddAuthenticaJwtTokenService>();
-    builder.Services.AddScoped<AuthenticationService>();
-    builder.Services.AddSingleton<tion(options =>
+    builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -124,6 +122,8 @@ try
 
     // Register services
     builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
+    builder.Services.AddSingleton<JwtTokenService>();
+    builder.Services.AddScoped<AuthenticationService>();
     builder.Services.AddSingleton<ServiceBusClient>(sp =>
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
