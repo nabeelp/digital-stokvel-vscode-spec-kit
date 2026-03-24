@@ -1,0 +1,339 @@
+PRODUCT REQUIREMENTS DOCUMENT
+Digital Stokvel Banking
+Bringing South Africa's R50B informal savings economy into the bank
+Version
+1.0 — Draft
+Status
+For Review
+Date
+March 2026
+Platforms
+Android · iOS · USSD · Web
+Launch Target
+MVP in 3 Months
+Monetisation
+Interest Margin on Pooled Deposits
+1. Executive Summary
+South Africa's stokvels represent one of the most significant untapped opportunities in retail banking. Over 11 million South Africans participate in stokvels, collectively contributing an estimated R50 billion annually — yet virtually all of this flows through cash, WhatsApp groups, and informal trust networks, entirely outside the formal banking system.
+Digital Stokvel Banking is a bank-native feature set that brings this deeply rooted cultural savings practice into the formal financial ecosystem. By meeting customers where they already are — in their savings groups — the bank gains access to a massive, underserved segment while offering genuine value: interest on pooled deposits, digital transparency, fraud protection, and a pathway to formal credit.
+This PRD defines the requirements for an MVP launching within 3 months, targeting Android, iOS, USSD (feature phones), and web browser platforms. The primary revenue model is interest margin on pooled deposits.
+Strategic Opportunity at a Glance
+  11M+ South Africans participate in stokvels  |  R50B+ contributed annually
+  0% currently earn interest  |  0% build credit history through stokvels
+  Largest informal savings vehicle in the country — untouched by major banks
+  Average stokvel group: 10–20 members, R500–R2,000/month per member
+2. Problem Statement
+2.1 The Stokvel Participant
+Despite being a disciplined saver, the average stokvel member faces several structural disadvantages by operating outside the formal system:
+No interest earned — pooled funds sit idle in cash or a basic account, eroding in real value due to inflation
+Fraud and theft risk — large cash payouts at year-end are a known target for crime
+No credit record — consistent monthly contributions are invisible to credit bureaus, offering no benefit to the member's financial profile
+Administrative burden — managing contributions, tracking who has paid, and resolving disputes is entirely manual
+No financial safety net — missed contributions cause social conflict with no formal resolution mechanism
+2.2 The Bank
+From the bank's perspective, stokvels represent a relationship gap:
+Existing stokvel members are often already bank customers, but their stokvel activity generates zero value for the bank
+The informal nature of stokvels means R50B+ in annual flows bypass the bank entirely
+No existing product adequately serves the group savings use case with cultural sensitivity and appropriate features
+3. Goals & Success Metrics
+3.1 Product Goals
+Formalise stokvel savings within the bank's ecosystem without disrupting the cultural model
+Generate interest revenue from pooled deposits
+Deepen customer relationships and reduce churn by making the bank the home of community savings
+Enable credit inclusion by creating a verifiable savings track record for members
+Reach USSD users to maximise inclusion across feature phone and smartphone segments
+3.2 MVP Success Metrics (3-Month Target)
+Metric
+MVP Target
+12-Month Target
+Active Stokvel Groups Created
+500 groups
+10,000 groups
+Total Members Onboarded
+5,000 members
+100,000 members
+Pooled Deposits Under Management
+R5M
+R250M
+Interest Revenue Generated
+R25K
+R3M+
+USSD-Originated Groups
+30% of total
+40% of total
+Credit Profile Activations
+Not in MVP
+20,000 members
+NPS Score (Stokvel Users)
+>60
+>70
+4. Target Users & Personas
+Persona
+Profile
+Key Need
+The Chairperson (Umseki)
+Typically female, 30–55, manages the group roster, tracks contributions, handles disputes. Tech-comfortable but values simplicity.
+Visibility, control, and tools to manage the group fairly without WhatsApp chaos.
+The Member (Ilungu)
+Working adult, mixed digital literacy. Contributing monthly toward a year-end payout or rotating pot.
+Transparency on group funds, easy contribution via phone, proof of their own payments.
+The Feature Phone User
+Lower-income, no smartphone. Relies on USSD for banking. Often domestic worker, informal trader, or rural resident.
+Ability to participate in a digitised group without needing a smartphone.
+The Financially Excluded
+Unbanked or thin-file customer. Uses stokvels as primary savings vehicle. No formal credit history.
+A way to save formally, earn interest, and start building a financial identity.
+5. Feature Requirements
+5.1 Feature Priority Framework
+Features are classified into three tiers:
+P0 — Must have for MVP launch (3-month target)
+P1 — Target for Phase 2 (3–6 months post-MVP)
+P2 — Longer-term roadmap (6–12 months)
+5.2 Core Feature Set
+F-01  Group Creation & Management  [P0]
+Any bank customer can create a stokvel group and invite members.
+Create a named group with a description, group type (rotating payout, savings pot, investment club), and contribution rules
+Invite members via phone number, share link, or QR code
+Assign roles: Chairperson, Treasurer, Secretary
+Set contribution amounts, frequency (weekly/monthly), and payout schedule
+Members must have or open a bank account to join (onboarding flow embedded)
+F-02  Digital Group Wallet  [P0]
+All member contributions flow into a single, bank-held group savings account.
+Pooled funds held in a dedicated group savings account earning tiered interest
+Real-time balance visible to all members (role-based view)
+Full contribution history — who paid, when, how much
+Chairperson can view, but not unilaterally withdraw without quorum approval (governance rules)
+F-03  Contribution Collection  [P0]
+Members contribute digitally, eliminating cash risk.
+One-tap payment from linked bank account
+Debit order/recurring payment option for automatic contributions
+USSD dial-in payment for feature phone users (e.g. *120*STOKVEL#)
+Payment reminders 3 days and 1 day before due date (push, SMS, USSD)
+Contribution confirmation receipt issued to member and logged on group ledger
+F-04  Payout Engine  [P0]
+Automated, rules-driven payouts replace manual cash distribution.
+Rotating payout: automated disbursement to designated member each cycle
+Year-end pot: full balance disbursed to all members proportionally at year-end
+Chairperson initiates payout; Treasurer must confirm; system executes
+Instant EFT to member bank accounts
+Payout notifications to all group members for transparency
+F-05  Group Governance & Dispute Resolution  [P0]
+Formal governance structures that mirror how stokvels traditionally self-govern.
+Group constitution builder — define rules for missed payments, late fees, member removal
+In-app voting for major decisions (e.g. change contribution amount, remove member)
+Missed payment escalation: automated notice, grace period, and chair notification
+Dispute flag — member can raise a dispute; bank mediates if unresolved
+F-06  Multilingual Interface  [P0]
+Language is a trust signal. The app must speak to users in their language.
+Full UI available in: English, isiZulu, Sesotho, Xhosa, Afrikaans
+USSD menus also available in all 5 languages
+Language selection at onboarding, changeable in settings
+F-07  Credit Profile Builder  [P1]
+Stokvel contributions become proof of financial reliability.
+Opt-in: member can consent to contribution history being shared with credit bureau
+Consistent on-time payments generate a positive 'Stokvel Score' indicator
+Score visible in banking app and can be referenced for loan applications
+Bank pre-qualification offers triggered based on Stokvel Score thresholds
+F-08  Financial Wellness Nudges  [P1]
+Contextual, non-intrusive financial education embedded in the product flow.
+Post-payout: 'Your R3,200 payout earned R48 in interest this year — here's how to grow it more'
+Contribution streak milestones (e.g. '12 months of perfect payments — your credit profile is building!')
+Annual stokvel summary report: contributions made, interest earned, payout received
+F-09  Stokvel-to-Investment Bridge  [P2]
+For groups that accumulate significant savings, a path to collective investment.
+Group can vote to move a portion of savings into a bank-offered unit trust or fixed deposit
+Investment held in group name; all members see performance
+Unlocks a new revenue stream for the bank (investment management fees)
+F-10  Insurance Integration  [P2]
+Group funeral and burial society cover, a deeply important use case in SA.
+Group can opt into a bank-facilitated burial society product
+Monthly premium deducted from group wallet; payout to family of deceased member
+Embedded in the group creation flow as an optional add-on
+6. Platform Requirements
+Platform
+MVP Scope
+Key Consideration
+Android App
+Full feature set (F-01 to F-06)
+Primary channel — majority of SA smartphone users are on Android. Material Design 3 with offline-tolerant architecture for low-connectivity areas.
+iOS App
+Full feature set (F-01 to F-06)
+Secondary smartphone channel — required for completeness. Maintain feature parity with Android.
+USSD (*120*STOKVEL#)
+Contribute, check balance, receive payout notification
+Critical for financial inclusion. Must work on any mobile network, any handset. Menu depth max 3 levels. Session timeout 120 seconds.
+Web Browser
+Chairperson admin dashboard — member management, contribution tracking, payout approvals
+Desktop-first for admins. Responsive for tablet. Not the primary member interface.
+USSD Design Principles:
+Maximum 3-level menu depth — deep nesting causes drop-offs
+All amounts confirmed before execution (e.g. 'Confirm: Pay R500 to Ntombizodwa Stokvel? Press 1 for Yes, 2 for No')
+All USSD transactions are PIN-authenticated using the customer's existing bank PIN
+Session state persisted for 2 minutes to handle network interruptions
+7. Monetisation Model
+7.1 Primary: Interest Margin on Pooled Deposits
+All stokvel group funds are held in a dedicated group savings account. The bank earns a margin between the rate paid to the group and the rate at which it deploys those funds.
+Parameter
+Detail
+Account Type
+Group Savings Account — new account class
+Rate Offered to Groups
+4.5% per annum (tiered by balance — see below)
+Bank Margin
+Estimated 2–3% net interest margin on deployed funds
+Tiered Interest Schedule
+R0–R10K: 3.5% | R10K–R50K: 4.5% | R50K+: 5.5%
+Interest Calculation
+Daily compounding, monthly capitalisation to group wallet
+Withdrawal Rules
+Partial withdrawal requires quorum approval; full payout at cycle end
+7.2 Secondary Revenue Streams
+Cross-sell: Pre-qualified personal loans, home loans, and insurance products to active stokvel members (Phase 2)
+Premium Group Tier: Unlock advanced features (investment bridge, insurance, custom governance templates) for R25/group/month (Phase 2)
+B2B API: License the stokvel infrastructure to credit unions, churches, and employer benefits schemes (Phase 3)
+7.3 Revenue Projection (Year 1)
+Scenario
+Deposits Under Mgmt
+Est. Annual Revenue
+Conservative
+R50M
+R1.25M
+Base Case
+R250M
+R6.25M
+Optimistic
+R750M
+R18.75M
+Assumes 2.5% average net interest margin. Does not include secondary revenue streams.
+8. Cultural & Trust Design Principles
+This section is non-negotiable. Stokvels are built on trust, community, and cultural practice. The product must earn its place in that tradition — not disrupt it.
+Core Design Principles
+  1.  The bank is the infrastructure, not the leader — the Chairperson retains authority within the group
+  2.  Transparency is non-negotiable — every member can see the full ledger at all times
+  3.  Cultural framing — use 'stokvel', 'umuntu', 'ilungu' in-app, not clinical banking terms
+  4.  Governance mirrors tradition — quorum requirements, role titles, and dispute process match real stokvels
+  5.  No data is sold or shared without explicit, informed consent — this must be communicated clearly
+  6.  The bank never contacts group members directly about products without Chairperson consent
+8.1 Language & Tone
+Use warm, communal language. Avoid: 'account', 'product', 'KYC', 'compliance'
+Preferred: 'your group', 'your savings pot', 'your contribution', 'your community'
+Error messages must be encouraging, not alarming (e.g. 'Your payment didn't go through this time — let's try again' not 'Transaction Failed')
+8.2 Trust Signals
+Bank logo and FSCA regulation badge always visible on group wallet screen
+'Your money is protected' disclosure shown on first deposit and on the wallet home screen
+Contribution receipts are branded, shareable, and can be presented in group meetings as proof
+Group ledger can be exported as a PDF for annual stokvel AGM records
+9. Data, Privacy & Compliance
+Requirement
+Detail
+POPIA Compliance
+All personal data handling must comply with the Protection of Personal Information Act (POPIA). Explicit consent required for credit bureau reporting and marketing contact.
+FICA / KYC
+All group members must be verified bank customers. Non-customers complete simplified onboarding (ID + selfie) before joining. USSD users complete FICA via branch or ATM.
+AML Monitoring
+Group accounts subject to standard AML transaction monitoring. Thresholds: flag groups with single deposits >R20,000 or total monthly inflows >R100,000.
+Credit Bureau Reporting
+Opt-in only. Member must provide written (digital) consent. Clear explanation of what is reported and how it affects their credit profile.
+Data Residency
+All data stored on South Africa-domiciled infrastructure (SARB requirement for banking data).
+Group Data Ownership
+Contribution history, member roster, and group ledger are owned by the group. Bank is a custodian. Members can export their data at any time.
+10. MVP Scope & 3-Month Launch Plan
+10.1 What is in the MVP
+F-01: Group Creation & Management
+F-02: Digital Group Wallet (pooled savings account with interest)
+F-03: Contribution Collection (app + USSD)
+F-04: Payout Engine (rotating and pot-based)
+F-05: Group Governance (constitution builder, voting, dispute flagging)
+F-06: Multilingual UI (5 languages, app + USSD)
+10.2 What is NOT in the MVP
+Credit Profile Builder (F-07) — requires credit bureau integration
+Financial Wellness Nudges (F-08) — requires behavioural analytics layer
+Investment Bridge (F-09) and Insurance (F-10) — Phase 2+
+Web dashboard for members (web = Chairperson admin only in MVP)
+10.3 Phased Delivery Plan
+Phase
+Timeframe
+Deliverables
+Phase 0 — Foundation
+Weeks 1–2
+Group savings account product setup, USSD shortcode registration, API framework, language pack foundation, design system
+Phase 1 — Core Build
+Weeks 3–7
+Group creation, digital wallet, contribution flows (app + USSD), payout engine, governance module, multilingual UI
+Phase 2 — Test & Harden
+Weeks 8–10
+UAT with pilot group of 50 stokvels, USSD load testing, POPIA/FICA sign-off, security pen test, Chairperson onboarding toolkit
+Phase 3 — MVP Launch
+Weeks 11–12
+Soft launch to 500 groups via Chairperson acquisition campaign, monitoring dashboard live, hypercare support team on standby
+Phase 4 — Scale (Post-MVP)
+Month 4–6
+Credit Profile Builder, Financial Wellness, open referral programme, premium tier launch
+11. Risks & Mitigations
+Risk
+Impact
+Mitigation
+Cultural resistance — members don't trust a bank to hold group funds
+HIGH
+Chairperson-first design. Bank is never 'in charge'. Group rules are enforced by the group, not the bank. Run community roadshows with trusted community figures.
+USSD session reliability on low-cost networks
+HIGH
+Partner with all major MNOs (Vodacom, MTN, Cell C, Telkom). Session state persistence. Fallback SMS confirmation for all transactions.
+Regulatory classification of group savings account
+MEDIUM
+Engage SARB and FSCA early. Position as a bank-held savings account in group name — not a collective investment scheme.
+Fraud — internal group disputes and false contribution claims
+MEDIUM
+Immutable digital ledger. All contributions are bank-verified. Dispute resolution process with bank escalation path.
+Low smartphone adoption in target segment
+MEDIUM
+USSD is a first-class platform, not an afterthought. Feature parity for core flows. USSD-first marketing in low-income communities.
+Competition from fintech (TymeBank, Stokvela, etc.)
+LOW
+Bank advantage: trust, FSCA regulation, interest-bearing accounts, credit integration, existing customer relationships.
+12. Open Questions & Decisions Required
+Question
+Owner / Target Date
+What interest rate will treasury approve for the Group Savings Account?
+Treasury & Product — Week 1
+Will the group savings account be a new account class or a variant of existing savings?
+Core Banking & Compliance — Week 1
+Which credit bureau partner will be used for the Credit Profile Builder (Phase 2)?
+Risk & Partnerships — Week 6
+What is the USSD shortcode — shared (*120*BANK*) or dedicated (*120*STOKVEL#)?
+Technology & MNO Relations — Week 2
+Who owns the Chairperson acquisition campaign — Digital, Branch, or Community Banking?
+Marketing & Distribution — Week 2
+Should non-bank members be allowed to join groups (with simplified onboarding)?
+Compliance & Product — Week 3
+13. Appendix
+A. Glossary
+Term
+Definition
+Stokvel
+An informal rotating savings club or credit union. Members contribute regularly and receive a lump sum payout on a rotating basis.
+Umseki / Chairperson
+The leader of a stokvel group, responsible for administration, collecting contributions, and managing payouts.
+Ilungu / Member
+A participant in a stokvel group.
+USSD
+Unstructured Supplementary Service Data — a protocol for real-time mobile communication used for banking on feature phones via short codes (e.g. *120*321#).
+POPIA
+Protection of Personal Information Act — South Africa's primary data privacy legislation.
+FICA
+Financial Intelligence Centre Act — South Africa's KYC/AML regulatory framework.
+FSCA
+Financial Sector Conduct Authority — the conduct regulator for financial institutions in South Africa.
+NIM
+Net Interest Margin — the difference between interest earned on assets and interest paid on liabilities, expressed as a percentage.
+Stokvel Score
+A proprietary indicator (Phase 2) derived from a member's stokvel contribution history, used to supplement traditional credit scoring.
+B. Reference Data
+NASASA (National Stokvel Association of SA) estimates 11.4 million stokvel participants and R49–54 billion in annual contributions (2023)
+Average stokvel has 12–15 members with monthly contributions of R500–R2,000
+68% of stokvel participants are women
+South Africa has approximately 820,000 active stokvels
+World Bank: 33% of South African adults are 'financially excluded' or underbanked
+StatsSA: 54% of South African smartphone users are on Android; iOS at 27%; feature phones at 19%
+— End of Document —

@@ -31,7 +31,15 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**✓** I. Cultural-First Design: Does the feature respect stokvel traditions? Is language/tone communal?  
+**✓** II. Transparency & Trust: Are all transactions visible to members? Is there any hidden logic?  
+**✓** III. Financial Inclusion: Does USSD support core flows? Are all 5 languages included? Max 3-level menu depth?  
+**✓** IV. Security & Compliance: POPIA consent obtained? FICA verified? AML thresholds monitored?  
+**✓** V. Community Governance: Do group rules control decisions? Is the bank a neutral executor?  
+**✓** Platform: Multi-platform support (Android, iOS, USSD, Web) with appropriate fidelity?  
+**✓** Data Privacy: Data ownership clear? Consent explicit? SA-domiciled storage?
+
+*If any check cannot be marked ✓, document the exception and justification in Complexity Tracking section.*
 
 ## Project Structure
 
