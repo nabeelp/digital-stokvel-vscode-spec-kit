@@ -1,0 +1,478 @@
+Build started 2026/03/24 15:06:56.
+     1>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" on node 1 (Restore target(s)).
+     1>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+     1>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\DigitalStokvel.Core.csproj" (2:7) on node 1 (_GenerateProjectRestoreGraph target(s)).
+     2>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+     1>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.API\DigitalStokvel.API.csproj" (5:4) on node 2 (_GenerateProjectRestoreGraph target(s)).
+     5>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+     1>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Infrastructure\DigitalStokvel.Infrastructure.csproj" (4:6) on node 4 (_GenerateProjectRestoreGraph target(s)).
+     4>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+     5>AddPrunePackageReferences:
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+     4>AddPrunePackageReferences:
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+     1>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj" (3:5) on node 3 (_GenerateProjectRestoreGraph target(s)).
+     3>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+     2>AddPrunePackageReferences:
+         Looking for targeting packs in C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref
+     3>AddPrunePackageReferences:
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+     2>AddPrunePackageReferences:
+         Pack directories found: C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4
+     5>AddPrunePackageReferences:
+         Looking for targeting packs in C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref
+     4>AddPrunePackageReferences:
+         Looking for targeting packs in C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref
+     5>AddPrunePackageReferences:
+         Pack directories found: C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4
+     3>AddPrunePackageReferences:
+         Looking for targeting packs in C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref
+     4>AddPrunePackageReferences:
+         Pack directories found: C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4
+     3>AddPrunePackageReferences:
+         Pack directories found: C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4
+     2>AddPrunePackageReferences:
+         Found package overrides file C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4\data\PackageOverrides.txt
+     3>AddPrunePackageReferences:
+         Found package overrides file C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4\data\PackageOverrides.txt
+     4>AddPrunePackageReferences:
+         Found package overrides file C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4\data\PackageOverrides.txt
+     5>AddPrunePackageReferences:
+         Found package overrides file C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.4\data\PackageOverrides.txt
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+         Looking for targeting packs in C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref
+         Pack directories found: C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\10.0.4
+         Found package overrides file C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\10.0.4\data\PackageOverrides.txt
+     2>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\DigitalStokvel.Core.csproj" (_GenerateProjectRestoreGraph target(s)).
+     3>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj" (_GenerateProjectRestoreGraph target(s)).
+     4>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Infrastructure\DigitalStokvel.Infrastructure.csproj" (_GenerateProjectRestoreGraph target(s)).
+     5>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.API\DigitalStokvel.API.csproj" (_GenerateProjectRestoreGraph target(s)).
+     1>Restore:
+         X.509 certificate chain validation will use the default trust store selected by .NET for code signing.
+         X.509 certificate chain validation will use the default trust store selected by .NET for timestamping.
+         Assets file has not changed. Skipping assets file writing. Path: C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.API\obj\project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Infrastructure\obj\project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\obj\project.assets.json
+         Restored C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.API\DigitalStokvel.API.csproj (in 75 ms).
+         Restored C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Infrastructure\DigitalStokvel.Infrastructure.csproj (in 75 ms).
+         Restored C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\DigitalStokvel.Core.csproj (in 75 ms).
+     1>C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj [C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj]
+     1>C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj
+         Assets file has not changed. Skipping assets file writing. Path: C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\obj\project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\obj\project.assets.json
+         Restored C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj (in 109 ms).
+         Restored C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj (in 109 ms).
+         
+         NuGet Config files used:
+             C:\Users\nabeelp\AppData\Roaming\NuGet\NuGet.Config
+             C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.FallbackLocation.config
+             C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.Offline.config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+             C:\Program Files (x86)\Microsoft SDKs\NuGetPackages\
+         All projects are up-to-date for restore.
+     1>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (Restore target(s)).
+   1:7>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" on node 3 (VSTest target(s)).
+     1>BuildProject:
+         Build started, please wait...
+   1:7>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1:7) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1:8) on node 3 (default targets).
+     1>C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj
+   1:8>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1:8) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj" (3:7) on node 2 (default targets).
+     3>C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj
+   1:8>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1:8) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\DigitalStokvel.Core.csproj" (2:9) on node 4 (default targets).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\DigitalStokvel.Core.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         DigitalStokvel.Core -> C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\bin\Debug\net10.0\DigitalStokvel.Core.dll
+     2>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\DigitalStokvel.Core.csproj" (default targets).
+   1:8>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1:8) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Infrastructure\DigitalStokvel.Infrastructure.csproj" (4:8) on node 3 (default targets).
+     4>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\DigitalStokvel.Infrastructure.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         DigitalStokvel.Infrastructure -> C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Infrastructure\bin\Debug\net10.0\DigitalStokvel.Infrastructure.dll
+     4>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Infrastructure\DigitalStokvel.Infrastructure.csproj" (default targets).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\DigitalStokvel.Services.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         DigitalStokvel.Services -> C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\bin\Debug\net10.0\DigitalStokvel.Services.dll
+     3>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj" (default targets).
+   1:8>Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (1:8) is building "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.API\DigitalStokvel.API.csproj" (5:6) on node 1 (default targets).
+     5>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _DiscoverMvcApplicationParts:
+       Skipping target "_DiscoverMvcApplicationParts" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\DigitalStokvel.API.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       _CreateAppHost:
+       Skipping target "_CreateAppHost" because all output files are up-to-date with respect to the input files.
+       _ProcessScopedCssFiles:
+       Skipping target "_ProcessScopedCssFiles" because it has no outputs.
+       _ProcessScopedCssFiles:
+       Skipping target "_ProcessScopedCssFiles" because it has no outputs.
+       _BuildCopyStaticWebAssetsPreserveNewest:
+       Skipping target "_BuildCopyStaticWebAssetsPreserveNewest" because it has no outputs.
+       _CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         DigitalStokvel.API -> C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.API\bin\Debug\net10.0\DigitalStokvel.API.dll
+     5>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.API\DigitalStokvel.API.csproj" (default targets).
+     1>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\DigitalStokvel.Tests.Unit.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       _CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         DigitalStokvel.Tests.Unit -> C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\bin\Debug\net10.0\DigitalStokvel.Tests.Unit.dll
+     1>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (default targets).
+     1>BuildProject:
+         Build completed.
+         
+Test run for C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\bin\Debug\net10.0\DigitalStokvel.Tests.Unit.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.4)
+[xUnit.net 00:00:00.12]   Discovering: DigitalStokvel.Tests.Unit
+[xUnit.net 00:00:00.25]   Discovered:  DigitalStokvel.Tests.Unit
+[xUnit.net 00:00:00.32]   Starting:    DigitalStokvel.Tests.Unit
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithValidKeyAndLanguage_ShouldReturnCorrectTranslation(languageCode: "en", key: "welcome", expected: "Welcome") [73 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 9999.99, expectedTier: Tier1_3_5Pct) [100 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 10000, expectedTier: Tier2_4_5Pct) [1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 1000000, expectedTier: Tier3_5_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 0, expectedTier: Tier1_3_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 5000, expectedTier: Tier1_3_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 100000, expectedTier: Tier3_5_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 50000, expectedTier: Tier3_5_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 49999.99, expectedTier: Tier2_4_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_WithVariousBalances_ShouldReturnCorrectTier(balance: 25000, expectedTier: Tier2_4_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_AtTierBoundaries_ShouldHandleEdgeCasesCorrectly(balance: 50000, expectedTier: Tier3_5_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_AtTierBoundaries_ShouldHandleEdgeCasesCorrectly(balance: 10000, expectedTier: Tier2_4_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_AtTierBoundaries_ShouldHandleEdgeCasesCorrectly(balance: 50000.01, expectedTier: Tier3_5_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_AtTierBoundaries_ShouldHandleEdgeCasesCorrectly(balance: 10000.01, expectedTier: Tier2_4_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_AtTierBoundaries_ShouldHandleEdgeCasesCorrectly(balance: 49999.99, expectedTier: Tier2_4_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.DetermineInterestTier_AtTierBoundaries_ShouldHandleEdgeCasesCorrectly(balance: 9999.99, expectedTier: Tier1_3_5Pct) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithValidKeyAndLanguage_ShouldReturnCorrectTranslation(languageCode: "af", key: "welcome", expected: "Welkom") [38 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithValidKeyAndLanguage_ShouldReturnCorrectTranslation(languageCode: "st", key: "welcome", expected: "Dumela") [23 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateYearToDateEarningsAsync_WithValidGroup_ShouldReturnZeroAsStub [51 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 5000, expectedRate: 0.035) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 49999.99, expectedRate: 0.045) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 50000, expectedRate: 0.055) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 0, expectedRate: 0.035) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 10000, expectedRate: 0.045) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 25000, expectedRate: 0.045) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 9999.99, expectedRate: 0.035) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestRateForBalance_WithVariousBalances_ShouldReturnCorrectRate(balance: 100000, expectedRate: 0.055) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithValidKeyAndLanguage_ShouldReturnCorrectTranslation(languageCode: "zu", key: "welcome", expected: "Sawubona") [21 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_AtTierBoundaries_ShouldUseCorrectRate(balance: 49999.99, expectedRate: 0.045) [9 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_AtTierBoundaries_ShouldUseCorrectRate(balance: 10000.01, expectedRate: 0.045) [1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_AtTierBoundaries_ShouldUseCorrectRate(balance: 50000, expectedRate: 0.055) [1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_AtTierBoundaries_ShouldUseCorrectRate(balance: 50000.01, expectedRate: 0.055) [1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_AtTierBoundaries_ShouldUseCorrectRate(balance: 9999.99, expectedRate: 0.035) [< 1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_AtTierBoundaries_ShouldUseCorrectRate(balance: 10000, expectedRate: 0.045) [1 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateYearToDateEarningsAsync_WithNonExistentGroup_ShouldReturnZero [2 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithZeroBalance_ShouldReturnNull [2 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_ShouldImplementCorrectCompoundingFormula [3 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WhenRepositoryThrowsException_ShouldReturnNull [4 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithValidKeyAndLanguage_ShouldReturnCorrectTranslation(languageCode: "xh", key: "welcome", expected: "Molo") [22 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CapitalizeMonthlyAsync_WithValidGroup_ShouldReturnSuccess [5 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.GetInterestBreakdownAsync_ShouldReturnEmptyListAsStub [7 ms]
+[xUnit.net 00:00:00.60]     DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithNegativeBalance_ShouldReturnNull [FAIL]
+[xUnit.net 00:00:00.60]       System.ArgumentException : Amount cannot be negative (Parameter 'amount')
+[xUnit.net 00:00:00.60]       Stack Trace:
+[xUnit.net 00:00:00.60]         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\ValueObjects\Money.cs(27,0): at DigitalStokvel.Core.ValueObjects.Money..ctor(Decimal amount, String currency)
+[xUnit.net 00:00:00.60]         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\InterestServiceTests.cs(232,0): at DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithNegativeBalance_ShouldReturnNull()
+[xUnit.net 00:00:00.60]         --- End of stack trace from previous location ---
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_ShouldRoundInterestTo4DecimalPlaces [2 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_ShouldSetCalculationDateToDateOnly [3 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CapitalizeMonthlyAsync_WhenRepositoryThrowsException_ShouldReturnError [2 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetSupportedLanguages_ShouldReturnCopyOfArray [22 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithNonExistentGroup_ShouldReturnNull [2 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithTier1Balance_ShouldCalculateInterestAt3_5Percent [8 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "st", expected: True) [22 ms]
+  Failed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithNegativeBalance_ShouldReturnNull [1 ms]
+  Error Message:
+   System.ArgumentException : Amount cannot be negative (Parameter 'amount')
+  Stack Trace:
+     at DigitalStokvel.Core.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Core\ValueObjects\Money.cs:line 27
+   at DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithNegativeBalance_ShouldReturnNull() in C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\InterestServiceTests.cs:line 232
+--- End of stack trace from previous location ---
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CapitalizeMonthlyAsync_WithNonExistentGroup_ShouldReturnError [3 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithTier2Balance_ShouldCalculateInterestAt4_5Percent [2 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.InterestServiceTests.CalculateDailyInterestAsync_WithTier3Balance_ShouldCalculateInterestAt5_5Percent [2 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "zu", expected: True) [21 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "", expected: False) [20 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "fr", expected: False) [18 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "xh", expected: True) [19 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "en", expected: True) [18 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "es", expected: False) [19 ms]
+[xUnit.net 00:00:00.85]     DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "eN", key: "welcome", expected: "Welcome") [FAIL]
+[xUnit.net 00:00:00.85]       Expected result to be "Welcome", but "welcome" differs near "wel" (index 0).
+[xUnit.net 00:00:00.85]       Stack Trace:
+[xUnit.net 00:00:00.85]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.85]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.85]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.85]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.85]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.85]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.85]            at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstMismatch()
+[xUnit.net 00:00:00.85]            at FluentAssertions.Primitives.StringValidator.Validate()
+[xUnit.net 00:00:00.85]            at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.85]         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs(216,0): at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected)
+[xUnit.net 00:00:00.85]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.85]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.87]     DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "ZU", key: "welcome", expected: "Sawubona") [FAIL]
+[xUnit.net 00:00:00.87]       Expected result to be "Sawubona" with a length of 8, but "welcome" has a length of 7, differs near "wel" (index 0).
+[xUnit.net 00:00:00.87]       Stack Trace:
+[xUnit.net 00:00:00.87]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.87]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.87]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.87]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.87]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.87]            at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstLengthDifferences()
+[xUnit.net 00:00:00.87]            at FluentAssertions.Primitives.StringValidator.Validate()
+[xUnit.net 00:00:00.87]            at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.87]         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs(216,0): at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected)
+[xUnit.net 00:00:00.87]            at InvokeStub_LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(Object, Span`1)
+[xUnit.net 00:00:00.87]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.88]     DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "En", key: "welcome", expected: "Welcome") [FAIL]
+[xUnit.net 00:00:00.88]       Expected result to be "Welcome", but "welcome" differs near "wel" (index 0).
+[xUnit.net 00:00:00.88]       Stack Trace:
+[xUnit.net 00:00:00.88]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.88]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.88]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.88]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.88]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.88]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.88]            at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstMismatch()
+[xUnit.net 00:00:00.88]            at FluentAssertions.Primitives.StringValidator.Validate()
+[xUnit.net 00:00:00.88]            at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.88]         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs(216,0): at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected)
+[xUnit.net 00:00:00.88]            at InvokeStub_LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(Object, Span`1)
+[xUnit.net 00:00:00.88]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.90]     DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "EN", key: "welcome", expected: "Welcome") [FAIL]
+[xUnit.net 00:00:00.90]       Expected result to be "Welcome", but "welcome" differs near "wel" (index 0).
+[xUnit.net 00:00:00.90]       Stack Trace:
+[xUnit.net 00:00:00.90]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.90]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.90]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.90]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.90]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.90]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.90]            at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstMismatch()
+[xUnit.net 00:00:00.90]            at FluentAssertions.Primitives.StringValidator.Validate()
+[xUnit.net 00:00:00.90]            at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.90]         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs(216,0): at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected)
+[xUnit.net 00:00:00.90]            at InvokeStub_LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(Object, Span`1)
+[xUnit.net 00:00:00.90]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "af", expected: True) [20 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithVariousLanguageCodes_ShouldReturnCorrectResult(languageCode: "de", expected: False) [24 ms]
+  Failed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "eN", key: "welcome", expected: "Welcome") [92 ms]
+  Error Message:
+   Expected result to be "Welcome", but "welcome" differs near "wel" (index 0).
+  Stack Trace:
+     at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstMismatch()
+   at FluentAssertions.Primitives.StringValidator.Validate()
+   at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+   at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected) in C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs:line 216
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "ZU", key: "welcome", expected: "Sawubona") [19 ms]
+  Error Message:
+   Expected result to be "Sawubona" with a length of 8, but "welcome" has a length of 7, differs near "wel" (index 0).
+  Stack Trace:
+     at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstLengthDifferences()
+   at FluentAssertions.Primitives.StringValidator.Validate()
+   at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+   at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected) in C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs:line 216
+   at InvokeStub_LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "En", key: "welcome", expected: "Welcome") [17 ms]
+  Error Message:
+   Expected result to be "Welcome", but "welcome" differs near "wel" (index 0).
+  Stack Trace:
+     at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstMismatch()
+   at FluentAssertions.Primitives.StringValidator.Validate()
+   at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+   at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected) in C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs:line 216
+   at InvokeStub_LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(languageCode: "EN", key: "welcome", expected: "Welcome") [17 ms]
+  Error Message:
+   Expected result to be "Welcome", but "welcome" differs near "wel" (index 0).
+  Stack Trace:
+     at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstMismatch()
+   at FluentAssertions.Primitives.StringValidator.Validate()
+   at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+   at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(String languageCode, String key, String expected) in C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs:line 216
+   at InvokeStub_LocalizationServiceTests.GetString_WithCaseInsensitiveLanguageCode_ShouldReturnCorrectTranslation(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithUnsupportedLanguage_ShouldFallbackToEnglish [16 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithNullLanguageCode_ShouldFallbackToEnglish [14 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithNumericParameterSubstitution_ShouldFormatCorrectly(languageCode: "en", key: "balance", amount: 1250.5, expected: "Your balance is R1250.5") [14 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithNumericParameterSubstitution_ShouldFormatCorrectly(languageCode: "zu", key: "balance", amount: 500, expected: "Ibhalansi yakho ngu-R500") [15 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithNumericParameterSubstitution_ShouldFormatCorrectly(languageCode: "af", key: "balance", amount: 10000, expected: "Jou balans is R10000") [16 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_WithSesotho_ShouldReturnAvailableTranslations [22 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetSupportedLanguages_ShouldReturnAllFiveLanguages [18 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_WithIsiZulu_ShouldReturnAllZuluTranslations [17 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_WithEnglish_ShouldReturnAllEnglishTranslations [16 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithCaseInsensitiveLanguageCode_ShouldReturnTrue(languageCode: "ZU") [17 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithCaseInsensitiveLanguageCode_ShouldReturnTrue(languageCode: "EN") [15 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithCaseInsensitiveLanguageCode_ShouldReturnTrue(languageCode: "En") [15 ms]
+Failed to load localization file for en: 'i' is an invalid start of a property name. Expected a '"'. Path: $ | LineNumber: 0 | BytePositionInLine: 2.
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithCaseInsensitiveLanguageCode_ShouldReturnTrue(languageCode: "eN") [15 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithCaseInsensitiveLanguageCode_ShouldReturnTrue(languageCode: "Zu") [14 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.LocalizationService_WithMissingResourceFiles_ShouldInitializeWithEmptyDictionaries [16 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithParameterSubstitution_ShouldFormatStringCorrectly(languageCode: "st", key: "greeting", param: "Thabo", expected: "Dumela, Thabo!") [16 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithParameterSubstitution_ShouldFormatStringCorrectly(languageCode: "xh", key: "greeting", param: "Nomsa", expected: "Molo, Nomsa!") [17 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithParameterSubstitution_ShouldFormatStringCorrectly(languageCode: "zu", key: "greeting", param: "Sipho", expected: "Sawubona, Sipho!") [16 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithParameterSubstitution_ShouldFormatStringCorrectly(languageCode: "af", key: "greeting", param: "Pieter", expected: "Hallo, Pieter!") [15 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithParameterSubstitution_ShouldFormatStringCorrectly(languageCode: "en", key: "greeting", param: "Alice", expected: "Hello, Alice!") [15 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.LocalizationService_WithInvalidJsonFile_ShouldHandleGracefully [46 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_ShouldReturnCopyOfDictionary [19 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithMissingTranslationInLanguage_ShouldReturnKey [17 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_WithUnsupportedLanguage_ShouldFallbackToEnglish [17 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithMissingKey_ShouldReturnKeyAsString [16 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithInvalidFormatString_ShouldReturnRawValue [25 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_ForAllSupportedLanguages_ShouldReturnNonEmptyDictionaries(languageCode: "en") [30 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_ForAllSupportedLanguages_ShouldReturnNonEmptyDictionaries(languageCode: "xh") [26 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_ForAllSupportedLanguages_ShouldReturnNonEmptyDictionaries(languageCode: "st") [21 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_ForAllSupportedLanguages_ShouldReturnNonEmptyDictionaries(languageCode: "af") [24 ms]
+[xUnit.net 00:00:01.62]     DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithMultipleParametersInOrder_ShouldFormatCorrectly [FAIL]
+[xUnit.net 00:00:01.62]       Expected result to be "Name: Alice, Balance: R1500.5, Date: 2026-03-24" with a length of 47, but "Name: Alice, Balance: R1500.50, Date: 2026-03-24" has a length of 48, differs near "0, " (index 29).
+[xUnit.net 00:00:01.62]       Stack Trace:
+[xUnit.net 00:00:01.62]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:01.62]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:01.62]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:01.62]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:01.62]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:01.62]            at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstLengthDifferences()
+[xUnit.net 00:00:01.62]            at FluentAssertions.Primitives.StringValidator.Validate()
+[xUnit.net 00:00:01.62]            at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:01.62]         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs(439,0): at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithMultipleParametersInOrder_ShouldFormatCorrectly()
+[xUnit.net 00:00:01.62]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:01.62]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:01.69]   Finished:    DigitalStokvel.Tests.Unit
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetAllStrings_ForAllSupportedLanguages_ShouldReturnNonEmptyDictionaries(languageCode: "zu") [25 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithParametersButNoPlaceholders_ShouldReturnRawString [27 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.LocalizationService_WithDefaultResourcePath_ShouldUseExpectedPath [23 ms]
+  Failed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithMultipleParametersInOrder_ShouldFormatCorrectly [49 ms]
+  Error Message:
+   Expected result to be "Name: Alice, Balance: R1500.5, Date: 2026-03-24" with a length of 47, but "Name: Alice, Balance: R1500.50, Date: 2026-03-24" has a length of 48, differs near "0, " (index 29).
+  Stack Trace:
+     at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstLengthDifferences()
+   at FluentAssertions.Primitives.StringValidator.Validate()
+   at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+   at DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithMultipleParametersInOrder_ShouldFormatCorrectly() in C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\Services\LocalizationServiceTests.cs:line 439
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.IsLanguageSupported_WithNullLanguageCode_ShouldReturnFalse [18 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithNoParameters_ShouldReturnRawString [21 ms]
+  Passed DigitalStokvel.Tests.Unit.Services.LocalizationServiceTests.GetString_WithEmptyLanguageCode_ShouldFallbackToEnglish [23 ms]
+
+Test Run Failed.
+Total tests: 101
+     Passed: 95
+     Failed: 6
+ Total time: 2.3808 Seconds
+       _VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     1>Done Building Project "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (VSTest target(s)) -- FAILED.
+
+Build FAILED.
+
+       "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (Restore target) (1) ->
+       (Restore target) -> 
+         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj [C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj]
+         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj
+
+
+       "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (VSTest target) (1:7) ->
+       "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (default target) (1:8) ->
+       (ResolvePackageAssets target) -> 
+         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj
+
+
+       "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (VSTest target) (1:7) ->
+       "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\tests\DigitalStokvel.Tests.Unit\DigitalStokvel.Tests.Unit.csproj" (default target) (1:8) ->
+       "C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj" (default target) (3:7) ->
+         C:\Repos\GitHub\nabeelp\digital-stokvel-vscode-spec-kit\backend\src\DigitalStokvel.Services\DigitalStokvel.Services.csproj : warning NU1902: Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj
+
+    4 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:06.70

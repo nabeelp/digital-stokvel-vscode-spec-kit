@@ -196,16 +196,7 @@ try
     builder.Services.AddControllers();
 
     // Add API versioning
-        
-        // Hangfire dashboard in development only
-        app.UseHangfireDashboard("/hangfire", new DashboardOptions
-        {
-            Authorization = new[] { new HangfireAuthorizationFilter() }
-        });
-    }
-
-    // Initialize Hangfire recurring jobs
-    ConfigureRecurringJobs();uilder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddEndpointsApiExplorer();
 
     // Add OpenAPI
     builder.Services.AddOpenApi();
@@ -214,6 +205,18 @@ try
     builder.Services.AddApplicationInsightsTelemetry();
 
     var app = builder.Build();
+
+    // Hangfire dashboard in development only
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseHangfireDashboard("/hangfire", new DashboardOptions
+        {
+            Authorization = new[] { new HangfireAuthorizationFilter() }
+        });
+    }
+
+    // Initialize Hangfire recurring jobs
+    ConfigureRecurringJobs();
 
     // Configure HTTP request pipeline
     if (app.Environment.IsDevelopment())
