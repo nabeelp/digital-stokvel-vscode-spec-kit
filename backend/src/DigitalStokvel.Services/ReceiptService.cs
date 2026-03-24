@@ -101,6 +101,119 @@ public class ReceiptService
         return receipt.ToString();
     }
 
+    /// <summary>
+    /// T187: Generates a shareable branded receipt for group meetings (AGM, special meetings)
+    /// Suitable for sharing via WhatsApp, SMS, or mobile apps
+    /// </summary>
+    /// <param name="groupName">Name of the stokvel group</param>
+    /// <param name="meetingType">Type of meeting (AGM, Special Meeting, Emergency Meeting)</param>
+    /// <param name="meetingDate">Date and time of the meeting</param>
+    /// <param name="attendees">List of attending member names</param>
+    /// <param name="decisions">Key decisions made during the meeting</param>
+    /// <param name="nextMeetingDate">Date of next scheduled meeting (optional)</param>
+    /// <param name="language">Language code for localization</param>
+    /// <returns>Shareable meeting receipt/summary</returns>
+    public string GenerateMeetingReceipt(
+        string groupName,
+        string meetingType,
+        DateTime meetingDate,
+        List<string> attendees,
+        List<string> decisions,
+        DateTime? nextMeetingDate = null,
+        string language = "en")
+    {
+        if (string.IsNullOrWhiteSpace(groupName))
+            throw new ArgumentNullException(nameof(groupName));
+        if (attendees == null || attendees.Count == 0)
+            throw new ArgumentException("At least one attendee required", nameof(attendees));
+
+        var receipt = new StringBuilder();
+
+        // Header with branding
+        receipt.AppendLine("🌟 DIGITAL STOKVEL 🌟");
+        receipt.AppendLine(new string('=', 35));
+        receipt.AppendLine();
+
+        // Meeting title
+        var meetingTitle = GetLocalizedMeetingTitle(meetingType, language);
+        receipt.AppendLine($"📋 {meetingTitle}");
+        receipt.AppendLine();
+
+        // Group and date
+        receipt.AppendLine($"{GetLocalizedLabel("group", language)}: {groupName}");
+        receipt.AppendLine($"{GetLocalizedLabel("date", language)}: {meetingDate:dd MMM yyyy HH:mm}");
+        receipt.AppendLine();
+
+        // Attendance
+        var attendanceLabel = GetLocalizedMeetingLabel("attendance", language);
+        receipt.AppendLine($"{attendanceLabel} ({attendees.Count}):");
+        receipt.AppendLine(new string('-', 35));
+        foreach (var attendee in attendees)
+        {
+            receipt.AppendLine($"✓ {attendee}");
+        }
+        receipt.AppendLine();
+
+        // Key decisions
+        if (decisions != null && decisions.Count > 0)
+        {
+            var decisionsLabel = GetLocalizedMeetingLabel("decisions", language);
+            receipt.AppendLine($"{decisionsLabel}:");
+            receipt.AppendLine(new string('-', 35));
+            for (int i = 0; i < decisions.Count; i++)
+            {
+                receipt.AppendLine($"{i + 1}. {decisions[i]}");
+            }
+            receipt.AppendLine();
+        }
+
+        // Next meeting
+        if (nextMeetingDate.HasValue)
+        {
+            var nextMeetingLabel = GetLocalizedMeetingLabel("next_meeting", language);
+            receipt.AppendLine($"{nextMeetingLabel}:");
+            receipt.AppendLine($"📅 {nextMeetingDate.Value:dd MMM yyyy HH:mm}");
+            receipt.AppendLine();
+        }
+
+        // Footer
+        receipt.AppendLine(new string('=', 35));
+        var meetingFooter = GetLocalizedMeetingFooter(language);
+        receipt.AppendLine(meetingFooter);
+        receipt.AppendLine();
+        receipt.AppendLine($"Generated: {DateTime.UtcNow:dd MMM yyyy HH:mm} UTC");
+        receipt.AppendLine("www.digitalstokvel.co.za");
+
+        _logger.LogInformation(
+            "Meeting receipt generated: Group {GroupName} | Type {MeetingType} | Attendees {AttendeeCount}",
+            groupName, meetingType, attendees.Count);
+
+        return receipt.ToString();
+    }
+
+    /// <summary>
+    /// T187: Generates a compact meeting summary suitable for SMS notifications
+    /// </summary>
+    public string GenerateCompactMeetingSummary(
+        string groupName,
+        string meetingType,
+        DateTime meetingDate,
+        int attendeeCount,
+        string language = "en")
+    {
+        var summary = new StringBuilder();
+
+        summary.AppendLine($"📋 {GetLocalizedMeetingTitle(meetingType, language)}");
+        summary.AppendLine($"Group: {groupName}");
+        summary.AppendLine($"Date: {meetingDate:dd MMM yyyy}");
+        summary.AppendLine($"Attendance: {attendeeCount} members");
+        summary.AppendLine();
+        summary.AppendLine("📱 Digital Stokvel");
+        summary.AppendLine(GetLocalizedMeetingFooter(language));
+
+        return summary.ToString();
+    }
+
     #region Private Helper Methods
 
     /// <summary>
@@ -226,6 +339,93 @@ public class ReceiptService
             "xh" => "Siyabulela ngegalelo lakho! 💚",
             "af" => "Dankie vir jou bydrae! 💚",
             _ => "Thank you for your contribution! 💚"
+        };
+    }
+
+    /// <summary>
+    /// T187: Gets localized meeting title
+    /// </summary>
+    private string GetLocalizedMeetingTitle(string meetingType, string language)
+    {
+        var key = meetingType.ToLower().Replace(" ", "_");
+        
+        return (key, language.ToLower()) switch
+        {
+            ("agm", "zu") => "UMHLANGANO WONYAKA",
+            ("agm", "st") => "KOPANO EA SELEMO",
+            ("agm", "xh") => "INTLANGANISO YONYAKA",
+            ("agm", "af") => "JAARLIKSE ALGEMENE VERGADERING",
+            ("agm", _) => "ANNUAL GENERAL MEETING",
+            
+            ("special_meeting", "zu") => "UMHLANGANO OKHETHEKILE",
+            ("special_meeting", "st") => "KOPANO E KHETHEHILENG",
+            ("special_meeting", "xh") => "INTLANGANISO EKHETHEKILEYO",
+            ("special_meeting", "af") => "SPESIALE VERGADERING",
+            ("special_meeting", _) => "SPECIAL MEETING",
+            
+            ("emergency_meeting", "zu") => "UMHLANGANO WEZIPHUTHUMAYO",
+            ("emergency_meeting", "st") => "KOPANO EA TSHOHANYETSO",
+            ("emergency_meeting", "xh") => "INTLANGANISO YANGXAMISEKO",
+            ("emergency_meeting", "af") => "NOODVERGADERING",
+            ("emergency_meeting", _) => "EMERGENCY MEETING",
+            
+            _ => meetingType.ToUpper()
+        };
+    }
+
+    /// <summary>
+    /// T187: Gets localized meeting labels
+    /// </summary>
+    private string GetLocalizedMeetingLabel(string key, string language)
+    {
+        var labels = new Dictionary<string, Dictionary<string, string>>
+        {
+            ["attendance"] = new() 
+            { 
+                ["en"] = "Attendance", 
+                ["zu"] = "Ukunakwa", 
+                ["st"] = "Ho Teng", 
+                ["xh"] = "Ukubakho", 
+                ["af"] = "Bywoning" 
+            },
+            ["decisions"] = new() 
+            { 
+                ["en"] = "Key Decisions", 
+                ["zu"] = "Izinqumo Ezibalulekile", 
+                ["st"] = "Liqeto tsa Bohlokoa", 
+                ["xh"] = "Izigqibo Eziphambili", 
+                ["af"] = "Sleutelbesluite" 
+            },
+            ["next_meeting"] = new() 
+            { 
+                ["en"] = "Next Meeting", 
+                ["zu"] = "Umhlangano Olandelayo", 
+                ["st"] = "Kopano e Latelang", 
+                ["xh"] = "Intlanganiso Elandelayo", 
+                ["af"] = "Volgende Vergadering" 
+            }
+        };
+
+        if (labels.TryGetValue(key, out var translations))
+        {
+            return translations.GetValueOrDefault(language.ToLower(), translations["en"]);
+        }
+
+        return key;
+    }
+
+    /// <summary>
+    /// T187: Gets localized meeting footer
+    /// </summary>
+    private string GetLocalizedMeetingFooter(string language)
+    {
+        return language.ToLower() switch
+        {
+            "zu" => "Sibumbano simandla kunoma yikuphi 💪",
+            "st" => "Re matla ha re kopane 💪",
+            "xh" => "Simandla xa simanyanisiwe 💪",
+            "af" => "Ons is sterker saam 💪",
+            _ => "Together we are stronger 💪"
         };
     }
 
