@@ -139,6 +139,7 @@ try
     builder.Services.AddScoped<GroupService>();
     builder.Services.AddScoped<ContributionService>();
     builder.Services.AddScoped<ReceiptService>();
+    builder.Services.AddScoped<IInterestService, InterestService>();
     builder.Services.AddSingleton<IServiceBusClient, ServiceBusClient>(sp =>
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
@@ -148,6 +149,12 @@ try
             sp.GetRequiredService<ILogger<SmsNotificationService>>(),
             builder.Configuration.GetConnectionString("AzureCommunicationServices"),
             builder.Configuration["AzureCommunicationServices:SenderPhoneNumber"]));
+    builder.Services.AddSingleton<IPushNotificationService, PushNotificationService>();
+
+    // Register background jobs
+    builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.PaymentReminderJob>();
+    builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.DailyInterestAccrualJob>();
+    builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.InterestCapitalizationJob>();
 
     // Add rate limiting
     builder.Services.AddRateLimiter(RateLimitingConfiguration.ConfigureRateLimiting);

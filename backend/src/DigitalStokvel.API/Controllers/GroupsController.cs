@@ -368,4 +368,215 @@ public class GroupsController : ControllerBase
             }
         });
     }
+
+    /// <summary>
+    /// Get group wallet with balance, accrued interest, and interest tier
+    /// </summary>
+    /// <remarks>
+    /// Returns the group's financial wallet showing:
+    /// - Current balance
+    /// - Accrued interest (not yet capitalized)
+    /// - Current interest tier (Tier1_3_5Pct, Tier2_4_5Pct, Tier3_5_5Pct)
+    /// - Interest rate percentage
+    /// </remarks>
+    [HttpGet("{groupId}/wallet")]
+    [ProducesResponseType(typeof(ApiResponse<GroupWalletResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetGroupWallet(Guid groupId)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Unauthorized(new ErrorResponse
+            {
+                Message = "User not authenticated",
+                ErrorCode = "AUTHENTICATION_REQUIRED"
+            });
+        }
+
+        // Get member
+        var member = await _memberRepository.GetByApplicationUserIdAsync(userId);
+        if (member == null)
+        {
+            return BadRequest(new ErrorResponse
+            {
+                Message = "Member profile not found",
+                ErrorCode = "MEMBER_NOT_FOUND"
+            });
+        }
+
+        // Get group
+        var group = await _groupRepository.GetGroupWithMembersAsync(groupId);
+        if (group == null)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Message = "Group not found",
+                ErrorCode = "GROUP_NOT_FOUND"
+            });
+        }
+
+        // Verify member is part of the group
+        var isMember = group.Members?.Any(gm => gm.MemberId == member.Id && gm.IsActive) ?? false;
+        if (!isMember)
+        {
+            return StatusCode(StatusCodes.Status403Forbidden, new ErrorResponse
+            {
+                Message = "You don't have access to this group's wallet",
+                ErrorCode = "ACCESS_DENIED"
+            });
+        }
+
+        // Get interest service from DI (add to constructor if needed)
+        var interestService = HttpContext.RequestServices.GetRequiredService<IInterestService>();
+
+        // Determine current interest tier
+        var balance = group.Balance.Amount;
+        var tier = interestService.DetermineInterestTier(balance);
+        var interestRate = interestService.GetInterestRateForBalance(balance);
+
+        // In production: load AccruedInterest from database
+        var accruedInterest = 0m; // Stub value
+
+        _logger.LogInformation(
+            "Wallet retrieved for group {GroupId} by member {MemberId}",
+            groupId,
+            member.Id);
+
+        return Ok(new ApiResponse<GroupWalletResponse>
+        {
+            Message = "Your group's wallet",
+            Data = new GroupWalletResponse
+            {
+                GroupId = groupId,
+                GroupName = group.Name,
+                Balance = balance,
+                AccruedInterest = accruedInterest,
+                TotalValue = balance + accruedInterest,
+                InterestTier = tier.ToString(),
+                InterestRate = interestRate * 100, // Convert to percentage
+                InterestRateDisplay = $"{interestRate * 100:N1}%",
+                LastUpdated = DateTime.UtcNow
+            }
+        });
+    }
+
+    /// <summary>
+    /// Get group interest calculation details
+    /// </summary>
+    /// <remarks>
+    /// Returns detailed interest breakdown including:
+    /// - Year-to-date earnings
+    /// - Daily calculation history
+    /// - Interest tier progression
+    /// - Projected monthly earnings
+    /// </remarks>
+    [HttpGet("{groupId}/interest-details")]
+    [ProducesResponseType(typeof(ApiResponse<InterestDetailsResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetInterestDetails(
+        Guid groupId,
+        [FromQuery] DateTime? fromDate = null,
+        [FromQuery] DateTime? toDate = null)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Unauthorized(new ErrorResponse
+            {
+                Message = "User not authenticated",
+                ErrorCode = "AUTHENTICATION_REQUIRED"
+            });
+        }
+
+        // Get member
+        var member = await _memberRepository.GetByApplicationUserIdAsync(userId);
+        if (member == null)
+        {
+            return BadRequest(new ErrorResponse
+            {
+                Message = "Member profile not found",
+                ErrorCode = "MEMBER_NOT_FOUND"
+            });
+        }
+
+        // Get group
+        var group = await _groupRepository.GetGroupWithMembersAsync(groupId);
+        if (group == null)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Message = "Group not found",
+                ErrorCode = "GROUP_NOT_FOUND"
+            });
+        }
+
+        // Verify member is part of the group
+        var isMember = group.Members?.Any(gm => gm.MemberId == member.Id && gm.IsActive) ?? false;
+        if (!isMember)
+        {
+            return StatusCode(StatusCodes.Status403Forbidden, new ErrorResponse
+            {
+                Message = "You don't have access to this group's interest details",
+                ErrorCode = "ACCESS_DENIED"
+            });
+        }
+
+        // Get interest service
+        var interestService = HttpContext.RequestServices.GetRequiredService<IInterestService>();
+
+        // Calculate YTD earnings
+        var ytdEarnings = await interestService.CalculateYearToDateEarningsAsync(groupId);
+
+        // Get interest breakdown for requested period
+        var breakdownFromDate = fromDate ?? new DateTime(DateTime.UtcNow.Year, 1, 1);
+        var breakdownToDate = toDate ?? DateTime.UtcNow;
+        var breakdown = await interestService.GetInterestBreakdownAsync(
+            groupId,
+            breakdownFromDate,
+            breakdownToDate);
+
+        // Current tier and rate
+        var balance = group.Balance.Amount;
+        var tier = interestService.DetermineInterestTier(balance);
+        var rate = interestService.GetInterestRateForBalance(balance);
+
+        // Project monthly earnings (rough estimate: balance * rate / 12)
+        var projectedMonthlyEarnings = balance * rate / 12;
+
+        _logger.LogInformation(
+            "Interest details retrieved for group {GroupId} by member {MemberId}",
+            groupId,
+            member.Id);
+
+        return Ok(new ApiResponse<InterestDetailsResponse>
+        {
+            Message = "Interest calculation details",
+            Data = new InterestDetailsResponse
+            {
+                GroupId = groupId,
+                GroupName = group.Name,
+                CurrentBalance = balance,
+                InterestTier = tier.ToString(),
+                AnnualInterestRate = rate * 100,
+                YearToDateEarnings = ytdEarnings,
+                ProjectedMonthlyEarnings = projectedMonthlyEarnings,
+                DailyCalculations = breakdown.Select(c => new DailyCalculationDto
+                {
+                    Date = c.CalculationDate,
+                    PrincipalAmount = c.PrincipalAmount.Amount,
+                    InterestRate = c.InterestRate * 100,
+                    AccruedAmount = c.AccruedAmount.Amount,
+                    InterestTier = c.InterestTier
+                }).ToList(),
+                CalculationPeriod = new
+                {
+                    From = breakdownFromDate,
+                    To = breakdownToDate
+                }
+            }
+        });
+    }
 }

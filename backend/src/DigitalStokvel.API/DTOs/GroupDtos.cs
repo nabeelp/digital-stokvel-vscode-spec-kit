@@ -74,3 +74,47 @@ public record CreateGroupResponse
     public string GroupSavingsAccountNumber { get; init; } = string.Empty;
     public DateTime CreatedAt { get; init; }
 }
+
+/// <summary>
+/// Response DTO for group wallet information
+/// </summary>
+public record GroupWalletResponse
+{
+    public Guid GroupId { get; init; }
+    public string GroupName { get; init; } = string.Empty;
+    public decimal Balance { get; init; }
+    public decimal AccruedInterest { get; init; }
+    public decimal TotalValue { get; init; }
+    public string InterestTier { get; init; } = string.Empty;
+    public decimal InterestRate { get; init; }
+    public string InterestRateDisplay { get; init; } = string.Empty;
+    public DateTime LastUpdated { get; init; }
+}
+
+/// <summary>
+/// Response DTO for interest calculation details
+/// </summary>
+public record InterestDetailsResponse
+{
+    public Guid GroupId { get; init; }
+    public string GroupName { get; init; } = string.Empty;
+    public decimal CurrentBalance { get; init; }
+    public string InterestTier { get; init; } = string.Empty;
+    public decimal AnnualInterestRate { get; init; }
+    public decimal YearToDateEarnings { get; init; }
+    public decimal ProjectedMonthlyEarnings { get; init; }
+    public List<DailyCalculationDto> DailyCalculations { get; init; } = new();
+    public object? CalculationPeriod { get; init; }
+}
+
+/// <summary>
+/// DTO for daily interest calculation entry
+/// </summary>
+public record DailyCalculationDto
+{
+    public DateTime Date { get; init; }
+    public decimal PrincipalAmount { get; init; }
+    public decimal InterestRate { get; init; }
+    public decimal AccruedAmount { get; init; }
+    public string InterestTier { get; init; } = string.Empty;
+}

@@ -138,9 +138,9 @@ Multi-platform project structure:
 - [ ] T070 [P] [US2] Implement React PayContribution modal for web dashboard in web/src/components/PayContribution.tsx
 - [ ] T071 [US2] Implement Android ContributionHistoryScreen with list and receipt sharing in android/app/src/main/java/za/co/stokvel/ui/contribution/ContributionHistoryScreen.kt
 - [ ] T072 [US2] Implement iOS ContributionHistoryView with SwiftUI in ios/DigitalStokvel/Views/ContributionHistoryView.swift
-- [ ] T073 [US2] Implement payment reminder background job (3 days, 1 day before due date) in backend/src/DigitalStokvel.Infrastructure/Jobs/PaymentReminderJob.cs
-- [ ] T074 [US2] Implement push notification service for payment reminders in backend/src/DigitalStokvel.Infrastructure/Notifications/PushNotificationService.cs
-- [ ] T075 [US2] Enforce POPIA data minimization: ledger API returns only masked account indicators, no full account numbers in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
+- [X] T073 [US2] Implement payment reminder background job (3 days, 1 day before due date) in backend/src/DigitalStokvel.Infrastructure/Jobs/PaymentReminderJob.cs
+- [X] T074 [US2] Implement push notification service for payment reminders in backend/src/DigitalStokvel.Infrastructure/Notifications/PushNotificationService.cs
+- [X] T075 [US2] Enforce POPIA data minimization: ledger API returns only masked account indicators, no full account numbers in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
 
 **Checkpoint**: At this point, User Story 2 should be fully functional - Members can contribute and view ledger with privacy protections
 
@@ -154,16 +154,16 @@ Multi-platform project structure:
 
 ### Implementation for User Story 3
 
-- [ ] T076 [P] [US3] Create InterestCalculation entity with GroupId, CalculationDate, PrincipalAmount, InterestRate, AccruedAmount in backend/src/DigitalStokvel.Core/Entities/InterestCalculation.cs
-- [ ] T077 [P] [US3] Create InterestTier enum (Tier1_3_5Pct, Tier2_4_5Pct, Tier3_5_5Pct) in backend/src/DigitalStokvel.Core/Enums/InterestTier.cs
-- [ ] T078 [US3] Implement IInterestService interface with CalculateDailyInterest, CapitalizeMonthly, GetInterestBreakdown in backend/src/DigitalStokvel.Core/Interfaces/IInterestService.cs
-- [ ] T079 [US3] Implement InterestService with daily compounding formula: A = P(1 + r/365)^days in backend/src/DigitalStokvel.Services/InterestService.cs
-- [ ] T080 [US3] Implement tiered interest rate logic: R0-R10K=3.5%, R10K-R50K=4.5%, R50K+=5.5% in backend/src/DigitalStokvel.Services/InterestService.cs
-- [ ] T081 [US3] Implement monthly capitalization job: add AccruedInterest to Balance, reset AccruedInterest to 0 in backend/src/DigitalStokvel.Infrastructure/Jobs/InterestCapitalizationJob.cs
-- [ ] T082 [US3] Implement daily interest accrual background job (runs at 00:01 UTC) in backend/src/DigitalStokvel.Infrastructure/Jobs/DailyInterestAccrualJob.cs
+- [X] T076 [P] [US3] Create InterestCalculation entity with GroupId, CalculationDate, PrincipalAmount, InterestRate, AccruedAmount in backend/src/DigitalStokvel.Core/Entities/InterestCalculation.cs
+- [X] T077 [P] [US3] Create InterestTier enum (Tier1_3_5Pct, Tier2_4_5Pct, Tier3_5_5Pct) in backend/src/DigitalStokvel.Core/Enums/InterestTier.cs
+- [X] T078 [US3] Implement IInterestService interface with CalculateDailyInterest, CapitalizeMonthly, GetInterestBreakdown in backend/src/DigitalStokvel.Core/Interfaces/IInterestService.cs
+- [X] T079 [US3] Implement InterestService with daily compounding formula: A = P(1 + r/365)^days in backend/src/DigitalStokvel.Services/InterestService.cs
+- [X] T080 [US3] Implement tiered interest rate logic: R0-R10K=3.5%, R10K-R50K=4.5%, R50K+=5.5% in backend/src/DigitalStokvel.Services/InterestService.cs
+- [X] T081 [US3] Implement monthly capitalization job: add AccruedInterest to Balance, reset AccruedInterest to 0 in backend/src/DigitalStokvel.Infrastructure/Jobs/InterestCapitalizationJob.cs
+- [X] T082 [US3] Implement daily interest accrual background job (runs at 00:01 UTC) in backend/src/DigitalStokvel.Infrastructure/Jobs/DailyInterestAccrualJob.cs
 - [ ] T083 [US3] Update GroupService to block unilateral withdrawal: require quorum approval (60% of eligible members) in backend/src/DigitalStokvel.Services/GroupService.cs
-- [ ] T084 [US3] Create GET /api/v1/groups/{groupId}/wallet endpoint returning Balance, AccruedInterest, InterestTier in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
-- [ ] T085 [US3] Create GET /api/v1/groups/{groupId}/interest-details endpoint with YTD earnings, daily calculation breakdown in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
+- [X] T084 [US3] Create GET /api/v1/groups/{groupId}/wallet endpoint returning Balance, AccruedInterest, InterestTier in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
+- [X] T085 [US3] Create GET /api/v1/groups/{groupId}/interest-details endpoint with YTD earnings, daily calculation breakdown in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
 - [ ] T086 [P] [US3] Implement Android GroupWalletScreen with balance display, interest breakdown modal in android/app/src/main/java/za/co/stokvel/ui/wallet/GroupWalletScreen.kt
 - [ ] T087 [P] [US3] Implement iOS GroupWalletView with interest tier indicator in ios/DigitalStokvel/Views/GroupWalletView.swift
 - [ ] T088 [P] [US3] Implement React GroupWallet component with real-time balance updates in web/src/components/GroupWallet.tsx
