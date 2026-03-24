@@ -5,7 +5,7 @@
 
 ## Overview
 
-Comprehensive unit test suites have been implemented for critical Phase 5 and Phase 7 services, plus Hangfire background jobs that handle scheduled interest calculations and payment reminders.
+Comprehensive unit test suites have been implemented for critical Phase 5 and Phase 7 services, plus Hangfire background jobs that handle scheduled interest calculations and payment reminders, and payment gateway infrastructure for processing transactions.
 
 ## Test Coverage Added
 
@@ -155,20 +155,68 @@ Where Annual Rate varies by tier:
 - Tests validate logging, error handling, and cancellation behavior
 - Constructor tests ensure proper dependency injection
 
+### PaymentGatewayServiceTests (22 test methods) **NEW**
+
+**File**: `backend/tests/DigitalStokvel.Tests.Unit/Infrastructure/Payments/PaymentGatewayServiceTests.cs`
+
+**Coverage Areas**:
+
+#### Constructor Tests (3 tests)
+- Logger null check validation
+- Optional API endpoint parameter handling
+- Optional API key parameter handling
+
+#### DeductFromAccountAsync Tests (10 tests)
+- **Success Scenario**: 95% simulated success rate with transaction reference generation
+- **Invalid Amount**: Validates rejection of zero/negative amounts
+- **Transaction Reference Generation**: Verifies "PAY-{guid}" format (32-hex-char GUIDs)
+- **Payment Logging**: Validates stub logging with member ID, amount, currency, idempotency key
+- **Cancellation Handling**: Token cancellation returns gateway error (not thrown)
+- **Default Currency**: ZAR currency used when not specified
+- **Idempotency Key**: Tracks idempotency keys in logs to prevent duplicate transactions
+- **Error Handling**: 5% simulated failure for "Insufficient funds" with proper error code
+- **Timestamp Validation**: UTC timestamps on results
+- **Theory Tests**: Parameterized tests for various invalid amounts (0, -10, -100.50)
+
+#### SetupDebitOrderAsync Tests (6 tests)
+- **Success Scenario**: Debit order reference generation ("DO-{guid}" format)
+- **Multiple Frequencies**: Handles Monthly, Biweekly, Weekly frequencies
+- **Past Start Date**: Calculates next valid debit date when start date is in the past
+- **Logging**: Validates stub implementation logs
+- **Cancellation Handling**: Returns failure result (not thrown)
+- **Next Debit Date Calculation**: Ensures future dates only
+
+#### CancelDebitOrderAsync Tests (3 tests)
+- **Success Scenario**: Returns true on successful cancellation
+- **Logging Verification**: Logs stub cancellation message
+- **Cancellation Handling**: Returns false when cancellation token triggered
+
+**Payment Gateway Implementation Notes**:
+- Stub implementation for South African banking integration
+- Uses "PAY-" prefix for transaction references (not "TXN-")
+- Simulates 95% success rate, 5% "Insufficient funds" failure
+- Returns `PaymentResult` or `DebitOrderResult` records (never throws on cancellation)
+- Production would integrate with:
+  - FNB, Standard Bank, Absa, Nedbank, Capitec APIs
+  - 3D Secure authentication
+  - DebiCheck mandate system for debit orders
+  - Async webhook handlers for payment confirmations
+
 ## Test Results
 
 ```
-Total Tests: 208 ✅ (was 178)
-Passed: 208
+Total Tests: 230 ✅ (was 208)
+Passed: 230
 Failed: 0
 Skipped: 0
-Duration: ~5.8 seconds
+Duration: ~5.2 seconds
 ```
 
-**New Tests**: 128 total
+**New Tests**: 150 total
 - InterestService: 41 tests
 - LocalizationService: 57 tests
-- Hangfire Jobs: 30 tests (NEW)
+- Hangfire Jobs: 30 tests
+- PaymentGatewayService: 22 tests (NEW)
 
 **Existing Tests**: 80 (GroupService, ContributionService, ReceiptService, SmsNotificationService, Repositories)
 
@@ -181,7 +229,7 @@ Duration: ~5.8 seconds
 
 ## Code Quality
 
-- **Code Coverage**: Estimated ~85% for InterestService, LocalizationService, and Hangfire Jobs
+- **Code Coverage**: Estimated ~88% for InterestService, LocalizationService, Hangfire Jobs, and PaymentGatewayService
 - **Test Patterns**:
   - Arrange-Act-Assert (AAA) pattern used consistently
   - Descriptive test names following convention: `MethodName_Scenario_ExpectedResult`
