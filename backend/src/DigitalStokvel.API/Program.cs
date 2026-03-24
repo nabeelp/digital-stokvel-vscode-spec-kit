@@ -8,6 +8,7 @@ using Serilog;
 using DigitalStokvel.Infrastructure.Data;
 using DigitalStokvel.Infrastructure.Repositories;
 using DigitalStokvel.Infrastructure.Messaging;
+using DigitalStokvel.Infrastructure.Notifications;
 using DigitalStokvel.Core.Interfaces;
 using DigitalStokvel.Core.Entities;
 using DigitalStokvel.Services;
@@ -119,15 +120,23 @@ try
     // Register repositories
     builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
     builder.Services.AddScoped<IIdempotencyLogRepository, IdempotencyLogRepository>();
+    builder.Services.AddScoped<IMemberRepository, MemberRepository>();
+    builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 
     // Register services
     builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
     builder.Services.AddSingleton<JwtTokenService>();
     builder.Services.AddScoped<AuthenticationService>();
+    builder.Services.AddScoped<GroupService>();
     builder.Services.AddSingleton<ServiceBusClient>(sp =>
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
             sp.GetRequiredService<ILogger<ServiceBusClient>>()));
+    builder.Services.AddSingleton<SmsNotificationService>(sp =>
+        new SmsNotificationService(
+            sp.GetRequiredService<ILogger<SmsNotificationService>>(),
+            builder.Configuration.GetConnectionString("AzureCommunicationServices"),
+            builder.Configuration["AzureCommunicationServices:SenderPhoneNumber"]));
 
     // Add rate limiting
     builder.Services.AddRateLimiter(RateLimitingConfiguration.ConfigureRateLimiting);

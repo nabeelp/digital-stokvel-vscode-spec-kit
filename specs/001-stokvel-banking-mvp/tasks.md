@@ -83,20 +83,20 @@ Multi-platform project structure:
 
 ### Implementation for User Story 1
 
-- [ ] T031 [P] [US1] Create Member entity with BankCustomerId, PhoneNumber, PreferredLanguage, FicaVerified in backend/src/DigitalStokvel.Core/Entities/Member.cs
-- [ ] T032 [P] [US1] Create StokvelsGroup entity with Name, GroupType, ContributionAmount, Constitution (jsonb), Balance in backend/src/DigitalStokvel.Core/Entities/StokvelsGroup.cs
-- [ ] T033 [P] [US1] Create GroupMember join entity with GroupId, MemberId, Role (Chairperson/Treasurer/Secretary/Member) in backend/src/DigitalStokvel.Core/Entities/GroupMember.cs
-- [ ] T034 [US1] Implement IMemberRepository with GetByPhoneNumber and GetByBankCustomerId methods in backend/src/DigitalStokvel.Core/Interfaces/IMemberRepository.cs
-- [ ] T035 [US1] Implement MemberRepository with EF Core queries in backend/src/DigitalStokvel.Infrastructure/Repositories/MemberRepository.cs
-- [ ] T036 [P] [US1] Implement IGroupRepository with CreateGroup, AddMember, AssignRole methods in backend/src/DigitalStokvel.Core/Interfaces/IGroupRepository.cs
-- [ ] T037 [US1] Implement GroupRepository with EF Core including Constitution jsonb queries in backend/src/DigitalStokvel.Infrastructure/Repositories/GroupRepository.cs
-- [ ] T038 [US1] Implement GroupService with CreateGroup business logic: validate contribution amount R50-R100K, create group savings account in backend/src/DigitalStokvel.Services/GroupService.cs
-- [ ] T039 [US1] Implement GroupService.InviteMember: generate SMS/push notification with join link in backend/src/DigitalStokvel.Services/GroupService.cs
-- [ ] T040 [US1] Implement GroupService.AssignRole: validate role-specific permissions (Treasurer approves payouts) in backend/src/DigitalStokvel.Services/GroupService.cs
-- [ ] T041 [US1] Create POST /api/v1/groups endpoint with CreateGroupRequest DTO in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
-- [ ] T042 [US1] Create GET /api/v1/groups/{id} endpoint returning group details with roster in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
-- [ ] T043 [US1] Create PUT /api/v1/groups/{id}/members endpoint for adding members in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
-- [ ] T044 [US1] Create PUT /api/v1/groups/{id}/roles endpoint for role assignment in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
+- [X] T031 [P] [US1] Create Member entity with BankCustomerId, PhoneNumber, PreferredLanguage, FicaVerified in backend/src/DigitalStokvel.Core/Entities/Member.cs
+- [X] T032 [P] [US1] Create StokvelsGroup entity with Name, GroupType, ContributionAmount, Constitution (jsonb), Balance in backend/src/DigitalStokvel.Core/Entities/StokvelsGroup.cs
+- [X] T033 [P] [US1] Create GroupMember join entity with GroupId, MemberId, Role (Chairperson/Treasurer/Secretary/Member) in backend/src/DigitalStokvel.Core/Entities/GroupMember.cs
+- [X] T034 [US1] Implement IMemberRepository with GetByPhoneNumber and GetByBankCustomerId methods in backend/src/DigitalStokvel.Core/Interfaces/IMemberRepository.cs
+- [X] T035 [US1] Implement MemberRepository with EF Core queries in backend/src/DigitalStokvel.Infrastructure/Repositories/MemberRepository.cs
+- [X] T036 [P] [US1] Implement IGroupRepository with CreateGroup, AddMember, AssignRole methods in backend/src/DigitalStokvel.Core/Interfaces/IGroupRepository.cs
+- [X] T037 [US1] Implement GroupRepository with EF Core including Constitution jsonb queries in backend/src/DigitalStokvel.Infrastructure/Repositories/GroupRepository.cs
+- [X] T038 [US1] Implement GroupService with CreateGroup business logic: validate contribution amount R50-R100K, create group savings account in backend/src/DigitalStokvel.Services/GroupService.cs
+- [X] T039 [US1] Implement GroupService.InviteMember: generate SMS/push notification with join link in backend/src/DigitalStokvel.Services/GroupService.cs
+- [X] T040 [US1] Implement GroupService.AssignRole: validate role-specific permissions (Treasurer approves payouts) in backend/src/DigitalStokvel.Services/GroupService.cs
+- [X] T041 [US1] Create POST /api/v1/groups endpoint with CreateGroupRequest DTO in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
+- [X] T042 [US1] Create GET /api/v1/groups/{id} endpoint returning group details with roster in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
+- [X] T043 [US1] Create PUT /api/v1/groups/{id}/members endpoint for adding members in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
+- [X] T044 [US1] Create PUT /api/v1/groups/{id}/roles endpoint for role assignment in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
 - [ ] T045 [P] [US1] Implement Android GroupCreationScreen with Jetpack Compose Material Design 3 in android/app/src/main/java/za/co/stokvel/ui/group/GroupCreationScreen.kt
 - [ ] T046 [P] [US1] Implement iOS GroupCreationView with SwiftUI forms in ios/DigitalStokvel/Views/GroupCreationView.swift
 - [ ] T047 [P] [US1] Implement React GroupCreation component with Formik validation in web/src/components/GroupCreation.tsx
@@ -104,7 +104,7 @@ Multi-platform project structure:
 - [ ] T049 [US1] Implement iOS GroupDashboardView with roster SwiftUI List in ios/DigitalStokvel/Views/GroupDashboardView.swift
 - [ ] T050 [US1] Implement React GroupDashboard with member table and search for web in web/src/components/GroupDashboard.tsx
 - [ ] T051 [US1] Add soft warning UI for groups exceeding 50 members: "Larger groups may experience performance considerations" in all platforms
-- [ ] T052 [US1] Implement SMS notification service for member invitations using Azure Communication Services in backend/src/DigitalStokvel.Infrastructure/Notifications/SmsNotificationService.cs
+- [X] T052 [US1] Implement SMS notification service for member invitations using Azure Communication Services in backend/src/DigitalStokvel.Infrastructure/Notifications/SmsNotificationService.cs
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - Chairperson can create groups and manage members
 
@@ -118,11 +118,11 @@ Multi-platform project structure:
 
 ### Implementation for User Story 2
 
-- [ ] T053 [P] [US2] Create Contribution entity with GroupId, MemberId, Amount, PaymentMethod, Status, IdempotencyKey, Timestamp in backend/src/DigitalStokvel.Core/Entities/Contribution.cs
-- [ ] T054 [P] [US2] Create ContributionStatus enum (Pending, Completed, Failed, Retrying) in backend/src/DigitalStokvel.Core/Enums/ContributionStatus.cs
-- [ ] T055 [P] [US2] Create PaymentMethod enum (OneTap, DebitOrder, USSD) in backend/src/DigitalStokvel.Core/Enums/PaymentMethod.cs
-- [ ] T056 [US2] Implement IContributionRepository with AddContribution, GetGroupLedger, GetMemberHistory in backend/src/DigitalStokvel.Core/Interfaces/IContributionRepository.cs
-- [ ] T057 [US2] Implement ContributionRepository with indexed queries on (group_id, member_id, timestamp) in backend/src/DigitalStokvel.Infrastructure/Repositories/ContributionRepository.cs
+- [X] T053 [P] [US2] Create Contribution entity with GroupId, MemberId, Amount, PaymentMethod, Status, IdempotencyKey, Timestamp in backend/src/DigitalStokvel.Core/Entities/Contribution.cs
+- [X] T054 [P] [US2] Create ContributionStatus enum (Pending, Completed, Failed, Retrying) in backend/src/DigitalStokvel.Core/Enums/ContributionStatus.cs
+- [X] T055 [P] [US2] Create PaymentMethod enum (OneTap, DebitOrder, USSD) in backend/src/DigitalStokvel.Core/Enums/PaymentMethod.cs
+- [X] T056 [US2] Implement IContributionRepository with AddContribution, GetGroupLedger, GetMemberHistory in backend/src/DigitalStokvel.Core/Interfaces/IContributionRepository.cs
+- [X] T057 [US2] Implement ContributionRepository with indexed queries on (group_id, member_id, timestamp) in backend/src/DigitalStokvel.Infrastructure/Repositories/ContributionRepository.cs
 - [ ] T058 [US2] Implement IPaymentGateway interface with DeductFromAccount method in backend/src/DigitalStokvel.Core/Interfaces/IPaymentGateway.cs
 - [ ] T059 [US2] Implement PaymentGatewayService with bank's payment rails integration in backend/src/DigitalStokvel.Infrastructure/Payments/PaymentGatewayService.cs
 - [ ] T060 [US2] Implement ContributionService.ProcessContribution with idempotency check, transaction scope, ledger entry in backend/src/DigitalStokvel.Services/ContributionService.cs

@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DigitalStokvel.Core\DigitalStokvel.Core.csproj" />
+    <ProjectReference Include="..\DigitalStokvel.Infrastructure\DigitalStokvel.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
