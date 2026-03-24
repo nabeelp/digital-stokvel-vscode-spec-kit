@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DigitalStokvel.API/DigitalStokvel.API.csproj" />
+    <Project Path="src/DigitalStokvel.Core/DigitalStokvel.Core.csproj" />
+    <Project Path="src/DigitalStokvel.Infrastructure/DigitalStokvel.Infrastructure.csproj" />
+    <Project Path="src/DigitalStokvel.Services/DigitalStokvel.Services.csproj" />
+  </Folder>
+</Solution>
