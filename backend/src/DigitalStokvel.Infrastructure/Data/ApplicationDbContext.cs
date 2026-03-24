@@ -23,6 +23,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<StokvelsGroup> StokvelsGroups => Set<StokvelsGroup>();
     public DbSet<GroupMember> GroupMembers => Set<GroupMember>();
     public DbSet<Contribution> Contributions => Set<Contribution>();
+    public DbSet<Payout> Payouts => Set<Payout>();
+    public DbSet<PayoutRecipient> PayoutRecipients => Set<PayoutRecipient>();
 
     // Domain entities will be added as they are created
     // Example: public DbSet<Member> Members => Set<Member>();

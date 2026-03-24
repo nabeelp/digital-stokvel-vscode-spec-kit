@@ -5,4 +5,7 @@
     <Project Path="src/DigitalStokvel.Infrastructure/DigitalStokvel.Infrastructure.csproj" />
     <Project Path="src/DigitalStokvel.Services/DigitalStokvel.Services.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DigitalStokvel.Tests.Unit/DigitalStokvel.Tests.Unit.csproj" />
+  </Folder>
 </Solution>

@@ -1,3 +1,4 @@
+using DigitalStokvel.Core.Interfaces;
 using DigitalStokvel.Infrastructure.Notifications;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
@@ -9,13 +10,64 @@ namespace DigitalStokvel.Tests.Unit.Infrastructure;
 public class SmsNotificationServiceTests
 {
     private readonly Mock<ILogger<SmsNotificationService>> _mockLogger;
+    private readonly Mock<ILocalizationService> _mockLocalizationService;
     private readonly SmsNotificationService _sut;
 
     public SmsNotificationServiceTests()
     {
         _mockLogger = new Mock<ILogger<SmsNotificationService>>();
+        _mockLocalizationService = new Mock<ILocalizationService>();
+        
+        // Setup localization responses to return templates that will be formatted by the calling code
+        _mockLocalizationService
+            .Setup(x => x.GetString(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<object[]>()))
+            .Returns((string key, string lang, object[] args) =>
+            {
+                // Return templates without formatting placeholders replaced
+                var templates = new Dictionary<(string, string), string>
+                {
+                    // Invitation messages (format: groupName, amount, inviteCode)
+                    {("notification.sms.invitation", "en"), "Hi! You're invited to {0}. Contribution: R{1}/month. Code: {2}. Join now!"},
+                    {("notification.sms.invitation", "zu"), "Sawubona! Umenyiwe ku-{0}. Ukufaka: R{1} ngenyanga. Ikhodi: {2}. Joyina manje!"},
+                    {("notification.sms.invitation", "st"), "Dumela! O memelitswe ho {0}. Sekoloto: R{1} ka kgwedi. Khoutu: {2}. Ikopanye!"},
+                    {("notification.sms.invitation", "xh"), "Molo! Umenyiwe ku-{0}. Igalelo: R{1} ngenyanga. Ikhowudi: {2}. Joyina ngoku!"},
+                    {("notification.sms.invitation", "af"), "Hallo! Jy is genooi na {0}. Bydrae: R{1} per maand. Kode: {2}. Sluit nou aan!"},
+                    
+                    // Contribution confirmation messages (format: amount, groupName, balance)
+                    {("notification.sms.contribution_confirmed", "en"), "Thank you! Your R{0} contribution to {1} was successful. Balance: R{2}."},
+                    {("notification.sms.contribution_confirmed", "zu"), "Siyabonga! Ukufaka kwakho R{0} ku-{1} kuyaphumelela. Ibhalansi: R{2}."},
+                    {("notification.sms.contribution_confirmed", "st"), "Kea leboha! Sekoloto sa hao sa R{0} ho {1} se atlehile. Tekanyetso: R{2}."},
+                    {("notification.sms.contribution_confirmed", "xh"), "Enkosi! Igalelo lakho le-R{0} ku-{1} liphumelele. Ibhalansi: R{2}."},
+                    {("notification.sms.contribution_confirmed", "af"), "Dankie! Jou bydrae van R{0} aan {1} is suksesvol. Balans: R{2}."},
+                    
+                    // Payout notification messages (format: amount, groupName)
+                    {("notification.sms.payout_notification", "en"), "Congratulations! A payout of R{0} from {1} is on the way. Check your account!"},
+                    {("notification.sms.payout_notification", "zu"), "Halala! Ukholwa R{0} kusuka ku-{1} kuyeza. Bheka i-akhawunti yakho maduze!"},
+                    {("notification.sms.payout_notification", "st"), "Kgotlelelang! Tefo ya R{0} ho tswa ho {1} e nne teng. Hlahloba akhaonto ya hao!"},
+                    {("notification.sms.payout_notification", "xh"), "Uyavuya! Intlawulo ye-R{0} evela ku-{1} iyeza. Khangela iakhawunti yakho!"},
+                    {("notification.sms.payout_notification", "af"), "Geluk! 'n Uitbetaling van R{0} van {1} is onderweg. Kyk jou rekening!"},
+                    
+                    // Payment reminder messages (format: amount, groupName, dueDate)
+                    {("notification.sms.payment_reminder", "en"), "Reminder: R{0} contribution due for {1}. Pay by {2} to avoid late fees."},
+                    {("notification.sms.payment_reminder", "zu"), "Isikhumbuzo: R{0} kumelwe ku-{1}. Khokha phambi komhla {2} ukugwema izinkokhelo zokulibala."},
+                    {("notification.sms.payment_reminder", "st"), "Hopotso: R{0} e hlokahala bakeng sa {1}. Lefa ka {2} ho qoba ditefiso tsa ho lla."},
+                    {("notification.sms.payment_reminder", "xh"), "Isikhumbuzo: R{0} igalelo elifunekayo ku-{1}. Hlawula ngo {2} ukuphepha iintlawulo zokubambezeleka."},
+                    {("notification.sms.payment_reminder", "af"), "Herinnering: R{0} bydrae verskuldig vir {1}. Betaal voor {2} om laat fooi te vermy."}
+                };
+                
+                var templateKey = (key, lang);
+                if (templates.TryGetValue(templateKey, out var template))
+                {
+                    // Return template without formatting - the calling code will use string.Format
+                    return template;
+                }
+                
+                return $"[{key}]";
+            });
+        
         _sut = new SmsNotificationService(
             _mockLogger.Object,
+            _mockLocalizationService.Object,
             connectionString: null,  // Stub service doesn't need real connection
             senderPhoneNumber: "+27123456789");
     }

@@ -182,23 +182,23 @@ Multi-platform project structure:
 
 ### Implementation for User Story 5
 
-- [ ] T091 [P] [US5] Create IUssdGateway interface with SendMenu, ProcessInput, ManageSession methods in backend/src/DigitalStokvel.Core/Interfaces/IUssdGateway.cs
-- [ ] T092 [US5] Implement VodacomUssdAdapter for Vodacom gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/VodacomUssdAdapter.cs
-- [ ] T093 [P] [US5] Implement MtnUssdAdapter for MTN gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/MtnUssdAdapter.cs
-- [ ] T094 [P] [US5] Implement CellCUssdAdapter for Cell C gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/CellCUssdAdapter.cs
-- [ ] T095 [P] [US5] Implement TelkomUssdAdapter for Telkom gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/TelkomUssdAdapter.cs
-- [ ] T096 [US5] Implement UssdSessionManager with 120-second state persistence using Redis in backend/src/DigitalStokvel.Infrastructure/USSD/UssdSessionManager.cs
-- [ ] T097 [US5] Implement UssdMenuBuilder with 3-level max depth validation (Main → Category → Action) in backend/src/DigitalStokvel.Services/UssdMenuBuilder.cs
-- [ ] T098 [US5] Create USSD menu flow: Main Menu (1=Pay Contribution, 2=Check Balance, 3=Transactions, 4=Language) in backend/src/DigitalStokvel.Services/UssdMenuBuilder.cs
-- [ ] T099 [US5] Implement Pay Contribution flow: Group Selection → Amount Confirmation → PIN Auth → Receipt in backend/src/DigitalStokvel.Services/UssdFlowService.cs
-- [ ] T100 [US5] Implement Check Balance flow: Group Selection → Display Balance + Interest in backend/src/DigitalStokvel.Services/UssdFlowService.cs
-- [ ] T101 [US5] Implement View Transactions flow: Group Selection → Last 5 transactions with pagination in backend/src/DigitalStokvel.Services/UssdFlowService.cs
-- [ ] T102 [US5] Add USSD menu translations for all 5 languages (EN, ZU, ST, XH, AF) in backend/src/DigitalStokvel.Services/Resources/ussd/
-- [ ] T103 [US5] Implement session restoration logic: reconnect within 120s restores state in backend/src/DigitalStokvel.Infrastructure/USSD/UssdSessionManager.cs
-- [ ] T104 [US5] Create POST /api/v1/ussd/webhook endpoint for MNO callbacks in backend/src/DigitalStokvel.API/Controllers/UssdController.cs
-- [ ] T105 [US5] Implement bank PIN authentication for USSD payments in backend/src/DigitalStokvel.Services/UssdFlowService.cs
-- [ ] T106 [US5] Implement SMS notification for USSD payout disbursements in backend/src/DigitalStokvel.Infrastructure/Notifications/SmsNotificationService.cs
-- [ ] T107 [US5] Add USSD menu depth validator: reject navigation if exceeds 3 levels in backend/src/DigitalStokvel.Services/UssdMenuBuilder.cs
+- [X] T091 [P] [US5] Create IUssdGateway interface with SendMenu, ProcessInput, ManageSession methods in backend/src/DigitalStokvel.Core/Interfaces/IUssdGateway.cs
+- [X] T092 [US5] Implement VodacomUssdAdapter for Vodacom gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/VodacomUssdAdapter.cs
+- [X] T093 [P] [US5] Implement MtnUssdAdapter for MTN gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/MtnUssdAdapter.cs
+- [X] T094 [P] [US5] Implement CellCUssdAdapter for Cell C gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/CellCUssdAdapter.cs
+- [X] T095 [P] [US5] Implement TelkomUssdAdapter for Telkom gateway API in backend/src/DigitalStokvel.Infrastructure/USSD/TelkomUssdAdapter.cs
+- [X] T096 [US5] Implement UssdSessionManager with 120-second state persistence using Redis in backend/src/DigitalStokvel.Infrastructure/USSD/UssdSessionManager.cs
+- [X] T097 [US5] Implement UssdMenuBuilder with 3-level max depth validation (Main → Category → Action) in backend/src/DigitalStokvel.Services/UssdMenuBuilder.cs
+- [X] T098 [US5] Create USSD menu flow: Main Menu (1=Pay Contribution, 2=Check Balance, 3=Transactions, 4=Language) in backend/src/DigitalStokvel.Services/UssdMenuBuilder.cs
+- [X] T099 [US5] Implement Pay Contribution flow: Group Selection → Amount Confirmation → PIN Auth → Receipt in backend/src/DigitalStokvel.Services/UssdFlowService.cs
+- [X] T100 [US5] Implement Check Balance flow: Group Selection → Display Balance + Interest in backend/src/DigitalStokvel.Services/UssdFlowService.cs
+- [X] T101 [US5] Implement View Transactions flow: Group Selection → Last 5 transactions with pagination in backend/src/DigitalStokvel.Services/UssdFlowService.cs
+- [X] T102 [US5] Add USSD menu translations for all 5 languages (EN, ZU, ST, XH, AF) in backend/src/DigitalStokvel.Services/Resources/ussd/
+- [X] T103 [US5] Implement session restoration logic: reconnect within 120s restores state in backend/src/DigitalStokvel.Infrastructure/USSD/UssdSessionManager.cs
+- [X] T104 [US5] Create POST /api/v1/ussd/webhook endpoint for MNO callbacks in backend/src/DigitalStokvel.API/Controllers/UssdController.cs
+- [X] T105 [US5] Implement bank PIN authentication for USSD payments in backend/src/DigitalStokvel.Services/UssdFlowService.cs
+- [X] T106 [US5] Implement SMS notification for USSD payout disbursements in backend/src/DigitalStokvel.Infrastructure/Notifications/SmsNotificationService.cs
+- [X] T107 [US5] Add USSD menu depth validator: reject navigation if exceeds 3 levels in backend/src/DigitalStokvel.Services/UssdMenuBuilder.cs
 
 **Checkpoint**: At this point, User Story 5 should be fully functional - Feature phone users have full USSD access to core flows
 
@@ -224,7 +224,7 @@ Multi-platform project structure:
 - [ ] T117 [US7] Implement language settings for iOS with immediate refresh in ios/DigitalStokvel/Views/LanguageSettingsView.swift
 - [X] T118 [US7] Configure i18n for React web dashboard with 5 language support in web/src/i18n/config.ts
 - [X] T119 [US7] Update all notification templates (SMS, push, USSD) to use localized strings in backend/src/DigitalStokvel.Infrastructure/Notifications/
-- [ ] T120 [US7] Update error messages to use LocalizationService (encouraging messages per FR-051) in backend/src/DigitalStokvel.API/Middleware/ErrorHandlingMiddleware.cs
+- [X] T120 [US7] Update error messages to use LocalizationService (encouraging messages per FR-051) in backend/src/DigitalStokvel.API/Middleware/ErrorHandling Middleware.cs
 - [ ] T121 [P] [US7] Translate all Android UI strings to 5 languages in android/app/src/main/res/values-zu/, values-st/, values-xh/, values-af/
 - [ ] T122 [P] [US7] Translate all iOS UI strings to 5 languages in ios/DigitalStokvel/Resources/zu.lproj/, st.lproj/, xh.lproj/, af.lproj/
 - [X] T123 [US7] Add language detection from phone settings as default fallback in all platforms
@@ -241,22 +241,22 @@ Multi-platform project structure:
 
 ### Implementation for User Story 4
 
-- [ ] T124 [P] [US4] Create Payout entity with GroupId, PayoutType, TotalAmount, InitiatedBy, ConfirmedBy, Status, ExecutionTime in backend/src/DigitalStokvel.Core/Entities/Payout.cs
-- [ ] T125 [P] [US4] Create PayoutRecipient join entity with PayoutId, MemberId, Amount, EftReference, DisbursedAt in backend/src/DigitalStokvel.Core/Entities/PayoutRecipient.cs
-- [ ] T126 [P] [US4] Create PayoutType enum (RotatingCycle, YearEndPot, PartialWithdrawal) in backend/src/DigitalStokvel.Core/Enums/PayoutType.cs
-- [ ] T127 [P] [US4] Create PayoutStatus enum (PendingTreasurerApproval, PendingQuorum, Approved, InProgress, Completed, Failed) in backend/src/DigitalStokvel.Core/Enums/PayoutStatus.cs
-- [ ] T128 [US4] Implement IPayoutRepository with CreatePayout, UpdateStatus, GetGroupPayouts in backend/src/DigitalStokvel.Core/Interfaces/IPayoutRepository.cs
-- [ ] T129 [US4] Implement PayoutRepository with EF Core in backend/src/DigitalStokvel.Infrastructure/Repositories/PayoutRepository.cs
-- [ ] T130 [US4] Implement PayoutService.InitiatePayout: validate Chairperson role, calculate amounts per type in backend/src/DigitalStokvel.Services/PayoutService.cs
-- [ ] T131 [US4] Implement rotating payout logic: pay out principal only (sum of contributions), retain interest in wallet in backend/src/DigitalStokvel.Services/PayoutService.cs
-- [ ] T132 [US4] Implement year-end pot logic: disburse full balance (principal + interest) proportionally to all members in backend/src/DigitalStokvel.Services/PayoutService.cs
-- [ ] T133 [US4] Implement partial withdrawal quorum check: require 60% member votes before approval in backend/src/DigitalStokvel.Services/PayoutService.cs
-- [ ] T134 [US4] Implement PayoutService.ConfirmPayout: validate Treasurer role, execute EFT transfers in backend/src/DigitalStokvel.Services/PayoutService.cs
-- [ ] T135 [US4] Implement EFT disbursement via bank payment gateway with transaction logging in backend/src/DigitalStokvel.Infrastructure/Payments/PaymentGatewayService.cs
-- [ ] T136 [US4] Implement payout notification broadcast to all group members in backend/src/DigitalStokvel.Services/PayoutService.cs
-- [ ] T137 [US4] Create POST /api/v1/payouts/initiate endpoint with Chairperson auth check in backend/src/DigitalStokvel.API/Controllers/PayoutsController.cs
-- [ ] T138 [US4] Create POST /api/v1/payouts/{id}/confirm endpoint with Treasurer auth check in backend/src/DigitalStokvel.API/Controllers/PayoutsController.cs
-- [ ] T139 [US4] Create GET /api/v1/groups/{groupId}/payouts endpoint returning payout history in backend/src/DigitalStokvel.API/Controllers/PayoutsController.cs
+- [X] T124 [P] [US4] Create Payout entity with GroupId, PayoutType, TotalAmount, InitiatedBy, ConfirmedBy, Status, ExecutionTime in backend/src/DigitalStokvel.Core/Entities/Payout.cs
+- [X] T125 [P] [US4] Create PayoutRecipient join entity with PayoutId, MemberId, Amount, EftReference, DisbursedAt in backend/src/DigitalStokvel.Core/Entities/PayoutRecipient.cs
+- [X] T126 [P] [US4] Create PayoutType enum (RotatingCycle, YearEndPot, PartialWithdrawal) in backend/src/DigitalStokvel.Core/Enums/PayoutType.cs
+- [X] T127 [P] [US4] Create PayoutStatus enum (PendingTreasurerApproval, PendingQuorum, Approved, InProgress, Completed, Failed) in backend/src/DigitalStokvel.Core/Enums/PayoutStatus.cs
+- [X] T128 [US4] Implement IPayoutRepository with CreatePayout, UpdateStatus, GetGroupPayouts in backend/src/DigitalStokvel.Core/Interfaces/IPayoutRepository.cs
+- [X] T129 [US4] Implement PayoutRepository with EF Core in backend/src/DigitalStokvel.Infrastructure/Repositories/PayoutRepository.cs
+- [X] T130 [US4] Implement PayoutService.InitiatePayout: validate Chairperson role, calculate amounts per type in backend/src/DigitalStokvel.Services/PayoutService.cs
+- [X] T131 [US4] Implement rotating payout logic: pay out principal only (sum of contributions), retain interest in wallet in backend/src/DigitalStokvel.Services/PayoutService.cs
+- [X] T132 [US4] Implement year-end pot logic: disburse full balance (principal + interest) proportionally to all members in backend/src/DigitalStokvel.Services/PayoutService.cs
+- [X] T133 [US4] Implement partial withdrawal quorum check: require 60% member votes before approval in backend/src/DigitalStokvel.Services/PayoutService.cs
+- [X] T134 [US4] Implement PayoutService.ConfirmPayout: validate Treasurer role, execute EFT transfers in backend/src/DigitalStokvel.Services/PayoutService.cs
+- [X] T135 [US4] Implement EFT disbursement via bank payment gateway with transaction logging in backend/src/DigitalStokvel.Infrastructure/Payments/PaymentGatewayService.cs
+- [X] T136 [US4] Implement payout notification broadcast to all group members in backend/src/DigitalStokvel.Services/PayoutService.cs
+- [X] T137 [US4] Create POST /api/v1/payouts/initiate endpoint with Chairperson auth check in backend/src/DigitalStokvel.API/Controllers/PayoutsController.cs
+- [X] T138 [US4] Create POST /api/v1/payouts/{id}/confirm endpoint with Treasurer auth check in backend/src/DigitalStokvel.API/Controllers/PayoutsController.cs
+- [X] T139 [US4] Create GET /api/v1/groups/{groupId}/payouts endpoint returning payout history in backend/src/DigitalStokvel.API/Controllers/PayoutsController.cs
 - [ ] T140 [P] [US4] Implement Android PayoutInitiationScreen with Chairperson-only access in android/app/src/main/java/za/co/stokvel/ui/payout/PayoutInitiationScreen.kt
 - [ ] T141 [P] [US4] Implement iOS PayoutInitiationView with role validation in ios/DigitalStokvel/Views/PayoutInitiationView.swift
 - [ ] T142 [P] [US4] Implement React PayoutApproval component for Treasurer confirmation in web/src/components/PayoutApproval.tsx

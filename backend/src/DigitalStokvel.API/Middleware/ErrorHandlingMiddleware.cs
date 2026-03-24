@@ -2,26 +2,30 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
+using DigitalStokvel.Core.Interfaces;
 
 namespace DigitalStokvel.API.Middleware;
 
 /// <summary>
-/// Global exception handler that returns RFC 7807 ProblemDetails responses
+/// Global exception handler that returns RFC 7807 ProblemDetails responses with localized messages
 /// </summary>
 public class ErrorHandlingMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<ErrorHandlingMiddleware> _logger;
     private readonly IHostEnvironment _environment;
+    private readonly ILocalizationService _localizationService;
 
     public ErrorHandlingMiddleware(
         RequestDelegate next,
         ILogger<ErrorHandlingMiddleware> logger,
-        IHostEnvironment environment)
+        IHostEnvironment environment,
+        ILocalizationService localizationService)
     {
         _next = next;
         _logger = logger;
         _environment = environment;
+        _localizationService = localizationService;
     }
 
     public async Task InvokeAsync(HttpContext context)
@@ -40,7 +44,8 @@ public class ErrorHandlingMiddleware
     {
         _logger.LogError(exception, "An unhandled exception occurred");
 
-        var problemDetails = CreateProblemDetails(context, exception);
+        var language = GetUserLanguage(context);
+        var problemDetails = CreateProblemDetails(context, exception, language);
 
         context.Response.ContentType = "application/problem+json";
         context.Response.StatusCode = problemDetails.Status ?? (int)HttpStatusCode.InternalServerError;
@@ -48,16 +53,40 @@ public class ErrorHandlingMiddleware
         await context.Response.WriteAsJsonAsync(problemDetails);
     }
 
-    private ProblemDetails CreateProblemDetails(HttpContext context, Exception exception)
+    private string GetUserLanguage(HttpContext context)
     {
-        var (status, title, detail) = exception switch
+        // Try to get language from Accept-Language header
+        var acceptLanguage = context.Request.Headers["Accept-Language"].FirstOrDefault();
+        if (!string.IsNullOrEmpty(acceptLanguage))
         {
-            ArgumentException => (HttpStatusCode.BadRequest, "Invalid Request", exception.Message),
-            InvalidOperationException => (HttpStatusCode.Conflict, "Operation Failed", exception.Message),
-            UnauthorizedAccessException => (HttpStatusCode.Unauthorized, "Unauthorized", "You don't have permission to perform this action"),
-            KeyNotFoundException => (HttpStatusCode.NotFound, "Resource Not Found", "The requested resource was not found"),
-            _ => (HttpStatusCode.InternalServerError, "An Error Occurred", GetUserFriendlyMessage(exception))
+            // Extract primary language code (e.g., "en-US" -> "en", "zu-ZA" -> "zu")
+            var languageCode = acceptLanguage.Split(',').FirstOrDefault()?.Split('-', ';').FirstOrDefault()?.Trim().ToLower();
+            if (!string.IsNullOrEmpty(languageCode) && _localizationService.IsLanguageSupported(languageCode))
+            {
+                return languageCode;
+            }
+        }
+        
+        // Default to English
+        return "en";
+    }
+
+    private ProblemDetails CreateProblemDetails(HttpContext context, Exception exception, string language)
+    {
+        var (status, titleKey, detailKey) = exception switch
+        {
+            ArgumentException => (HttpStatusCode.BadRequest, "error.title.badrequest", "error.badrequest"),
+            InvalidOperationException => (HttpStatusCode.Conflict, "error.title.conflict", "error.conflict"),
+            UnauthorizedAccessException => (HttpStatusCode.Unauthorized, "error.title.unauthorized", "error.unauthorized"),
+            KeyNotFoundException => (HttpStatusCode.NotFound, "error.title.notfound", "error.notfound"),
+            DbUpdateException => (HttpStatusCode.InternalServerError, "error.title.server", "error.database"),
+            TimeoutException => (HttpStatusCode.RequestTimeout, "error.title.server", "error.timeout"),
+            HttpRequestException => (HttpStatusCode.BadGateway, "error.title.server", "error.network"),
+            _ => (HttpStatusCode.InternalServerError, "error.title.server", "error.general")
         };
+
+        var title = _localizationService.GetString(titleKey, language);
+        var detail = _localizationService.GetString(detailKey, language);
 
         var problemDetails = new ProblemDetails
         {
@@ -83,18 +112,6 @@ public class ErrorHandlingMiddleware
         problemDetails.Extensions["traceId"] = context.TraceIdentifier;
 
         return problemDetails;
-    }
-
-    private string GetUserFriendlyMessage(Exception exception)
-    {
-        // Return encouraging error messages per FR-051
-        return exception switch
-        {
-            DbUpdateException => "We couldn't save your changes this time—let's try again",
-            TimeoutException => "The request took too long—please try again",
-            HttpRequestException => "We're having trouble connecting—please check your network",
-            _ => "Something went wrong. Please try again."
-        };
     }
 }
 
