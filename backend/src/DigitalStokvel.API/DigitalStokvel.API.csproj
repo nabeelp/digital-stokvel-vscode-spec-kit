@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.18.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.4" />
@@ -16,7 +17,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.4" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalStokvel.Core\DigitalStokvel.Core.csproj" />
+    <ProjectReference Include="..\DigitalStokvel.Infrastructure\DigitalStokvel.Infrastructure.csproj" />
+    <ProjectReference Include="..\DigitalStokvel.Services\DigitalStokvel.Services.csproj" />
   </ItemGroup>
 
 </Project>
