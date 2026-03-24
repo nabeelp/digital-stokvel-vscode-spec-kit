@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Scalar.AspNetCore;
 using Serilog;
 using Hangfire;
 using Hangfire.PostgreSql;
@@ -153,6 +154,7 @@ try
     builder.Services.AddScoped<ReceiptService>();
     builder.Services.AddScoped<IInterestService, InterestService>();
     builder.Services.AddScoped<IGovernanceService, GovernanceService>();
+    builder.Services.AddScoped<LedgerExportService>();
     builder.Services.AddSingleton<IServiceBusClient, ServiceBusClient>(sp =>
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
@@ -236,6 +238,13 @@ try
     if (app.Environment.IsDevelopment())
     {
         app.MapOpenApi();
+        app.MapScalarApiReference(options =>
+        {
+            options
+                .WithTitle("Digital Stokvel Banking API")
+                .WithTheme(ScalarTheme.DeepSpace)
+                .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+        });
     }
 
     app.UseSerilogRequestLogging();

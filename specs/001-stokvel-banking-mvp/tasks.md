@@ -332,7 +332,7 @@ Multi-platform project structure:
 - [X] T183 [P] Add telemetry and Application Insights instrumentation across all services in backend/src/DigitalStokvel.API/Program.cs
 - [ ] T184 [P] Implement offline-first architecture for Android: Room database sync in android/app/src/main/java/za/co/stokvel/data/local/
 - [ ] T185 [P] Implement offline-first architecture for iOS: Core Data sync in ios/DigitalStokvel/Data/
-- [ ] T186 Implement PDF export for group ledger (annual AGM records) in backend/src/DigitalStokvel.Services/LedgerExportService.cs
+- [X] T186 Implement PDF export for group ledger (annual AGM records) in backend/src/DigitalStokvel.Services/LedgerExportService.cs
 - [ ] T187 Add shareable branded receipts for group meetings (FR-049) in backend/src/DigitalStokvel.Services/ReceiptService.cs
 - [ ] T188 [P] Implement communal language styling: replace "account" with "savings pot", "client" with "member" in all UIs
 - [ ] T189 [P] Update all error messages to use encouraging language (FR-051) in backend/src/DigitalStokvel.Services/Resources/localization/
@@ -340,7 +340,7 @@ Multi-platform project structure:
 - [X] T191 [P] Performance optimization: add database indexes on frequently queried columns (group_id, member_id, timestamp)
 - [ ] T192 [P] Implement API response caching for group details, ledger queries using Redis in backend/src/DigitalStokvel.API/Middleware/CachingMiddleware.cs
 - [ ] T193 Configure monitoring alerts for AML flags, failed payments, API errors in Azure Application Insights
-- [ ] T194 [P] Create API documentation with Swagger annotations and examples in backend/src/DigitalStokvel.API/Controllers/
+- [X] T194 [P] Create API documentation with Swagger annotations and examples in backend/src/DigitalStokvel.API/Controllers/
 - [ ] T195 Validate quickstart.md instructions: Docker Compose, database migrations, app launch in all platforms
 - [ ] T196 [P] Code cleanup: remove unused dependencies, refactor duplicated logic
 - [ ] T197 Add analytics tracking for user journeys: group creation, contributions, payouts
