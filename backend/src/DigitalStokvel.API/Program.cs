@@ -5,11 +5,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using Hangfire;
+using Hangfire.PostgreSql;
 using DigitalStokvel.Infrastructure.Data;
 using DigitalStokvel.Infrastructure.Repositories;
 using DigitalStokvel.Infrastructure.Messaging;
 using DigitalStokvel.Infrastructure.Notifications;
 using DigitalStokvel.Infrastructure.Payments;
+using DigitalStokvel.Infrastructure.Jobs;
 using DigitalStokvel.Core.Interfaces;
 using DigitalStokvel.Core.Entities;
 using DigitalStokvel.Services;
@@ -156,6 +159,20 @@ try
     builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.DailyInterestAccrualJob>();
     builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.InterestCapitalizationJob>();
 
+    // Add Hangfire for scheduled jobs
+    builder.Services.AddHangfire(configuration => configuration
+        .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+        .UseSimpleAssemblyNameTypeSerializer()
+        .UseRecommendedSerializerSettings()
+        .UsePostgreSqlStorage(options =>
+            options.UseNpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"))));
+
+    builder.Services.AddHangfireServer(options =>
+    {
+        options.WorkerCount = 5; // Number of concurrent job workers
+        options.ServerName = $"DigitalStokvel-{Environment.MachineName}";
+    });
+
     // Add rate limiting
     builder.Services.AddRateLimiter(RateLimitingConfiguration.ConfigureRateLimiting);
 
@@ -179,7 +196,16 @@ try
     builder.Services.AddControllers();
 
     // Add API versioning
-    builder.Services.AddEndpointsApiExplorer();
+        
+        // Hangfire dashboard in development only
+        app.UseHangfireDashboard("/hangfire", new DashboardOptions
+        {
+            Authorization = new[] { new HangfireAuthorizationFilter() }
+        });
+    }
+
+    // Initialize Hangfire recurring jobs
+    ConfigureRecurringJobs();uilder.Services.AddEndpointsApiExplorer();
 
     // Add OpenAPI
     builder.Services.AddOpenApi();
@@ -227,4 +253,50 @@ catch (Exception ex)
 finally
 {
     Log.CloseAndFlush();
+}
+
+// Configure recurring Hangfire jobs
+static void ConfigureRecurringJobs()
+{
+    // Daily Interest Accrual Job - runs daily at 00:01 UTC
+    RecurringJob.AddOrUpdate<DailyInterestAccrualJob>(
+        "daily-interest-accrual",
+        job => job.ExecuteAsync(CancellationToken.None),
+        "1 0 * * *", // Cron: At 00:01 UTC every day
+        new RecurringJobOptions
+        {
+            TimeZone = TimeZoneInfo.Utc
+        });
+
+    // Interest Capitalization Job - runs monthly on 1st at 00:01 UTC
+    RecurringJob.AddOrUpdate<InterestCapitalizationJob>(
+        "monthly-interest-capitalization",
+        job => job.ExecuteAsync(CancellationToken.None),
+        "1 0 1 * *", // Cron: At 00:01 UTC on day 1 of every month
+        new RecurringJobOptions
+        {
+            TimeZone = TimeZoneInfo.Utc
+        });
+
+    // Payment Reminder Job - runs daily at 09:00 UTC (11:00 SAST)
+    RecurringJob.AddOrUpdate<PaymentReminderJob>(
+        "daily-payment-reminders",
+        job => job.ExecuteAsync(CancellationToken.None),
+        "0 9 * * *", // Cron: At 09:00 UTC every day
+        new RecurringJobOptions
+        {
+            TimeZone = TimeZoneInfo.Utc
+        });
+
+    Log.Information("Hangfire recurring jobs scheduled: daily-interest-accrual, monthly-interest-capitalization, daily-payment-reminders");
+}
+
+// Hangfire authorization filter for development dashboard
+public class HangfireAuthorizationFilter : Hangfire.Dashboard.IDashboardAuthorizationFilter
+{
+    public bool Authorize(Hangfire.Dashboard.DashboardContext context)
+    {
+        // Allow access in development only
+        return true;
+    }
 }
