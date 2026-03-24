@@ -38,7 +38,7 @@ Multi-platform project structure:
 - [X] T007 [P] Setup Docker Compose for local PostgreSQL 16 and Redis 7 in docker-compose.yml
 - [X] T008 [P] Configure EditorConfig, .gitignore, and linting rules for C#, Kotlin, Swift, TypeScript
 - [X] T009 Add Entity Framework Core 10.0, ASP.NET Core Identity, Npgsql, Azure Service Bus SDK dependencies to backend/src/DigitalStokvel.API/DigitalStokvel.API.csproj
-- [ ] T010 [P] Configure xUnit, FluentAssertions, Testcontainers test dependencies in backend/tests/DigitalStokvel.Tests.Unit/
+- [X] T010 [P] Configure xUnit, FluentAssertions, Testcontainers test dependencies in backend/tests/DigitalStokvel.Tests.Unit/
 - [ ] T011 Setup CI/CD pipeline configuration for Azure App Service deployment in .github/workflows/deploy.yml
 
 **Phase 1 Status**: Backend foundation complete (6/11 tasks). T004-T006 require platform-specific tools. Ready to proceed with Phase 2 (Foundational) for backend implementation.

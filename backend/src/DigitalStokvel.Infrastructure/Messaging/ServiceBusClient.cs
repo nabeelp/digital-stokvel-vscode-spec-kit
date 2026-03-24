@@ -1,4 +1,5 @@
 using Azure.Messaging.ServiceBus;
+using DigitalStokvel.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace DigitalStokvel.Infrastructure.Messaging;
@@ -6,7 +7,7 @@ namespace DigitalStokvel.Infrastructure.Messaging;
 /// <summary>
 /// Azure Service Bus client for async notification delivery
 /// </summary>
-public class ServiceBusClient : IAsyncDisposable
+public class ServiceBusClient : IServiceBusClient
 {
     private readonly Azure.Messaging.ServiceBus.ServiceBusClient _client;
     private readonly ServiceBusSender _notificationSender;

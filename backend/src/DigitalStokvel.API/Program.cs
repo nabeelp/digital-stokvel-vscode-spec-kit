@@ -139,7 +139,7 @@ try
     builder.Services.AddScoped<GroupService>();
     builder.Services.AddScoped<ContributionService>();
     builder.Services.AddScoped<ReceiptService>();
-    builder.Services.AddSingleton<ServiceBusClient>(sp =>
+    builder.Services.AddSingleton<IServiceBusClient, ServiceBusClient>(sp =>
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
             sp.GetRequiredService<ILogger<ServiceBusClient>>()));

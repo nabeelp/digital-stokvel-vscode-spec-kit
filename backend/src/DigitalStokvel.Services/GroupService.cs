@@ -2,7 +2,6 @@ using System.Text.Json;
 using DigitalStokvel.Core.Entities;
 using DigitalStokvel.Core.Interfaces;
 using DigitalStokvel.Core.ValueObjects;
-using DigitalStokvel.Infrastructure.Messaging;
 using Microsoft.Extensions.Logging;
 
 namespace DigitalStokvel.Services;
@@ -15,7 +14,7 @@ public class GroupService
     private readonly IGroupRepository _groupRepository;
     private readonly IMemberRepository _memberRepository;
     private readonly ILocalizationService _localizationService;
-    private readonly ServiceBusClient _serviceBusClient;
+    private readonly IServiceBusClient _serviceBusClient;
     private readonly ILogger<GroupService> _logger;
 
     // Contribution amount validation constants (in ZAR)
@@ -32,7 +31,7 @@ public class GroupService
         IGroupRepository groupRepository,
         IMemberRepository memberRepository,
         ILocalizationService localizationService,
-        ServiceBusClient serviceBusClient,
+        IServiceBusClient serviceBusClient,
         ILogger<GroupService> logger)
     {
         _groupRepository = groupRepository ?? throw new ArgumentNullException(nameof(groupRepository));
