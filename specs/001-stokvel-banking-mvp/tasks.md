@@ -123,16 +123,16 @@ Multi-platform project structure:
 - [X] T055 [P] [US2] Create PaymentMethod enum (OneTap, DebitOrder, USSD) in backend/src/DigitalStokvel.Core/Enums/PaymentMethod.cs
 - [X] T056 [US2] Implement IContributionRepository with AddContribution, GetGroupLedger, GetMemberHistory in backend/src/DigitalStokvel.Core/Interfaces/IContributionRepository.cs
 - [X] T057 [US2] Implement ContributionRepository with indexed queries on (group_id, member_id, timestamp) in backend/src/DigitalStokvel.Infrastructure/Repositories/ContributionRepository.cs
-- [ ] T058 [US2] Implement IPaymentGateway interface with DeductFromAccount method in backend/src/DigitalStokvel.Core/Interfaces/IPaymentGateway.cs
-- [ ] T059 [US2] Implement PaymentGatewayService with bank's payment rails integration in backend/src/DigitalStokvel.Infrastructure/Payments/PaymentGatewayService.cs
-- [ ] T060 [US2] Implement ContributionService.ProcessContribution with idempotency check, transaction scope, ledger entry in backend/src/DigitalStokvel.Services/ContributionService.cs
-- [ ] T061 [US2] Add Polly retry policy for payment gateway resilience (3 retries with exponential backoff) in backend/src/DigitalStokvel.Services/ContributionService.cs
-- [ ] T062 [US2] Implement debit order retry logic: 48hr delay, 2 retries, member notification each attempt in backend/src/DigitalStokvel.Services/ContributionService.cs
-- [ ] T063 [US2] Implement branded receipt generation with group name, amount, timestamp, shareable format in backend/src/DigitalStokvel.Services/ReceiptService.cs
-- [ ] T064 [US2] Create POST /api/v1/contributions endpoint with idempotency key header in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
-- [ ] T065 [US2] Create GET /api/v1/groups/{groupId}/ledger endpoint returning payment history with masked account indicators (****1234) in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
-- [ ] T066 [US2] Create GET /api/v1/members/{memberId}/contributions endpoint for personal history in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
-- [ ] T067 [US2] Create POST /api/v1/contributions/debit-order endpoint for recurring payment setup in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
+- [X] T058 [US2] Implement IPaymentGateway interface with DeductFromAccount method in backend/src/DigitalStokvel.Core/Interfaces/IPaymentGateway.cs
+- [X] T059 [US2] Implement PaymentGatewayService with bank's payment rails integration in backend/src/DigitalStokvel.Infrastructure/Payments/PaymentGatewayService.cs
+- [X] T060 [US2] Implement ContributionService.ProcessContribution with idempotency check, transaction scope, ledger entry in backend/src/DigitalStokvel.Services/ContributionService.cs
+- [X] T061 [US2] Add Polly retry policy for payment gateway resilience (3 retries with exponential backoff) in backend/src/DigitalStokvel.Services/ContributionService.cs
+- [X] T062 [US2] Implement debit order retry logic: 48hr delay, 2 retries, member notification each attempt in backend/src/DigitalStokvel.Services/ContributionService.cs
+- [X] T063 [US2] Implement branded receipt generation with group name, amount, timestamp, shareable format in backend/src/DigitalStokvel.Services/ReceiptService.cs
+- [X] T064 [US2] Create POST /api/v1/contributions endpoint with idempotency key header in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
+- [X] T065 [US2] Create GET /api/v1/groups/{groupId}/ledger endpoint returning payment history with masked account indicators (****1234) in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
+- [X] T066 [US2] Create GET /api/v1/members/{memberId}/contributions endpoint for personal history in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
+- [X] T067 [US2] Create POST /api/v1/contributions/debit-order endpoint for recurring payment setup in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
 - [ ] T068 [P] [US2] Implement Android PayContributionScreen with one-tap payment button in android/app/src/main/java/za/co/stokvel/ui/contribution/PayContributionScreen.kt
 - [ ] T069 [P] [US2] Implement iOS PayContributionView with Apple Pay integration in ios/DigitalStokvel/Views/PayContributionView.swift
 - [ ] T070 [P] [US2] Implement React PayContribution modal for web dashboard in web/src/components/PayContribution.tsx

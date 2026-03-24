@@ -9,6 +9,7 @@ using DigitalStokvel.Infrastructure.Data;
 using DigitalStokvel.Infrastructure.Repositories;
 using DigitalStokvel.Infrastructure.Messaging;
 using DigitalStokvel.Infrastructure.Notifications;
+using DigitalStokvel.Infrastructure.Payments;
 using DigitalStokvel.Core.Interfaces;
 using DigitalStokvel.Core.Entities;
 using DigitalStokvel.Services;
@@ -122,12 +123,22 @@ try
     builder.Services.AddScoped<IIdempotencyLogRepository, IdempotencyLogRepository>();
     builder.Services.AddScoped<IMemberRepository, MemberRepository>();
     builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+    builder.Services.AddScoped<IContributionRepository, ContributionRepository>();
+
+    // Register payment gateway
+    builder.Services.AddSingleton<IPaymentGateway, PaymentGatewayService>(sp =>
+        new PaymentGatewayService(
+            sp.GetRequiredService<ILogger<PaymentGatewayService>>(),
+            builder.Configuration["PaymentGateway:ApiEndpoint"],
+            builder.Configuration["PaymentGateway:ApiKey"]));
 
     // Register services
     builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
     builder.Services.AddSingleton<JwtTokenService>();
     builder.Services.AddScoped<AuthenticationService>();
     builder.Services.AddScoped<GroupService>();
+    builder.Services.AddScoped<ContributionService>();
+    builder.Services.AddScoped<ReceiptService>();
     builder.Services.AddSingleton<ServiceBusClient>(sp =>
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
