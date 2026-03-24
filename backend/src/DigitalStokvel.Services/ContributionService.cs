@@ -21,7 +21,7 @@ public class ContributionService
     private readonly IMemberRepository _memberRepository;
     private readonly IPaymentGateway _paymentGateway;
     private readonly ApplicationDbContext _dbContext;
-    private readonly SmsNotificationService _smsNotificationService;
+    private readonly ISmsNotificationService _smsNotificationService;
     private readonly ILogger<ContributionService> _logger;
     private readonly ResiliencePipeline _retryPipeline;
 
@@ -36,7 +36,7 @@ public class ContributionService
         IMemberRepository memberRepository,
         IPaymentGateway paymentGateway,
         ApplicationDbContext dbContext,
-        SmsNotificationService smsNotificationService,
+        ISmsNotificationService smsNotificationService,
         ILogger<ContributionService> logger)
     {
         _contributionRepository = contributionRepository ?? throw new ArgumentNullException(nameof(contributionRepository));

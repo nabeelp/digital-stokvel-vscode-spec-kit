@@ -1,3 +1,4 @@
+using DigitalStokvel.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
@@ -12,7 +13,7 @@ namespace DigitalStokvel.Infrastructure.Notifications;
 /// 2. Configure connection string in appsettings.json
 /// 3. Use SmsClient to send SMS messages
 /// </remarks>
-public class SmsNotificationService
+public class SmsNotificationService : ISmsNotificationService
 {
     private readonly ILogger<SmsNotificationService> _logger;
     private readonly string? _connectionString;

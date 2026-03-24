@@ -143,7 +143,7 @@ try
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
             sp.GetRequiredService<ILogger<ServiceBusClient>>()));
-    builder.Services.AddSingleton<SmsNotificationService>(sp =>
+    builder.Services.AddSingleton<ISmsNotificationService, SmsNotificationService>(sp =>
         new SmsNotificationService(
             sp.GetRequiredService<ILogger<SmsNotificationService>>(),
             builder.Configuration.GetConnectionString("AzureCommunicationServices"),
