@@ -166,8 +166,8 @@ Multi-platform project structure:
 - [X] T085 [US3] Create GET /api/v1/groups/{groupId}/interest-details endpoint with YTD earnings, daily calculation breakdown in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
 - [ ] T086 [P] [US3] Implement Android GroupWalletScreen with balance display, interest breakdown modal in android/app/src/main/java/za/co/stokvel/ui/wallet/GroupWalletScreen.kt
 - [ ] T087 [P] [US3] Implement iOS GroupWalletView with interest tier indicator in ios/DigitalStokvel/Views/GroupWalletView.swift
-- [ ] T088 [P] [US3] Implement React GroupWallet component with real-time balance updates in web/src/components/GroupWallet.tsx
-- [ ] T089 [US3] Add bank logo, FSCA badge, "Your money is protected" disclosure to wallet UI in all platforms
+- [X] T088 [P] [US3] Implement React GroupWallet component with real-time balance updates in web/src/components/GroupWallet.tsx
+- [X] T089 [US3] Add bank logo, FSCA badge, "Your money is protected" disclosure to wallet UI in all platforms
 - [ ] T090 [US3] Configure Hangfire or Azure Functions for scheduled interest jobs in backend/src/DigitalStokvel.API/Program.cs
 
 **Checkpoint**: At this point, User Story 3 should be fully functional - Groups earn visible tiered interest with daily compounding
