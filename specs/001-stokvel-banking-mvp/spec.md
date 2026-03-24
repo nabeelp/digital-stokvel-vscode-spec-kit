@@ -53,7 +53,7 @@ A group member makes monthly contributions to the group wallet via one-tap payme
 3. **Given** a member is using a feature phone, **When** they dial *120*STOKVEL# and follow the USSD menu, **Then** they can make a contribution using their bank PIN
 4. **Given** a contribution is due in 3 days, **When** the system timer triggers, **Then** the member receives a payment reminder via push notification, SMS, or USSD
 5. **Given** a member completes a payment, **When** the transaction succeeds, **Then** they receive a branded contribution receipt that can be shared in group meetings
-6. **Given** a member views the group wallet, **When** they check the ledger, **Then** they see who paid, when, and how much (full transparency)
+6. **Given** a member views the group wallet, **When** they check the ledger, **Then** they see payment status (Paid/Pending/Failed), amount, timestamp, and masked account indicator for each member (e.g., "Ntombizodwa - R500 - Paid - ****1234") ensuring payment transparency while protecting member financial privacy per POPIA data minimization
 
 ---
 
@@ -89,7 +89,7 @@ The group defines payout rules (rotating payout per cycle or year-end pot distri
 2. **Given** the Treasurer reviews the payout request, **When** they confirm, **Then** the system instantly transfers funds to Member 3's bank account via EFT
 3. **Given** a year-end pot group reaches December 31, **When** the Chairperson initiates full distribution, **Then** funds are disbursed proportionally to all members based on their contribution totals
 4. **Given** a payout is executed, **When** the transaction completes, **Then** all group members receive a notification: "Payout of R6,400 sent to Ntombizodwa"
-5. **Given** a group wants to distribute only partial funds, **When** the Chairperson attempts payout, **Then** the system requires quorum approval (e.g., 60% of members must vote to approve)
+5. **Given** a group wants to distribute only partial funds, **When** the Chairperson attempts payout, **Then** the system requires quorum approval (60% of eligible members must vote to approve)
 
 ---
 
@@ -124,7 +124,7 @@ Groups define their own constitution (rules for missed payments, late fees, memb
 
 1. **Given** a Chairperson is setting up a new group, **When** they use the constitution builder, **Then** they can define: missed payment penalty (e.g., R50), grace period (e.g., 7 days), and member removal criteria (e.g., 3 consecutive misses)
 2. **Given** a member misses a payment, **When** the due date passes, **Then** the system sends automated notice, starts grace period timer, and notifies the Chairperson
-3. **Given** a Chairperson proposes changing the contribution amount from R500 to R750, **When** they initiate in-app voting, **Then** all members receive a voting prompt and results are binding once quorum reached (e.g., 60% participation)
+3. **Given** a Chairperson proposes changing the contribution amount from R500 to R750, **When** they initiate in-app voting, **Then** all members receive a voting prompt and results are binding once quorum reached (60% of eligible members)
 4. **Given** a member disputes a missed payment claim, **When** they raise a dispute flag in the app, **Then** the Chairperson receives the dispute with member's explanation, and bank escalation path is available if unresolved
 5. **Given** a group votes to remove a member, **When** the vote passes, **Then** the member's access is revoked, their contribution history is preserved, and they receive their proportional share
 
@@ -162,6 +162,8 @@ The entire app and USSD experience is available in 5 languages (English, isiZulu
   - Dispute flag allows member to explain; bank reviews transaction log (immutable ledger) and mediates with Chairperson if necessary
 - How does the system handle a group wanting to close/dissolve early?
   - Quorum vote required (e.g., 75% agreement); upon approval, remaining balance distributed proportionally with final interest calculation
+- How does the system handle groups exceeding 50 members regarding performance and notification costs?
+  - UI automatically enables pagination/search for rosters; notification delivery uses batching strategies; system monitors notification costs per group; Chairperson receives soft warning at 50+ advising of performance considerations but can continue adding members without restriction
 
 ## Requirements *(mandatory)*
 
@@ -172,15 +174,17 @@ The entire app and USSD experience is available in 5 languages (English, isiZulu
 - **FR-002**: System MUST allow Chairperson to invite members via phone number, share link, or QR code
 - **FR-003**: System MUST support role assignment (Chairperson, Treasurer, Secretary) with role-specific permissions
 - **FR-004**: System MUST require all members to have or open a bank account before joining (embedded onboarding for non-customers: ID + selfie for app users, branch/ATM verification for USSD users)
-- **FR-005**: System MUST display full group roster, contribution schedule, and upcoming payment dates to Chairperson
+- **FR-005**: System MUST display full group roster, contribution schedule, and upcoming payment dates to Chairperson with pagination and search functionality for groups with 20+ members
+- **FR-005a**: System MUST display a soft warning to Chairperson when adding members beyond 50, advising: "Larger groups may experience performance considerations. Ensure you have robust communication and governance processes in place." Warning does not block member addition
+- **FR-005b**: System MUST support groups of any size without hard limits, with roster UI automatically enabling pagination when member count exceeds 20
 
 **Digital Group Wallet (F-02)**
 - **FR-006**: System MUST create a dedicated group savings account for each stokvel group earning tiered interest: R0–R10K at 3.5%, R10K–R50K at 4.5%, R50K+ at 5.5%
 - **FR-007**: System MUST display real-time balance visible to all members with role-based permissions (Chairperson sees full controls, members see view-only)
-- **FR-008**: System MUST maintain full contribution history (who paid, when, how much) accessible to all members
-- **FR-009**: System MUST block unilateral withdrawal by Chairperson without quorum approval
-- **FR-010**: System MUST calculate interest with daily compounding and monthly capitalization to group wallet
-- **FR-011**: System MUST display interest breakdown showing principal, accrued interest, and year-to-date earnings
+- **FR-008**: System MUST maintain contribution history showing payment status (Paid/Pending/Failed), timestamp, amount, and masked account indicator (e.g., "****1234") accessible to all members; full account details (complete account numbers, banking institution details) MUST NOT be visible to Chairperson, Treasurer, or other members to comply with POPIA data minimization requirements
+- **FR-009**: System MUST block unilateral withdrawal by Chairperson without quorum approval (60% of eligible members)
+- **FR-010**: System MUST calculate interest with daily compounding and monthly capitalization to group wallet; for rotating payout groups, interest continues compounding on the remaining balance after each cycle's principal-only payout
+- **FR-011**: System MUST display interest breakdown showing principal, accrued interest, year-to-date earnings, and for rotating payout groups, total interest retained in wallet vs. principal distributed
 
 **Contribution Collection (F-03)**
 - **FR-012**: System MUST support one-tap payment from member's linked bank account
@@ -189,51 +193,53 @@ The entire app and USSD experience is available in 5 languages (English, isiZulu
 - **FR-015**: System MUST send payment reminders 3 days and 1 day before due date via push notification, SMS, or USSD
 - **FR-016**: System MUST issue contribution confirmation receipt to member and log transaction on group ledger
 - **FR-017**: System MUST ensure all transactions are immutable and auditable
+- **FR-018**: System MUST handle failed debit order payments by re-attempting after 48 hours, up to 2 additional retries within the grace period defined in group rules; each retry MUST notify the member with the next scheduled retry date/time; if all retries fail, system MUST escalate to member and Chairperson for manual resolution
 
 **Payout Engine (F-04)**
-- **FR-018**: System MUST support rotating payout with automated disbursement to designated member each cycle
-- **FR-019**: System MUST support year-end pot with full balance disbursed proportionally to all members
-- **FR-020**: System MUST require Chairperson to initiate payout and Treasurer to confirm before execution
-- **FR-021**: System MUST execute payouts via instant EFT to member bank accounts
-- **FR-022**: System MUST send payout notifications to all group members for transparency
-- **FR-023**: System MUST require quorum approval for partial withdrawals not defined in group rules
+- **FR-019**: System MUST support rotating payout with automated disbursement to designated member each cycle, where only principal contributions (sum of member contributions for that cycle) are paid out; interest remains in group wallet and continues compounding for all members' benefit
+- **FR-020**: System MUST support year-end pot with full balance (principal + all accrued interest) disbursed proportionally to all members
+- **FR-021**: System MUST require Chairperson to initiate payout and Treasurer to confirm before execution
+- **FR-022**: System MUST execute payouts via instant EFT to member bank accounts
+- **FR-023**: System MUST send payout notifications to all group members for transparency
+- **FR-024**: System MUST require quorum approval (60% of eligible members) for partial withdrawals not defined in group rules
 
 **Group Governance & Dispute Resolution (F-05)**
-- **FR-024**: System MUST provide constitution builder allowing groups to define rules for missed payments, late fees, and member removal
-- **FR-025**: System MUST support in-app voting for major decisions (change contribution amount, remove member, adjust payout schedule)
-- **FR-026**: System MUST automate missed payment escalation: notice, grace period, Chairperson notification per group rules
-- **FR-027**: System MUST allow members to raise dispute flags with explanation
-- **FR-028**: System MUST provide bank mediation escalation path if disputes are unresolved by group
+- **FR-025**: System MUST provide constitution builder allowing groups to define rules for missed payments, late fees, and member removal
+- **FR-026**: System MUST support in-app voting for major decisions (change contribution amount, remove member, adjust payout schedule)
+- **FR-027**: System MUST automate missed payment escalation: notice, grace period, Chairperson notification per group rules
+- **FR-028**: System MUST allow members to raise dispute flags with explanation
+- **FR-029**: System MUST provide bank mediation escalation path if disputes are unresolved by group
 
 **Multilingual Interface (F-06)**
-- **FR-029**: System MUST support full UI in 5 languages: English, isiZulu, Sesotho, Xhosa, Afrikaans
-- **FR-030**: System MUST support USSD menus in all 5 languages
-- **FR-031**: System MUST prompt language selection at onboarding
-- **FR-032**: System MUST allow language change in Settings with immediate application
-- **FR-033**: System MUST deliver all notifications (push, SMS, USSD) in user's chosen language
+- **FR-030**: System MUST support full UI in 5 languages: English, isiZulu, Sesotho, Xhosa, Afrikaans
+- **FR-031**: System MUST support USSD menus in all 5 languages
+- **FR-032**: System MUST prompt language selection at onboarding
+- **FR-033**: System MUST allow language change in Settings with immediate application
+- **FR-034**: System MUST deliver all notifications (push, SMS, USSD) in user's chosen language
 
 **Platform Requirements**
-- **FR-034**: Android app MUST support full feature set (F-01 to F-06) with Material Design 3 and offline-tolerant architecture
-- **FR-035**: iOS app MUST support full feature set with feature parity to Android
-- **FR-036**: USSD MUST support core flows (contribute, check balance, payout notification) with max 3-level menu depth
-- **FR-037**: USSD sessions MUST persist state for 120 seconds to handle network interruptions
-- **FR-038**: Web browser MUST provide Chairperson admin dashboard (member management, contribution tracking, payout approvals) with desktop-first responsive design
+- **FR-035**: Android app MUST support full feature set (F-01 to F-06) with Material Design 3 and offline-tolerant architecture
+- **FR-036**: iOS app MUST support full feature set with feature parity to Android
+- **FR-037**: USSD MUST support core flows (contribute, check balance, payout notification) with max 3-level menu depth
+- **FR-038**: USSD sessions MUST persist state for 120 seconds to handle network interruptions
+- **FR-039**: Web browser MUST provide Chairperson admin dashboard (member management, contribution tracking, payout approvals) with desktop-first responsive design
 
 **Security & Compliance**
-- **FR-039**: System MUST comply with Protection of Personal Information Act (POPIA) requiring explicit consent for credit bureau reporting and marketing
-- **FR-040**: System MUST verify all group members per Financial Intelligence Centre Act (FICA/KYC) before allowing participation
-- **FR-041**: System MUST monitor group accounts for AML thresholds: flag deposits >R20K or monthly inflows >R100K
-- **FR-042**: System MUST store all data on South Africa-domiciled infrastructure per SARB requirements
-- **FR-043**: System MUST encrypt data at rest (AES-256) and in transit (TLS 1.3+)
-- **FR-044**: System MUST retain access logs for 7 years per FICA requirements
+- **FR-040**: System MUST comply with Protection of Personal Information Act (POPIA) requiring explicit consent for credit bureau reporting and marketing
+- **FR-041**: System MUST verify all group members per Financial Intelligence Centre Act (FICA/KYC) before allowing participation
+- **FR-042**: System MUST monitor group accounts for AML thresholds: flag deposits >R20K or monthly inflows >R100K
+- **FR-043**: System MUST store all data on South Africa-domiciled infrastructure per SARB requirements
+- **FR-044**: System MUST encrypt data at rest (AES-256) and in transit (TLS 1.3+)
+- **FR-045**: System MUST retain access logs for 7 years per FICA requirements
+- **FR-046**: System MUST implement POPIA data minimization by restricting ledger visibility to payment status (Paid/Pending/Failed), amount, timestamp, and masked account indicator only; full member account details MUST NOT be accessible to other group members, Chairperson, or Treasurer
 
 **Cultural & Trust Design**
-- **FR-045**: System MUST use communal language ('your group', 'your savings pot', 'your contribution') not clinical banking terms ('account', 'product', 'client')
-- **FR-046**: System MUST display bank logo, FSCA badge, and 'Your money is protected' disclosure on group wallet screen
-- **FR-047**: System MUST provide branded, shareable contribution receipts for group meeting verification
-- **FR-048**: System MUST allow group ledger export as PDF for annual AGM records
-- **FR-049**: System MUST use encouraging error messages (e.g., "Your payment didn't go through this time—let's try again") not alarming messages (e.g., "Transaction Failed")
-- **FR-050**: System MUST NOT contact group members directly about products without Chairperson consent
+- **FR-047**: System MUST use communal language ('your group', 'your savings pot', 'your contribution') not clinical banking terms ('account', 'product', 'client')
+- **FR-048**: System MUST display bank logo, FSCA badge, and 'Your money is protected' disclosure on group wallet screen
+- **FR-049**: System MUST provide branded, shareable contribution receipts for group meeting verification
+- **FR-050**: System MUST allow group ledger export as PDF for annual AGM records
+- **FR-051**: System MUST use encouraging error messages (e.g., "Your payment didn't go through this time—let's try again") not alarming messages (e.g., "Transaction Failed")
+- **FR-052**: System MUST NOT contact group members directly about products without Chairperson consent
 
 ### Key Entities
 
@@ -242,7 +248,7 @@ The entire app and USSD experience is available in 5 languages (English, isiZulu
 - **Group Savings Account**: Bank-held account in group name with balance, interest tier (3.5%/4.5%/5.5%), accrued interest, transaction ledger, and withdrawal governance rules
 - **Contribution**: A payment transaction with member ID, group ID, amount, timestamp, payment method (one-tap/debit order/USSD), confirmation receipt, and ledger entry
 - **Payout**: A disbursement transaction with group ID, payout type (rotating/year-end/partial), recipient member(s), amount(s), approval chain (Chairperson initiated, Treasurer confirmed), and notification records
-- **Governance Rule**: Group-defined policies for missed payments (penalty amount, grace period), member removal (criteria, voting threshold), and major decisions (quorum requirements)
+- **Governance Rule**: Group-defined policies for missed payments (penalty amount, grace period), member removal (criteria, voting threshold), and major decisions (default quorum requirement: 60% of eligible members)
 - **Dispute**: A flagged issue raised by member with description, timestamp, status (open/resolved/escalated), Chairperson response, and bank mediation path
 
 ## Success Criteria *(mandatory)*
@@ -288,11 +294,22 @@ The entire app and USSD experience is available in 5 languages (English, isiZulu
 - **SC-026**: R3 million+ in interest revenue generated
 - **SC-027**: NPS score exceeds 70
 
+## Clarifications
+
+### Session 2026-03-24
+
+- Q: What is the default quorum threshold for group voting decisions (constitution changes, member removal, partial payouts)? → A: 60% of eligible members
+- Q: How should the system handle debit order payment failures? → A: Re-attempt payment after 48 hours, up to 2 additional retries within grace period, with member notification on each retry indicating when next retry will occur; escalate to member and Chairperson if all retries fail
+- Q: How should interest be handled during rotating payouts (e.g., Member 1 receives payout in Month 1, Member 2 in Month 2, etc.)? → A: Interest remains in group wallet and continues compounding; only principal contributions are paid out until final year-end distribution
+- Q: Member financial privacy - What level of financial detail should be visible to Chairperson and Treasurer on the group ledger? → A: Only payment status (Paid/Pending/Failed) with masked account indicator (e.g., "****1234"); full account details are not visible to Chairperson or Treasurer (POPIA data minimization principle)
+- Q: What is the maximum group size limit? → A: No hard maximum limit; soft warning displayed at 50+ members advising that larger groups may experience performance considerations; UI must support pagination/search for rosters; notification costs scale with group size
+
 ## Assumptions
 
 - Members already have or are willing to open bank accounts to participate
 - Groups will self-organize member recruitment; bank does not need to form groups
-- Average stokvel group size is 10–15 members contributing R500–R2,000/month each
+- Average stokvel group size is 10–15 members contributing R500–R2,000/month each, though system supports groups of any size without hard limits
+- Notification and operational costs will scale with group size; system architecture must accommodate unpredictable scaling patterns from large groups (50+ members)
 - USSD shortcode (*120*STOKVEL#) will be approved and registered with mobile network operators
 - Treasury will approve tiered interest rates (3.5%/4.5%/5.5%) for group savings accounts
 - Credit bureau integration (F-07) is deferred to Phase 2 (post-MVP)
@@ -300,7 +317,7 @@ The entire app and USSD experience is available in 5 languages (English, isiZulu
 - Bank has FSCA regulatory approval to operate group savings accounts under existing banking license
 - Chairperson acquisition campaign will be led by Marketing & Distribution teams
 - Non-bank members will complete simplified onboarding (app: ID + selfie; USSD: branch/ATM verification)
-- Groups will follow cultural norms around quorum (typically 50-75% participation for major decisions)
+- Default quorum threshold for group voting is 60% of eligible members, aligning with common stokvel practices; groups may customize this threshold in their constitution
 
 ## Out of Scope (Explicitly Not in MVP)
 
