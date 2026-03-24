@@ -1,0 +1,19 @@
+{
+  "app.name": "Digital Stokvel Banking",
+  "app.welcome": "Welcome to your group",
+  "payment.reminder.3days": "Your payment of {0} is due in 3 days",
+  "payment.reminder.1day": "Your payment of {0} is due tomorrow",
+  "payment.confirmation": "Payment of {0} received. Thank you!",
+  "payment.receipt": "Receipt for your contribution of {0} to {1}",
+  "payment.failed": "Your payment didn't go through this time—let's try again",
+  "group.created": "Your group '{0}' has been created successfully",
+  "group.member.invited": "{0} has been invited to join your group",
+  "payout.initiated": "Payout of {0} has been initiated",
+  "payout.completed": "Payout of {0} sent to {1}",
+  "balance.current": "Your group balance is {0}",
+  "interest.earned": "Interest earned this month: {0}",
+  "error.general": "Something went wrong. Please try again.",
+  "error.unauthorized": "You don't have permission to perform this action",
+  "error.notfound": "The requested resource was not found",
+  "error.validation": "Please check your information and try again"
+}
