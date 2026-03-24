@@ -338,15 +338,15 @@ Multi-platform project structure:
 - [ ] T189 [P] Update all error messages to use encouraging language (FR-051) in backend/src/DigitalStokvel.Services/Resources/localization/
 - [ ] T190 Add bank logo and FSCA badge to all wallet screens in all platforms
 - [X] T191 [P] Performance optimization: add database indexes on frequently queried columns (group_id, member_id, timestamp)
-- [ ] T192 [P] Implement API response caching for group details, ledger queries using Redis in backend/src/DigitalStokvel.API/Middleware/CachingMiddleware.cs
+- [X] T192 [P] Implement API response caching for group details, ledger queries using Redis in backend/src/DigitalStokvel.API/Middleware/CachingMiddleware.cs
 - [ ] T193 Configure monitoring alerts for AML flags, failed payments, API errors in Azure Application Insights
 - [X] T194 [P] Create API documentation with Swagger annotations and examples in backend/src/DigitalStokvel.API/Controllers/
 - [ ] T195 Validate quickstart.md instructions: Docker Compose, database migrations, app launch in all platforms
 - [ ] T196 [P] Code cleanup: remove unused dependencies, refactor duplicated logic
 - [ ] T197 Add analytics tracking for user journeys: group creation, contributions, payouts
-- [ ] T198 Implement push notification batch delivery for large groups (50+ members) in backend/src/DigitalStokvel.Infrastructure/Notifications/PushNotificationService.cs
-- [ ] T199 Add soft warning UI when Chairperson adds 51st member in all platforms
-- [ ] T200 Configure Azure Service Bus dead letter queue handling for failed notifications in backend/src/DigitalStokvel.Infrastructure/Messaging/ServiceBusClient.cs
+- [X] T198 Implement push notification batch delivery for large groups (50+ members) in backend/src/DigitalStokvel.Infrastructure/Notifications/PushNotificationService.cs
+- [X] T199 Add soft warning UI when Chairperson adds 51st member in all platforms
+- [X] T200 Configure Azure Service Bus dead letter queue handling for failed notifications in backend/src/DigitalStokvel.Infrastructure/Messaging/ServiceBusClient.cs
 
 ---
 

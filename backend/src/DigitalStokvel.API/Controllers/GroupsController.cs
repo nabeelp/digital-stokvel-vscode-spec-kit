@@ -259,7 +259,7 @@ public class GroupsController : ControllerBase
         }
 
         // Invite member
-        var (success, errorMessage) = await _groupService.InviteMemberAsync(
+        var (success, warningMessage, errorMessage) = await _groupService.InviteMemberAsync(
             id,
             member.Id,
             request.PhoneNumber);
@@ -283,14 +283,23 @@ public class GroupsController : ControllerBase
         _logger.LogInformation("Member invited to group {GroupId}: {PhoneNumber}", 
             id, request.PhoneNumber);
 
+        // T199: Include warning message if adding 51st member
+        var responseMessage = $"Invitation sent to {request.PhoneNumber}! They'll receive a notification shortly.";
+        if (!string.IsNullOrEmpty(warningMessage))
+        {
+            responseMessage = $"{responseMessage} Note: {warningMessage}";
+            _logger.LogWarning("51st member warning for group {GroupId}: {Warning}", id, warningMessage);
+        }
+
         return Ok(new ApiResponse<object>
         {
-            Message = $"Invitation sent to {request.PhoneNumber}! They'll receive a notification shortly.",
+            Message = responseMessage,
             Data = new
             {
                 PhoneNumber = request.PhoneNumber,
                 GroupId = id,
-                InvitedAt = DateTime.UtcNow
+                InvitedAt = DateTime.UtcNow,
+                Warning = warningMessage
             }
         });
     }

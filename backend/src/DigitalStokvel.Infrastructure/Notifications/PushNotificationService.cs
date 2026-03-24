@@ -137,7 +137,8 @@ public class PushNotificationService : IPushNotificationService
     }
 
     /// <summary>
-    /// Send a payout notification to all group members (stub implementation)
+    /// Send a payout notification to all group members
+    /// Uses batch processing for groups with 50+ members (T198)
     /// </summary>
     public async Task<int> SendPayoutNotificationToGroupAsync(
         StokvelsGroup group,
@@ -149,17 +150,23 @@ public class PushNotificationService : IPushNotificationService
 
         try
         {
-            int successCount = 0;
-
-            // In production: load all active group members and send notifications
+            int memberCount = group.Members.Count;
+            
             _logger.LogInformation(
                 "[STUB] Sending payout notifications to group {GroupName} ({MemberCount} members). Payout: R{Amount} to {Recipient}",
                 group.Name,
-                group.Members.Count,
+                memberCount,
                 payoutAmount,
                 recipientName);
 
-            // Simulate batch notification sending
+            // Use batch delivery for large groups (50+ members)
+            if (memberCount >= 50)
+            {
+                return await SendBatchNotificationsAsync(group, payoutAmount, recipientName, cancellationToken);
+            }
+
+            // Standard sequential delivery for smaller groups
+            int successCount = 0;
             foreach (var groupMember in group.Members)
             {
                 if (cancellationToken.IsCancellationRequested)
@@ -181,5 +188,98 @@ public class PushNotificationService : IPushNotificationService
             _logger.LogError(ex, "Failed to send payout notifications to group {GroupId}", group.Id);
             return 0;
         }
+    }
+
+    /// <summary>
+    /// Send notifications in batches for large groups (50+ members)
+    /// Batches of 20 notifications with parallel processing to improve throughput
+    /// </summary>
+    private async Task<int> SendBatchNotificationsAsync(
+        StokvelsGroup group,
+        decimal payoutAmount,
+        string recipientName,
+        CancellationToken cancellationToken)
+    {
+        const int batchSize = 20;
+        var members = group.Members.ToList();
+        int totalSuccessCount = 0;
+
+        _logger.LogInformation(
+            "Using batch delivery for group {GroupName} with {MemberCount} members (batch size: {BatchSize})",
+            group.Name,
+            members.Count,
+            batchSize);
+
+        // Process members in batches
+        for (int i = 0; i < members.Count; i += batchSize)
+        {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                _logger.LogWarning("Batch notification cancelled after {ProcessedCount} members", totalSuccessCount);
+                break;
+            }
+
+            var batch = members.Skip(i).Take(batchSize).ToList();
+            _logger.LogDebug(
+                "Processing batch {BatchNumber} ({BatchStart}-{BatchEnd} of {Total})",
+                i / batchSize + 1,
+                i + 1,
+                Math.Min(i + batchSize, members.Count),
+                members.Count);
+
+            // Send notifications in parallel within batch
+            var batchTasks = batch.Select(async member =>
+            {
+                try
+                {
+                    var template = _localizationService.GetString(
+                        "notification.push.payout_notification", 
+                        member.Member?.PreferredLanguage ?? "EN");
+                    var message = string.Format(template, recipientName, payoutAmount.ToString("N2"), group.Name);
+
+                    // Simulate notification send
+                    await Task.Delay(20, cancellationToken);
+
+                    _logger.LogDebug(
+                        "[STUB] Batch notification sent to member {MemberId}: {Message}",
+                        member.MemberId,
+                        message);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, 
+                        "Failed to send notification to member {MemberId} in batch", 
+                        member.MemberId);
+                    return false;
+                }
+            }).ToList();
+
+            // Wait for all notifications in batch to complete
+            var results = await Task.WhenAll(batchTasks);
+            var batchSuccessCount = results.Count(r => r);
+            totalSuccessCount += batchSuccessCount;
+
+            _logger.LogDebug(
+                "Batch {BatchNumber} complete: {SuccessCount}/{BatchSize} successful",
+                i / batchSize + 1,
+                batchSuccessCount,
+                batch.Count);
+
+            // Small delay between batches to avoid overwhelming the notification service
+            if (i + batchSize < members.Count)
+            {
+                await Task.Delay(100, cancellationToken);
+            }
+        }
+
+        _logger.LogInformation(
+            "Batch delivery complete for group {GroupName}: {TotalSuccess}/{TotalMembers} notifications sent",
+            group.Name,
+            totalSuccessCount,
+            members.Count);
+
+        return totalSuccessCount;
     }
 }

@@ -266,6 +266,9 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
 
+    // T192: Add response caching middleware for group details and ledger queries
+    app.UseCaching();
+
     app.MapControllers();
 
     // Health check endpoint

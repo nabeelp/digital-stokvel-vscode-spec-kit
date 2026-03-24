@@ -148,8 +148,8 @@ public class GroupService
     /// <param name="inviterMemberId">The member sending the invitation (must have permission)</param>
     /// <param name="inviteePhoneNumber">Phone number of member to invite</param>
     /// <param name="cancellationToken">Cancellation token</param>
-    /// <returns>Success status and error message if failed</returns>
-    public async Task<(bool Success, string? ErrorMessage)> InviteMemberAsync(
+    /// <returns>Success status, warning message for 51st member, and error message if failed</returns>
+    public async Task<(bool Success, string? WarningMessage, string? ErrorMessage)> InviteMemberAsync(
         Guid groupId,
         Guid inviterMemberId,
         string inviteePhoneNumber,
@@ -161,7 +161,7 @@ public class GroupService
             var group = await _groupRepository.GetGroupWithMembersAsync(groupId, cancellationToken);
             if (group == null || !group.IsActive)
             {
-                return (false, "Group not found or inactive");
+                return (false, null, "Group not found or inactive");
             }
 
             // Validate inviter is a member of the group with appropriate permissions
@@ -170,14 +170,14 @@ public class GroupService
 
             if (!hasPermission)
             {
-                return (false, "Only Chairperson or Secretary can invite members");
+                return (false, null, "Only Chairperson or Secretary can invite members");
             }
 
             // Get inviter details for personalized message
             var inviter = await _memberRepository.GetByIdAsync(inviterMemberId, cancellationToken);
             if (inviter == null)
             {
-                return (false, "Inviter member not found");
+                return (false, null, "Inviter member not found");
             }
 
             // Check if invitee is already a member
@@ -189,19 +189,34 @@ public class GroupService
                 
                 if (existingMembership != null)
                 {
-                    return (false, "This member is already part of the group");
+                    return (false, null, "This member is already part of the group");
                 }
             }
 
-            // Check if group has reached maximum members
+            // Check current member count
             var currentMemberCount = await _groupRepository.GetMemberCountAsync(groupId, cancellationToken);
-            if (currentMemberCount >= group.MaxMembers)
+            
+            // T199: Soft warning when adding 51st member (current count is 50, next would be 51)
+            string? warningMessage = null;
+            if (currentMemberCount == 50)
             {
-                var warningMsg = _localizationService.GetString(
-                    "warning.group_at_capacity",
+                warningMessage = _localizationService.GetString(
+                    "warning.adding_51st_member",
+                    inviter.PreferredLanguage);
+                
+                _logger.LogWarning(
+                    "Adding 51st member to group {GroupId}. Groups with 50+ members may experience performance considerations.",
+                    groupId);
+            }
+
+            // Check if group has reached absolute maximum (allow up to soft limit + buffer)
+            if (currentMemberCount >= group.MaxMembers + 10)
+            {
+                var errorMsg = _localizationService.GetString(
+                    "error.group_at_max_capacity",
                     inviter.PreferredLanguage,
-                    group.MaxMembers);
-                return (false, warningMsg);
+                    group.MaxMembers + 10);
+                return (false, null, errorMsg);
             }
 
             // Generate invitation link/code
@@ -233,15 +248,15 @@ public class GroupService
                 cancellationToken);
 
             _logger.LogInformation(
-                "Member invited to group: Phone {Phone} to Group {GroupId} by Member {InviterId}",
-                inviteePhoneNumber, groupId, inviterMemberId);
+                "Member invited to group: Phone {Phone} to Group {GroupId} by Member {InviterId}. Current member count: {MemberCount}",
+                inviteePhoneNumber, groupId, inviterMemberId, currentMemberCount);
 
-            return (true, null);
+            return (true, warningMessage, null);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error inviting member to group {GroupId}", groupId);
-            return (false, "An error occurred while sending the invitation. Please try again.");
+            return (false, null, "An error occurred while sending the invitation. Please try again.");
         }
     }
 
