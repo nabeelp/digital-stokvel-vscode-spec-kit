@@ -38,6 +38,15 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
+    // Configure Kestrel to enforce TLS 1.3 (POPIA/FICA security requirement)
+    builder.WebHost.ConfigureKestrel(serverOptions =>
+    {
+        serverOptions.ConfigureHttpsDefaults(httpsOptions =>
+        {
+            httpsOptions.SslProtocols = System.Security.Authentication.SslProtocols.Tls13;
+        });
+    });
+
     // Add Serilog
     builder.Host.UseSerilog();
 
@@ -143,6 +152,7 @@ try
     builder.Services.AddScoped<ContributionService>();
     builder.Services.AddScoped<ReceiptService>();
     builder.Services.AddScoped<IInterestService, InterestService>();
+    builder.Services.AddScoped<IGovernanceService, GovernanceService>();
     builder.Services.AddSingleton<IServiceBusClient, ServiceBusClient>(sp =>
         new ServiceBusClient(
             builder.Configuration.GetConnectionString("ServiceBus") ?? "",
@@ -159,6 +169,9 @@ try
     builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.PaymentReminderJob>();
     builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.DailyInterestAccrualJob>();
     builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.InterestCapitalizationJob>();
+    builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.MissedPaymentEscalationJob>();
+    builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.AmlMonitoringJob>();
+    builder.Services.AddScoped<DigitalStokvel.Infrastructure.Jobs.AuditLogArchivalJob>();
 
     // Add Hangfire for scheduled jobs
     builder.Services.AddHangfire(configuration => configuration
@@ -228,6 +241,9 @@ try
     app.UseSerilogRequestLogging();
 
     app.UseHttpsRedirection();
+
+    // Add security headers to all responses
+    app.UseSecurityHeaders();
 
     app.UseCors();
 

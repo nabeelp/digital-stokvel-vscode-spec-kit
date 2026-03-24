@@ -262,7 +262,7 @@ Multi-platform project structure:
 - [ ] T142 [P] [US4] Implement React PayoutApproval component for Treasurer confirmation in web/src/components/PayoutApproval.tsx
 - [ ] T143 [US4] Implement Android PayoutHistoryScreen with disbursement tracking in android/app/src/main/java/za/co/stokvel/ui/payout/PayoutHistoryScreen.kt
 - [ ] T144 [US4] Implement iOS PayoutHistoryView in ios/DigitalStokvel/Views/PayoutHistoryView.swift
-- [ ] T145 [US4] Add payout notification to USSD users via SMS with amount and confirmation code in backend/src/DigitalStokvel.Infrastructure/Notifications/SmsNotificationService.cs
+- [X] T145 [US4] Add payout notification to USSD users via SMS with amount and confirmation code in backend/src/DigitalStokvel.Infrastructure/Notifications/SmsNotificationService.cs
 
 **Checkpoint**: At this point, User Story 4 should be fully functional - Automated payouts with dual-approval and transparency
 
@@ -276,23 +276,23 @@ Multi-platform project structure:
 
 ### Implementation for User Story 6
 
-- [ ] T146 [P] [US6] Create GovernanceRule entity with GroupId, RuleType, RuleValue (jsonb), CreatedAt in backend/src/DigitalStokvel.Core/Entities/GovernanceRule.cs
-- [ ] T147 [P] [US6] Create Dispute entity with GroupId, MemberId, Description, Status, Resolution, EscalatedAt in backend/src/DigitalStokvel.Core/Entities/Dispute.cs
-- [ ] T148 [P] [US6] Create QuorumVote entity with GroupId, ProposalType, ProposalDetails, VotesFor, VotesAgainst, Status in backend/src/DigitalStokvel.Core/Entities/QuorumVote.cs
-- [ ] T149 [P] [US6] Create RuleType enum (MissedPaymentPenalty, GracePeriod, MemberRemovalCriteria, QuorumThreshold) in backend/src/DigitalStokvel.Core/Enums/RuleType.cs
-- [ ] T150 [P] [US6] Create DisputeStatus enum (Open, ChairpersonReviewed, Resolved, EscalatedToBank) in backend/src/DigitalStokvel.Core/Enums/DisputeStatus.cs
-- [ ] T151 [US6] Implement IGovernanceService interface with DefineRule, InitiateVote, ProcessVoteResult, RaiseDispute in backend/src/DigitalStokvel.Core/Interfaces/IGovernanceService.cs
-- [ ] T152 [US6] Implement GovernanceService with constitution builder logic in backend/src/DigitalStokvel.Services/GovernanceService.cs
-- [ ] T153 [US6] Implement missed payment escalation job: send notice, start grace period timer, notify Chairperson in backend/src/DigitalStokvel.Infrastructure/Jobs/MissedPaymentEscalationJob.cs
-- [ ] T154 [US6] Implement late fee application logic: after grace period expires, apply penalty per group rule in backend/src/DigitalStokvel.Services/GovernanceService.cs
-- [ ] T155 [US6] Implement in-app voting: create vote proposal, notify all members, tally votes when quorum reached in backend/src/DigitalStokvel.Services/GovernanceService.cs
-- [ ] T156 [US6] Implement dispute flagging: member submits explanation, Chairperson receives notification in backend/src/DigitalStokvel.Services/GovernanceService.cs
-- [ ] T157 [US6] Implement bank mediation escalation path: dispute escalated after 7 days unresolved in backend/src/DigitalStokvel.Services/GovernanceService.cs
-- [ ] T158 [US6] Create POST /api/v1/groups/{groupId}/constitution endpoint for rule definition in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
-- [ ] T159 [US6] Create POST /api/v1/groups/{groupId}/votes endpoint for initiating votes in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
-- [ ] T160 [US6] Create POST /api/v1/groups/{groupId}/votes/{voteId}/cast endpoint for member voting in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
-- [ ] T161 [US6] Create POST /api/v1/groups/{groupId}/disputes endpoint for raising disputes in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
-- [ ] T162 [US6] Create GET /api/v1/groups/{groupId}/constitution endpoint returning all governance rules in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
+- [X] T146 [P] [US6] Create GovernanceRule entity with GroupId, RuleType, RuleValue (jsonb), CreatedAt in backend/src/DigitalStokvel.Core/Entities/GovernanceRule.cs
+- [X] T147 [P] [US6] Create Dispute entity with GroupId, MemberId, Description, Status, Resolution, EscalatedAt in backend/src/DigitalStokvel.Core/Entities/Dispute.cs
+- [X] T148 [P] [US6] Create QuorumVote entity with GroupId, ProposalType, ProposalDetails, VotesFor, VotesAgainst, Status in backend/src/DigitalStokvel.Core/Entities/QuorumVote.cs
+- [X] T149 [P] [US6] Create RuleType enum (MissedPaymentPenalty, GracePeriod, MemberRemovalCriteria, QuorumThreshold) in backend/src/DigitalStokvel.Core/Enums/RuleType.cs
+- [X] T150 [P] [US6] Create DisputeStatus enum (Open, ChairpersonReviewed, Resolved, EscalatedToBank) in backend/src/DigitalStokvel.Core/Enums/DisputeStatus.cs
+- [X] T151 [US6] Implement IGovernanceService interface with DefineRule, InitiateVote, ProcessVoteResult, RaiseDispute in backend/src/DigitalStokvel.Core/Interfaces/IGovernanceService.cs
+- [X] T152 [US6] Implement GovernanceService with constitution builder logic in backend/src/DigitalStokvel.Services/GovernanceService.cs
+- [X] T153 [US6] Implement missed payment escalation job: send notice, start grace period timer, notify Chairperson in backend/src/DigitalStokvel.Infrastructure/Jobs/MissedPaymentEscalationJob.cs
+- [X] T154 [US6] Implement late fee application logic: after grace period expires, apply penalty per group rule in backend/src/DigitalStokvel.Services/GovernanceService.cs
+- [X] T155 [US6] Implement in-app voting: create vote proposal, notify all members, tally votes when quorum reached in backend/src/DigitalStokvel.Services/GovernanceService.cs
+- [X] T156 [US6] Implement dispute flagging: member submits explanation, Chairperson receives notification in backend/src/DigitalStokvel.Services/GovernanceService.cs
+- [X] T157 [US6] Implement bank mediation escalation path: dispute escalated after 7 days unresolved in backend/src/DigitalStokvel.Services/GovernanceService.cs
+- [X] T158 [US6] Create POST /api/v1/groups/{groupId}/constitution endpoint for rule definition in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
+- [X] T159 [US6] Create POST /api/v1/groups/{groupId}/votes endpoint for initiating votes in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
+- [X] T160 [US6] Create POST /api/v1/groups/{groupId}/votes/{voteId}/cast endpoint for member voting in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
+- [X] T161 [US6] Create POST /api/v1/groups/{groupId}/disputes endpoint for raising disputes in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
+- [X] T162 [US6] Create GET /api/v1/groups/{groupId}/constitution endpoint returning all governance rules in backend/src/DigitalStokvel.API/Controllers/GovernanceController.cs
 - [ ] T163 [P] [US6] Implement Android ConstitutionBuilderScreen with rule templates in android/app/src/main/java/za/co/stokvel/ui/governance/ConstitutionBuilderScreen.kt
 - [ ] T164 [P] [US6] Implement iOS ConstitutionBuilderView in ios/DigitalStokvel/Views/ConstitutionBuilderView.swift
 - [ ] T165 [P] [US6] Implement React ConstitutionBuilder with form validation in web/src/components/ConstitutionBuilder.tsx
@@ -309,17 +309,17 @@ Multi-platform project structure:
 
 **Purpose**: POPIA, FICA, SARB compliance and security hardening
 
-- [ ] T170 [P] Create MemberConsent entity with MemberId, ConsentType (CreditBureau, Marketing), ConsentGiven, Timestamp in backend/src/DigitalStokvel.Core/Entities/MemberConsent.cs
-- [ ] T171 [P] Create AuditLog table with EntityType, EntityId, Action, OldValue (jsonb), NewValue (jsonb), UserId, Timestamp in backend/src/DigitalStokvel.Infrastructure/Data/Migrations/
+- [X] T170 [P] Create MemberConsent entity with MemberId, ConsentType (CreditBureau, Marketing), ConsentGiven, Timestamp in backend/src/DigitalStokvel.Core/Entities/MemberConsent.cs
+- [X] T171 [P] Create AuditLog table with EntityType, EntityId, Action, OldValue (jsonb), NewValue (jsonb), UserId, Timestamp in backend/src/DigitalStokvel.Infrastructure/Data/Migrations/
 - [ ] T172 Implement POPIA consent collection at onboarding: explicit opt-in for credit bureau, marketing in backend/src/DigitalStokvel.Services/MemberService.cs
 - [ ] T173 Implement FICA/KYC verification flow: ID upload + selfie for app users in backend/src/DigitalStokvel.Services/KycService.cs
-- [ ] T174 [P] Implement AML monitoring job: flag deposits >R20K or monthly inflows >R100K in backend/src/DigitalStokvel.Infrastructure/Jobs/AmlMonitoringJob.cs
+- [X] T174 [P] Implement AML monitoring job: flag deposits >R20K or monthly inflows >R100K in backend/src/DigitalStokvel.Infrastructure/Jobs/AmlMonitoringJob.cs
 - [ ] T175 Configure Azure South Africa Central region for all resources (SARB data residency) in infrastructure as code
 - [ ] T176 [P] Implement AES-256 encryption at rest for PostgreSQL database using Transparent Data Encryption
-- [ ] T177 [P] Enforce TLS 1.3 for all API endpoints in backend/src/DigitalStokvel.API/Program.cs
-- [ ] T178 Implement 7-year audit log retention policy with automatic archival in backend/src/DigitalStokvel.Infrastructure/Jobs/AuditLogArchivalJob.cs
-- [ ] T179 Implement rate limiting per IP and per user (100 req/min) with distributed cache in backend/src/DigitalStokvel.API/Middleware/RateLimitingMiddleware.cs
-- [ ] T180 Add security headers (CSP, HSTS, X-Frame-Options) to API responses in backend/src/DigitalStokvel.API/Middleware/SecurityHeadersMiddleware.cs
+- [X] T177 [P] Enforce TLS 1.3 for all API endpoints in backend/src/DigitalStokvel.API/Program.cs
+- [X] T178 Implement 7-year audit log retention policy with automatic archival in backend/src/DigitalStokvel.Infrastructure/Jobs/AuditLogArchivalJob.cs
+- [X] T179 Implement rate limiting per IP and per user (100 req/min) with distributed cache in backend/src/DigitalStokvel.API/Middleware/RateLimitingMiddleware.cs
+- [X] T180 Add security headers (CSP, HSTS, X-Frame-Options) to API responses in backend/src/DigitalStokvel.API/Middleware/SecurityHeadersMiddleware.cs
 - [ ] T181 [P] Implement input validation and sanitization for all API endpoints
 - [ ] T182 Create compliance dashboard for bank staff to review flagged groups in web/src/components/admin/ComplianceDashboard.tsx
 
@@ -329,7 +329,7 @@ Multi-platform project structure:
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T183 [P] Add telemetry and Application Insights instrumentation across all services in backend/src/DigitalStokvel.API/Program.cs
+- [X] T183 [P] Add telemetry and Application Insights instrumentation across all services in backend/src/DigitalStokvel.API/Program.cs
 - [ ] T184 [P] Implement offline-first architecture for Android: Room database sync in android/app/src/main/java/za/co/stokvel/data/local/
 - [ ] T185 [P] Implement offline-first architecture for iOS: Core Data sync in ios/DigitalStokvel/Data/
 - [ ] T186 Implement PDF export for group ledger (annual AGM records) in backend/src/DigitalStokvel.Services/LedgerExportService.cs
@@ -337,7 +337,7 @@ Multi-platform project structure:
 - [ ] T188 [P] Implement communal language styling: replace "account" with "savings pot", "client" with "member" in all UIs
 - [ ] T189 [P] Update all error messages to use encouraging language (FR-051) in backend/src/DigitalStokvel.Services/Resources/localization/
 - [ ] T190 Add bank logo and FSCA badge to all wallet screens in all platforms
-- [ ] T191 [P] Performance optimization: add database indexes on frequently queried columns (group_id, member_id, timestamp)
+- [X] T191 [P] Performance optimization: add database indexes on frequently queried columns (group_id, member_id, timestamp)
 - [ ] T192 [P] Implement API response caching for group details, ledger queries using Redis in backend/src/DigitalStokvel.API/Middleware/CachingMiddleware.cs
 - [ ] T193 Configure monitoring alerts for AML flags, failed payments, API errors in Azure Application Insights
 - [ ] T194 [P] Create API documentation with Swagger annotations and examples in backend/src/DigitalStokvel.API/Controllers/

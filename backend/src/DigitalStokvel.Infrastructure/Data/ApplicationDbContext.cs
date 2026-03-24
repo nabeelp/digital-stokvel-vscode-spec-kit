@@ -25,6 +25,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Contribution> Contributions => Set<Contribution>();
     public DbSet<Payout> Payouts => Set<Payout>();
     public DbSet<PayoutRecipient> PayoutRecipients => Set<PayoutRecipient>();
+    public DbSet<GovernanceRule> GovernanceRules => Set<GovernanceRule>();
+    public DbSet<Dispute> Disputes => Set<Dispute>();
+    public DbSet<QuorumVote> QuorumVotes => Set<QuorumVote>();
+    public DbSet<MemberConsent> MemberConsents => Set<MemberConsent>();
+    public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
     // Domain entities will be added as they are created
     // Example: public DbSet<Member> Members => Set<Member>();
