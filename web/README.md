@@ -33,17 +33,26 @@ npm run build
 
 ## Components Implemented
 
+### ✅ MyGroups (Landing Page)
+Grid view of all groups user belongs to with search, status badges, and quick actions.
+
 ### ✅ GroupCreation (T047)
 Form for creating new stokvel groups with validation (R50-R100K contribution limits).
 
 ### ✅ GroupDashboard (T050)
-Group details with member roster, role badges, search functionality, and constitution display.
+Group details with member roster, role badges, search functionality, and constitution display. Integrated with InviteMember and AssignRole modals.
 
 ### ✅ PayContribution (T070)
 Payment modal with idempotency keys, receipt preview, and payment method selection.
 
 ### ✅ GroupWallet (T088)
 Wallet display with tiered interest calculations (3.5%/4.5%/5.5%), real-time updates, and FSCA badges.
+
+### ✅ InviteMember Modal
+Modal form to invite new members by phone number with validation and SMS notification flow.
+
+### ✅ AssignRole Modal
+Modal to change member roles (Chairperson, Treasurer, Secretary, Member) with descriptive information and warnings.
 
 ## API Integration
 
@@ -62,6 +71,7 @@ VITE_API_BASE_URL=http://localhost:5000/api/v1
 
 ## Routing
 
+- `/` or `/groups` - My Groups landing page (grid view of all groups)
 - `/login` - Authentication (mock implementation)
 - `/groups/create` - Create new group
 - `/groups/:id` - Group dashboard
@@ -70,14 +80,17 @@ VITE_API_BASE_URL=http://localhost:5000/api/v1
 ## Testing
 
 Requires backend API running on `http://localhost:5000`:
-1. Login with phone: `27812345678`
-2. Create group with contribution amount between R50-R100K
-3. View dashboard and wallet
+1. View My Groups page (empty state shown if no groups)
+3. Create group with contribution amount between R50-R100K
+4. View dashboard and wallet
+5. Invite members via modal form
+6. Assign roles to members via modal form
 
 ## Known Limitations
 
 - **Auth**: Mock JWT tokens (Auth0 integration pending)
 - **Mobile apps**: iOS/Android not yet implemented
+- **API Endpoint**: MyGroups page uses mock data (GET /api/v1/groups/my-groups endpoint not yet implemented
 - **Additional UIs**: Invite member, assign role, ledger view (pending)
 
 ## Contributing
@@ -86,7 +99,7 @@ Requires backend API running on `http://localhost:5000`:
 - Use `import type` for type-only imports
 - One CSS file per component
 - PascalCase for components, camelCase for functions
-
+75% - landing page + modals added
 ---
 
 **Status**: Phase 3-5 Web UI complete (50%)

@@ -34,7 +34,7 @@ Multi-platform project structure:
 - [X] T003 [P] Configure C# 13 language version and .NET 10.0 target framework in backend/*.csproj files
 - [ ] T004 [P] Initialize Android project with Kotlin and Jetpack Compose dependencies in android/app/build.gradle *(requires Android Studio)*
 - [ ] T005 [P] Initialize iOS project with SwiftUI and Xcode 15+ configuration in ios/DigitalStokvel.xcodeproj *(requires macOS + Xcode)*
-- [ ] T006 [P] Initialize React 18 + TypeScript web project in web/ with Vite bundler *(requires Node.js - can run: npm create vite@latest web -- --template react-ts)*
+- [X] T006 [P] Initialize React 18 + TypeScript web project in web/ with Vite bundler *(requires Node.js - can run: npm create vite@latest web -- --template react-ts)*
 - [X] T007 [P] Setup Docker Compose for local PostgreSQL 16 and Redis 7 in docker-compose.yml
 - [X] T008 [P] Configure EditorConfig, .gitignore, and linting rules for C#, Kotlin, Swift, TypeScript
 - [X] T009 Add Entity Framework Core 10.0, ASP.NET Core Identity, Npgsql, Azure Service Bus SDK dependencies to backend/src/DigitalStokvel.API/DigitalStokvel.API.csproj
@@ -99,11 +99,11 @@ Multi-platform project structure:
 - [X] T044 [US1] Create PUT /api/v1/groups/{id}/roles endpoint for role assignment in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
 - [ ] T045 [P] [US1] Implement Android GroupCreationScreen with Jetpack Compose Material Design 3 in android/app/src/main/java/za/co/stokvel/ui/group/GroupCreationScreen.kt
 - [ ] T046 [P] [US1] Implement iOS GroupCreationView with SwiftUI forms in ios/DigitalStokvel/Views/GroupCreationView.swift
-- [ ] T047 [P] [US1] Implement React GroupCreation component with Formik validation in web/src/components/GroupCreation.tsx
+- [X] T047 [P] [US1] Implement React GroupCreation component with Formik validation in web/src/components/GroupCreation.tsx
 - [ ] T048 [US1] Implement Android GroupDashboardScreen with roster list, pagination for 20+ members in android/app/src/main/java/za/co/stokvel/ui/group/GroupDashboardScreen.kt
 - [ ] T049 [US1] Implement iOS GroupDashboardView with roster SwiftUI List in ios/DigitalStokvel/Views/GroupDashboardView.swift
-- [ ] T050 [US1] Implement React GroupDashboard with member table and search for web in web/src/components/GroupDashboard.tsx
-- [ ] T051 [US1] Add soft warning UI for groups exceeding 50 members: "Larger groups may experience performance considerations" in all platforms
+- [X] T050 [US1] Implement React GroupDashboard with member table and search for web in web/src/components/GroupDashboard.tsx
+- [X] T051 [US1] Add soft warning UI for groups exceeding 50 members: "Larger groups may experience performance considerations" in all platforms
 - [X] T052 [US1] Implement SMS notification service for member invitations using Azure Communication Services in backend/src/DigitalStokvel.Infrastructure/Notifications/SmsNotificationService.cs
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - Chairperson can create groups and manage members
@@ -135,7 +135,7 @@ Multi-platform project structure:
 - [X] T067 [US2] Create POST /api/v1/contributions/debit-order endpoint for recurring payment setup in backend/src/DigitalStokvel.API/Controllers/ContributionsController.cs
 - [ ] T068 [P] [US2] Implement Android PayContributionScreen with one-tap payment button in android/app/src/main/java/za/co/stokvel/ui/contribution/PayContributionScreen.kt
 - [ ] T069 [P] [US2] Implement iOS PayContributionView with Apple Pay integration in ios/DigitalStokvel/Views/PayContributionView.swift
-- [ ] T070 [P] [US2] Implement React PayContribution modal for web dashboard in web/src/components/PayContribution.tsx
+- [X] T070 [P] [US2] Implement React PayContribution modal for web dashboard in web/src/components/PayContribution.tsx
 - [ ] T071 [US2] Implement Android ContributionHistoryScreen with list and receipt sharing in android/app/src/main/java/za/co/stokvel/ui/contribution/ContributionHistoryScreen.kt
 - [ ] T072 [US2] Implement iOS ContributionHistoryView with SwiftUI in ios/DigitalStokvel/Views/ContributionHistoryView.swift
 - [X] T073 [US2] Implement payment reminder background job (3 days, 1 day before due date) in backend/src/DigitalStokvel.Infrastructure/Jobs/PaymentReminderJob.cs

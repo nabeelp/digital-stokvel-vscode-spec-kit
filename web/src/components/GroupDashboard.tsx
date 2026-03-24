@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { apiService } from '../services/api';
 import type { GroupResponse } from '../services/api';
+import InviteMember from './InviteMember';
+import AssignRole from './AssignRole';
 import './GroupDashboard.css';
 
 interface GroupDashboardProps {
@@ -12,6 +14,9 @@ export default function GroupDashboard({ groupId }: GroupDashboardProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [showInviteModal, setShowInviteModal] = useState(false);
+  const [showRoleModal, setShowRoleModal] = useState(false);
+  const [selectedMember, setSelectedMember] = useState<{ phone: string; role: string } | null>(null);
 
   useEffect(() => {
     loadGroup();
@@ -133,7 +138,11 @@ export default function GroupDashboard({ groupId }: GroupDashboardProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button className="btn btn-primary" disabled={isFull}>
+            <button 
+              className="btn btn-primary" 
+              disabled={isFull}
+              onClick={() => setShowInviteModal(true)}
+            >
               + Invite Member
             </button>
           </div>
@@ -176,7 +185,14 @@ export default function GroupDashboard({ groupId }: GroupDashboardProps) {
                       <button className="btn-icon" title="View member details">
                         👁️
                       </button>
-                      <button className="btn-icon" title="Edit role">
+                      <button 
+                        className="btn-icon" 
+                        title="Edit role"
+                        onClick={() => {
+                          setSelectedMember({ phone: member.phoneNumber, role: member.role });
+                          setShowRoleModal(true);
+                        }}
+                      >
                         ✏️
                       </button>
                     </td>
@@ -204,6 +220,36 @@ export default function GroupDashboard({ groupId }: GroupDashboardProps) {
           <p className="no-data">No constitution rules defined yet</p>
         )}
       </div>
+
+      {showInviteModal && (
+        <InviteMember
+          groupId={groupId}
+          groupName={group.name}
+          onClose={() => setShowInviteModal(false)}
+          onSuccess={() => {
+            loadGroup();
+            setShowInviteModal(false);
+          }}
+        />
+      )}
+
+      {showRoleModal && selectedMember && (
+        <AssignRole
+          groupId={groupId}
+          groupName={group.name}
+          memberPhone={selectedMember.phone}
+          currentRole={selectedMember.role}
+          onClose={() => {
+            setShowRoleModal(false);
+            setSelectedMember(null);
+          }}
+          onSuccess={() => {
+            loadGroup();
+            setShowRoleModal(false);
+            setSelectedMember(null);
+          }}
+        />
+      )}
     </div>
   );
 }

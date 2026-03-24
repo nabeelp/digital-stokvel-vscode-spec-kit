@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
+import MyGroups from './components/MyGroups';
 import GroupCreation from './components/GroupCreation';
 import GroupDashboard from './components/GroupDashboard';
 import GroupWallet from './components/GroupWallet';
@@ -44,7 +45,8 @@ function App() {
         <Navigation onLogout={handleLogout} />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Navigate to="/groups/create" replace />} />
+            <Route path="/" element={<MyGroups />} />
+            <Route path="/groups" element={<MyGroups />} />
             <Route path="/groups/create" element={<GroupCreation />} />
             <Route path="/groups/:id" element={<GroupDashboardWrapper />} />
             <Route path="/groups/:id/wallet" element={<GroupWalletWrapper />} />
