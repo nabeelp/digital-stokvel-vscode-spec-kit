@@ -1,0 +1,284 @@
+.group-ledger {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.group-ledger.loading,
+.group-ledger.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.ledger-header {
+  margin-bottom: 2rem;
+}
+
+.ledger-header h2 {
+  color: #1a202c;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.ledger-subtitle {
+  color: #718096;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.ledger-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.ledger-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.filter-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  background: white;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.info-badge {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  border: 1px solid #93c5fd;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  color: #2d3748;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.empty-state p {
+  color: #718096;
+  font-size: 0.875rem;
+}
+
+.ledger-table-container {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ledger-table thead {
+  background: #f7fafc;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.ledger-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ledger-table td {
+  padding: 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: #2d3748;
+}
+
+.ledger-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.time-text {
+  color: #718096;
+  font-size: 0.75rem;
+}
+
+.member-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.member-phone {
+  font-weight: 600;
+}
+
+.member-name {
+  color: #718096;
+  font-size: 0.75rem;
+}
+
+.amount-cell {
+  font-weight: 700;
+  color: #10b981;
+  font-size: 1rem;
+}
+
+.transaction-id {
+  font-family: monospace;
+  font-size: 0.75rem;
+  background: #f7fafc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-failed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.ledger-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-info {
+  color: #718096;
+  font-size: 0.875rem;
+  font-weight: 600;
+  min-width: 150px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .ledger-table {
+    font-size: 0.75rem;
+  }
+
+  .ledger-table th,
+  .ledger-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ledger-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+
+  .ledger-table-container {
+    overflow-x: scroll;
+  }
+
+  .ledger-table {
+    min-width: 800px;
+  }
+
+  .ledger-pagination {
+    flex-direction: column;
+  }
+
+  .ledger-pagination .btn {
+    width: 100%;
+  }
+}

@@ -29,6 +29,7 @@ export default function Login({ onLogin }: LoginProps) {
     // Simulate API call - in production, this would call Auth0 or backend authentication
     setTimeout(() => {
       const mockToken = `mock-jwt-token-${phoneNumber}-${Date.now()}`;
+      localStorage.setItem('userPhone', phoneNumber);
       onLogin(mockToken);
       setLoading(false);
     }, 1000);

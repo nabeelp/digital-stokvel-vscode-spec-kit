@@ -81,17 +81,23 @@ class ApiService {
     return response.data;
   }
 
-  async getGroupLedger(groupId: string, page = 1, pageSize = 20): Promise<PagedResponse<LedgerEntryResponse>> {
-    const response = await this.client.get(`/contributions/ledger/${groupId}`, {
+  async getGroupLedger(groupId: string, page = 1, pageSize = 20): Promise<ApiResponse<LedgerEntryResponse[]>> {
+    const response = await this.client.get(`/contributions/group/${groupId}/ledger`, {
       params: { page, pageSize },
     });
     return response.data;
   }
 
-  async getMemberHistory(page = 1, pageSize = 20): Promise<PagedResponse<ContributionResponse>> {
-    const response = await this.client.get('/contributions/history', {
-      params: { page, pageSize },
+  async getMemberHistory(groupId: string, memberPhone: string): Promise<ApiResponse<LedgerEntryResponse[]>> {
+    const response = await this.client.get(`/members/${memberPhone}/contributions`, {
+      params: { groupId },
     });
+    return response.data;
+  }
+
+  // Get user's groups
+  async getUserGroups(memberPhone: string): Promise<ApiResponse<GroupResponse[]>> {
+    const response = await this.client.get(`/groups/member/${memberPhone}`);
     return response.data;
   }
 }
@@ -209,12 +215,20 @@ export interface ContributionResponse {
 }
 
 export interface LedgerEntryResponse {
+  ledgerEntryId: string;
+  groupId: string;
+  groupName?: string;
   contributionId: string;
-  memberName: string;
-  maskedAccountNumber: string;
+  transactionId: string;
+  memberPhone: string;
+  memberName?: string;
   amount: number;
+  currency: string;
+  paymentMethod: string;
   status: string;
   timestamp: string;
+  description?: string;
+  maskedAccountNumber?: string;
 }
 
 export const apiService = new ApiService();

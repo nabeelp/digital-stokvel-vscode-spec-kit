@@ -139,6 +139,18 @@ export default function GroupDashboard({ groupId }: GroupDashboardProps) {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <button 
+              className="btn btn-secondary" 
+              onClick={() => window.location.href = `/groups/${groupId}/history`}
+            >
+              📋 My Contributions
+            </button>
+            <button 
+              className="btn btn-secondary" 
+              onClick={() => window.location.href = `/groups/${groupId}/ledger`}
+            >
+              📊 Group Ledger
+            </button>
+            <button 
               className="btn btn-primary" 
               disabled={isFull}
               onClick={() => setShowInviteModal(true)}

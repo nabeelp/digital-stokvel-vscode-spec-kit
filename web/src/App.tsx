@@ -5,6 +5,8 @@ import MyGroups from './components/MyGroups';
 import GroupCreation from './components/GroupCreation';
 import GroupDashboard from './components/GroupDashboard';
 import GroupWallet from './components/GroupWallet';
+import ContributionHistory from './components/ContributionHistory';
+import GroupLedger from './components/GroupLedger';
 import Login from './components/Login';
 import './App.css';
 
@@ -50,6 +52,8 @@ function App() {
             <Route path="/groups/create" element={<GroupCreation />} />
             <Route path="/groups/:id" element={<GroupDashboardWrapper />} />
             <Route path="/groups/:id/wallet" element={<GroupWalletWrapper />} />
+            <Route path="/groups/:id/history" element={<ContributionHistoryWrapper />} />
+            <Route path="/groups/:id/ledger" element={<GroupLedgerWrapper />} />
             <Route path="/login" element={<Navigate to="/" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -67,6 +71,18 @@ function GroupDashboardWrapper() {
 function GroupWalletWrapper() {
   const groupId = window.location.pathname.split('/')[2];
   return <GroupWallet groupId={groupId} />;
+}
+
+function ContributionHistoryWrapper() {
+  const groupId = window.location.pathname.split('/')[2];
+  const memberPhone = localStorage.getItem('userPhone') || '';
+  return <ContributionHistory groupId={groupId} memberPhone={memberPhone} />;
+}
+
+function GroupLedgerWrapper() {
+  const groupId = window.location.pathname.split('/')[2];
+  // We'll need to fetch the group name from the API
+  return <GroupLedger groupId={groupId} groupName="Group" />;
 }
 
 function NotFound() {
