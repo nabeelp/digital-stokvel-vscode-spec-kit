@@ -15,5 +15,15 @@
   "error.general": "Iets het verkeerd geloop. Probeer asseblief weer.",
   "error.unauthorized": "Jy het nie toestemming om dit te doen nie",
   "error.notfound": "Die aangevraagde hulpbron is nie gevind nie",
-  "error.validation": "Gaan asseblief jou inligting na en probeer weer"
+  "error.validation": "Gaan asseblief jou inligting na en probeer weer",
+  "notification.sms.invitation": "Jy is genooi om by '{0}' aan te sluit! Bydrae: R{1}. Gebruik kode {2} om aan te sluit.",
+  "notification.sms.contribution_confirmed": "Ons het jou R{0} bydrae tot '{1}' ontvang. Nuwe balans: R{2}. Dankie dat jy deel is van die gemeenskap!",
+  "notification.sms.payment_reminder": "Vriendelike herinnering: Jou R{0} bydrae tot '{1}' is verskuldig op {2}. Dankie!",
+  "notification.sms.payout_notification": "Goeie nuus! R{0} is uitbetaal aan {1} van '{2}'. Jou deel",
+  "notification.push.invitation": "{0} het jou genooi om by '{1}' aan te sluit",
+  "notification.push.contribution_confirmed": "Jou R{0} bydrae tot '{1}' was suksesvol!",
+  "notification.push.payment_reminder_3days": "Herinnering: Jou '{0}' bydrae van R{1} is binne 3 dae verskuldig",
+  "notification.push.payment_reminder_1day": "Dringend: Jou '{0}' bydrae van R{1} is môre verskuldig",
+  "notification.push.payment_reminder_generic": "Herinnering: Jou '{0}' bydrae van R{1} is binnekort verskuldig",
+  "notification.push.payout_notification": "Uitbetaling van R{0} aan {1} van '{2}' suksesvol voltooi"
 }

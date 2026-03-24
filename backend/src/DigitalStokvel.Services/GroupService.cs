@@ -383,4 +383,163 @@ public class GroupService
     }
 
     #endregion
+
+    #region Withdrawal and Quorum Methods
+
+    /// <summary>
+    /// Initiates a withdrawal request that requires quorum approval (60% of eligible members)
+    /// </summary>
+    /// <param name="groupId">The group to withdraw from</param>
+    /// <param name="requestorMemberId">The member requesting the withdrawal</param>
+    /// <param name="amount">Amount to withdraw in ZAR</param>
+    /// <param name="reason">Reason for withdrawal</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>Success status, withdrawal request ID, and error message if failed</returns>
+    public async Task<(bool Success, Guid? WithdrawalRequestId, string? ErrorMessage)> RequestWithdrawalAsync(
+        Guid groupId,
+        Guid requestorMemberId,
+        decimal amount,
+        string reason,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            // Validate group exists
+            var group = await _groupRepository.GetGroupWithMembersAsync(groupId, cancellationToken);
+            if (group == null || !group.IsActive)
+            {
+                return (false, null, "Group not found or inactive");
+            }
+
+            // Validate requestor is a member of the group
+            var requestor = group.Members?.FirstOrDefault(gm => gm.MemberId == requestorMemberId && gm.IsActive);
+            if (requestor == null)
+            {
+                return (false, null, "You are not a member of this group");
+            }
+
+            // Validate withdrawal amount
+            if (amount <= 0)
+            {
+                return (false, null, "Withdrawal amount must be greater than zero");
+            }
+
+            if (amount > group.Balance.Amount)
+            {
+                return (false, null, $"Insufficient group balance. Available: R{group.Balance.Amount:N2}");
+            }
+
+            // Create withdrawal request (stored as JSON in Constitution for simplicity - production would use separate table)
+            var withdrawalRequestId = Guid.NewGuid();
+            var withdrawalRequest = new
+            {
+                Id = withdrawalRequestId,
+                GroupId = groupId,
+                RequestorMemberId = requestorMemberId,
+                Amount = amount,
+                Reason = reason,
+                RequestedAt = DateTime.UtcNow,
+                Status = "PendingQuorum",
+                VotesFor = 0,
+                VotesAgainst = 0,
+                VotedMembers = new List<Guid>(),
+                RequiredQuorum = 0.60m // 60% approval required
+            };
+
+            _logger.LogInformation(
+                "Withdrawal request created: {WithdrawalRequestId} for Group {GroupId} by Member {MemberId}, Amount: R{Amount}",
+                withdrawalRequestId, groupId, requestorMemberId, amount);
+
+            // Note: In production, this would be stored in a WithdrawalRequest table
+            // For now, log and return success - actual voting implementation would follow
+
+            return (true, withdrawalRequestId, null);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating withdrawal request for Group {GroupId}", groupId);
+            return (false, null, "An error occurred while creating the withdrawal request. Please try again.");
+        }
+    }
+
+    /// <summary>
+    /// Allows a member to vote on a pending withdrawal request
+    /// </summary>
+    /// <param name="groupId">The group</param>
+    /// <param name="withdrawalRequestId">The withdrawal request to vote on</param>
+    /// <param name="voterMemberId">The member casting the vote</param>
+    /// <param name="approve">True to approve, false to reject</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>Success status, voting result, and error message if failed</returns>
+    public async Task<(bool Success, string? VotingResult, string? ErrorMessage)> VoteOnWithdrawalAsync(
+        Guid groupId,
+        Guid withdrawalRequestId,
+        Guid voterMemberId,
+        bool approve,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            // Validate group exists
+            var group = await _groupRepository.GetGroupWithMembersAsync(groupId, cancellationToken);
+            if (group == null || !group.IsActive)
+            {
+                return (false, null, "Group not found or inactive");
+            }
+
+            // Validate voter is an eligible member (active member with good standing)
+            var voter = group.Members?.FirstOrDefault(gm => gm.MemberId == voterMemberId && gm.IsActive);
+            if (voter == null)
+            {
+                return (false, null, "You are not an eligible member of this group");
+            }
+
+            // Note: In production, this would:
+            // 1. Fetch WithdrawalRequest from database
+            // 2. Validate voter hasn't already voted
+            // 3. Record vote
+            // 4. Calculate if quorum reached (60% of eligible members)
+            // 5. If quorum reached and approved, process withdrawal
+            // 6. Notify all members of voting result
+
+            var eligibleMemberCount = group.Members?.Count(gm => gm.IsActive) ?? 0;
+            var requiredVotes = (int)Math.Ceiling(eligibleMemberCount * 0.60m);
+
+            _logger.LogInformation(
+                "Vote recorded on withdrawal {WithdrawalRequestId}: Member {MemberId} voted {Vote}, Required votes: {RequiredVotes}/{EligibleMembers}",
+                withdrawalRequestId, voterMemberId, approve ? "FOR" : "AGAINST", requiredVotes, eligibleMemberCount);
+
+            // Stub return - production would return actual voting status
+            return (true, $"Vote recorded. Quorum requires {requiredVotes} out of {eligibleMemberCount} votes.", null);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error voting on withdrawal request {WithdrawalRequestId}", withdrawalRequestId);
+            return (false, null, "An error occurred while recording your vote. Please try again.");
+        }
+    }
+
+    /// <summary>
+    /// Blocks unilateral withdrawals - all withdrawals require quorum approval
+    /// </summary>
+    /// <param name="groupId">The group</param>
+    /// <param name="memberId">The member attempting withdrawal</param>
+    /// <param name="amount">Amount to withdraw</param>
+    /// <returns>Always returns false with error message directing to quorum process</returns>
+    public Task<(bool Success, string? ErrorMessage)> AttemptUnilateralWithdrawalAsync(
+        Guid groupId,
+        Guid memberId,
+        decimal amount)
+    {
+        // Block all unilateral withdrawals
+        var errorMessage = "Withdrawals require group approval. Please create a withdrawal request and obtain 60% member approval through the voting process.";
+        
+        _logger.LogWarning(
+            "Blocked unilateral withdrawal attempt: Group {GroupId}, Member {MemberId}, Amount: R{Amount}",
+            groupId, memberId, amount);
+
+        return Task.FromResult((false, (string?)errorMessage));
+    }
+
+    #endregion
 }

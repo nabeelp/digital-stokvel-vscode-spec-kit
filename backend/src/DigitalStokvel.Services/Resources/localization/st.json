@@ -15,5 +15,15 @@
   "error.general": "Ho bile le bothata. Ka kopo leka hape.",
   "error.unauthorized": "Ha u na tumello ea ho etsa sena",
   "error.notfound": "Se u se batlang ha sea fumanneha",
-  "error.validation": "Ka kopo hlahloba lintlha tsa hao ebe u leka hape"
+  "error.validation": "Ka kopo hlahloba lintlha tsa hao ebe u leka hape",
+  "notification.sms.invitation": "O memiloetsoe ho kena '{0}'! Seabo: R{1}. Sebedisa khoutu {2} ho kena.",
+  "notification.sms.contribution_confirmed": "Re amohetse seabo sa hao sa R{0} ho '{1}'. Tekanyo e ntjha: R{2}. Re a leboha ho ba karolo ea sechaba!",
+  "notification.sms.payment_reminder": "Hopola: Seabo sa hao sa R{0} ho '{1}' se hlokahala ka {2}. Re a leboha!",
+  "notification.sms.payout_notification": "Ditaba tse ntle! R{0} e lefshitsoe ho {1} ho tswa ho '{2}'. Karolo ea hao",
+  "notification.push.invitation": "{0} o u memme ho kena '{1}'",
+  "notification.push.contribution_confirmed": "Seabo sa hao sa R{0} ho '{1}' se atlehile!",
+  "notification.push.payment_reminder_3days": "Hopola: Seabo sa hao sa '{0}' sa R{1} se hlokahala matsatsing a mararo",
+  "notification.push.payment_reminder_1day": "Potlako: Seabo sa hao sa '{0}' sa R{1} se hlokahala hosane",
+  "notification.push.payment_reminder_generic": "Hopola: Seabo sa hao sa '{0}' sa R{1} se hlokahala haufinyane",
+  "notification.push.payout_notification": "Tefo ea R{0} ho {1} ho tswa ho '{2}' e phethiloe ka katleho"
 }

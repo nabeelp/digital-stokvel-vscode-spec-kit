@@ -15,5 +15,15 @@
   "error.general": "Something went wrong. Please try again.",
   "error.unauthorized": "You don't have permission to perform this action",
   "error.notfound": "The requested resource was not found",
-  "error.validation": "Please check your information and try again"
+  "error.validation": "Please check your information and try again",
+  "notification.sms.invitation": "You're invited to join '{0}'! Contribution: R{1}. Use code {2} to join.",
+  "notification.sms.contribution_confirmed": "We received your R{0} contribution to '{1}'. New balance: R{2}. Thank you for being part of the community!",
+  "notification.sms.payment_reminder": "Friendly reminder: Your R{0} contribution to '{1}' is due on {2}. Thank you!",
+  "notification.sms.payout_notification": "Good news! R{0} has been paid out to {1} from '{2}'. Your share"}}",
+  "notification.push.invitation": "{0} invited you to join '{1}'",
+  "notification.push.contribution_confirmed": "Your R{0} contribution to '{1}' was successful!",
+  "notification.push.payment_reminder_3days": "Reminder: Your '{0}' contribution of R{1} is due in 3 days",
+  "notification.push.payment_reminder_1day": "Urgent: Your '{0}' contribution of R{1} is due tomorrow",
+  "notification.push.payment_reminder_generic": "Reminder: Your '{0}' contribution of R{1} is due soon",
+  "notification.push.payout_notification": "Payout of R{0} to {1} from '{2}' completed successfully"
 }

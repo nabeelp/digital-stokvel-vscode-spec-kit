@@ -161,7 +161,7 @@ Multi-platform project structure:
 - [X] T080 [US3] Implement tiered interest rate logic: R0-R10K=3.5%, R10K-R50K=4.5%, R50K+=5.5% in backend/src/DigitalStokvel.Services/InterestService.cs
 - [X] T081 [US3] Implement monthly capitalization job: add AccruedInterest to Balance, reset AccruedInterest to 0 in backend/src/DigitalStokvel.Infrastructure/Jobs/InterestCapitalizationJob.cs
 - [X] T082 [US3] Implement daily interest accrual background job (runs at 00:01 UTC) in backend/src/DigitalStokvel.Infrastructure/Jobs/DailyInterestAccrualJob.cs
-- [ ] T083 [US3] Update GroupService to block unilateral withdrawal: require quorum approval (60% of eligible members) in backend/src/DigitalStokvel.Services/GroupService.cs
+- [X] T083 [US3] Update GroupService to block unilateral withdrawal: require quorum approval (60% of eligible members) in backend/src/DigitalStokvel.Services/GroupService.cs
 - [X] T084 [US3] Create GET /api/v1/groups/{groupId}/wallet endpoint returning Balance, AccruedInterest, InterestTier in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
 - [X] T085 [US3] Create GET /api/v1/groups/{groupId}/interest-details endpoint with YTD earnings, daily calculation breakdown in backend/src/DigitalStokvel.API/Controllers/GroupsController.cs
 - [ ] T086 [P] [US3] Implement Android GroupWalletScreen with balance display, interest breakdown modal in android/app/src/main/java/za/co/stokvel/ui/wallet/GroupWalletScreen.kt
@@ -223,7 +223,7 @@ Multi-platform project structure:
 - [ ] T116 [US7] Implement language settings screen with immediate language switch for Android in android/app/src/main/java/za/co/stokvel/ui/settings/LanguageSettingsScreen.kt
 - [ ] T117 [US7] Implement language settings for iOS with immediate refresh in ios/DigitalStokvel/Views/LanguageSettingsView.swift
 - [X] T118 [US7] Configure i18n for React web dashboard with 5 language support in web/src/i18n/config.ts
-- [ ] T119 [US7] Update all notification templates (SMS, push, USSD) to use localized strings in backend/src/DigitalStokvel.Infrastructure/Notifications/
+- [X] T119 [US7] Update all notification templates (SMS, push, USSD) to use localized strings in backend/src/DigitalStokvel.Infrastructure/Notifications/
 - [ ] T120 [US7] Update error messages to use LocalizationService (encouraging messages per FR-051) in backend/src/DigitalStokvel.API/Middleware/ErrorHandlingMiddleware.cs
 - [ ] T121 [P] [US7] Translate all Android UI strings to 5 languages in android/app/src/main/res/values-zu/, values-st/, values-xh/, values-af/
 - [ ] T122 [P] [US7] Translate all iOS UI strings to 5 languages in ios/DigitalStokvel/Resources/zu.lproj/, st.lproj/, xh.lproj/, af.lproj/

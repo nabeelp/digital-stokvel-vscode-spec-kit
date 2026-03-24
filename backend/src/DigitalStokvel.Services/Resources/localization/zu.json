@@ -15,5 +15,15 @@
   "error.general": "Kukhona okungahambanga kahle. Sicela uzame futhi.",
   "error.unauthorized": "Awunamvume yokwenza lesi senzo",
   "error.notfound": "Into oyifunayo ayitholakali",
-  "error.validation": "Sicela uhlole ulwazi lwakho bese uzama futhi"
+  "error.validation": "Sicela uhlole ulwazi lwakho bese uzama futhi",
+  "notification.sms.invitation": "Umenyiwe ukuba ujoyine '{0}'! Umnikelo: R{1}. Sebenzisa ikhodi {2} ukujoyina.",
+  "notification.sms.contribution_confirmed": "Samukela umnikelo wakho we-R{0} ku-'{1}'. Ibhalansi entsha: R{2}. Siyabonga ngokuba yingxenye yomphakathi!",
+  "notification.sms.payment_reminder": "Isikhumbuzo: Umnikelo wakho we-R{0} ku-'{1}' uzofika ngo-{2}. Siyabonga!",
+  "notification.sms.payout_notification": "Izindaba ezinhle! I-R{0} ikhokhiwe ku-{1} kusuka ku-'{2}'. Isabelo sakho",
+  "notification.push.invitation": "U-{0} ukumemile ukuba ujoyine '{1}'",
+  "notification.push.contribution_confirmed": "Umnikelo wakho we-R{0} ku-'{1}' uphumelele!",
+  "notification.push.payment_reminder_3days": "Isikhumbuzo: Umnikelo wakho we-'{0}' we-R{1} uzofika emalangeni amathathu",
+  "notification.push.payment_reminder_1day": "Okuphuthumayo: Umnikelo wakho we-'{0}' we-R{1} uzofika kusasa",
+  "notification.push.payment_reminder_generic": "Isikhumbuzo: Umnikelo wakho we-'{0}' we-R{1} uzofika maduze",
+  "notification.push.payout_notification": "Inkokhelo ye-R{0} ku-{1} kusuka ku-'{2}' iphelelisiwe ngempumelelo"
 }

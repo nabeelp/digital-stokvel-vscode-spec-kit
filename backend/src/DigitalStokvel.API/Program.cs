@@ -150,6 +150,7 @@ try
     builder.Services.AddSingleton<ISmsNotificationService, SmsNotificationService>(sp =>
         new SmsNotificationService(
             sp.GetRequiredService<ILogger<SmsNotificationService>>(),
+            sp.GetRequiredService<ILocalizationService>(),
             builder.Configuration.GetConnectionString("AzureCommunicationServices"),
             builder.Configuration["AzureCommunicationServices:SenderPhoneNumber"]));
     builder.Services.AddSingleton<IPushNotificationService, PushNotificationService>();

@@ -10,10 +10,14 @@ namespace DigitalStokvel.Infrastructure.Notifications;
 public class PushNotificationService : IPushNotificationService
 {
     private readonly ILogger<PushNotificationService> _logger;
+    private readonly ILocalizationService _localizationService;
 
-    public PushNotificationService(ILogger<PushNotificationService> logger)
+    public PushNotificationService(
+        ILogger<PushNotificationService> logger,
+        ILocalizationService localizationService)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _localizationService = localizationService ?? throw new ArgumentNullException(nameof(localizationService));
     }
 
     /// <summary>
@@ -32,12 +36,16 @@ public class PushNotificationService : IPushNotificationService
         {
             // Stub implementation - in production, integrate with Azure Notification Hubs
             var messageId = Guid.NewGuid().ToString();
-            var message = daysUntilDue switch
+            
+            var messageKey = daysUntilDue switch
             {
-                3 => GetLocalizedMessage(member.PreferredLanguage, "reminder_3days", group.Name, group.ContributionAmount.Amount),
-                1 => GetLocalizedMessage(member.PreferredLanguage, "reminder_1day", group.Name, group.ContributionAmount.Amount),
-                _ => GetLocalizedMessage(member.PreferredLanguage, "reminder_generic", group.Name, group.ContributionAmount.Amount)
+                3 => "notification.push.payment_reminder_3days",
+                1 => "notification.push.payment_reminder_1day",
+                _ => "notification.push.payment_reminder_generic"
             };
+            
+            var template = _localizationService.GetString(messageKey, member.PreferredLanguage);
+            var message = string.Format(template, group.Name, group.ContributionAmount.Amount.ToString("F2"));
 
             _logger.LogInformation(
                 "[STUB] Push notification sent to member {MemberId} for group {GroupName}: {Message}",
@@ -74,7 +82,8 @@ public class PushNotificationService : IPushNotificationService
         try
         {
             var messageId = Guid.NewGuid().ToString();
-            var message = GetLocalizedMessage(language, "invitation", groupName, inviterName);
+            var template = _localizationService.GetString("notification.push.invitation", language);
+            var message = string.Format(template, inviterName, groupName);
 
             _logger.LogInformation(
                 "[STUB] Push notification invitation sent to {PhoneNumber} for group {GroupName}: {Message}",
@@ -107,10 +116,8 @@ public class PushNotificationService : IPushNotificationService
         try
         {
             var messageId = Guid.NewGuid().ToString();
-            var message = GetLocalizedMessage(
-                member.PreferredLanguage,
-                "contribution_confirmed",
-                contribution.Amount.Amount.ToString("N2"));
+            var template = _localizationService.GetString("notification.push.contribution_confirmed", member.PreferredLanguage);
+            var message = string.Format(template, contribution.Amount.Amount.ToString("N2"), contribution.Group?.Name ?? "your group");
 
             _logger.LogInformation(
                 "[STUB] Push notification sent to member {MemberId} confirming contribution {ContributionId}: {Message}",
@@ -175,70 +182,4 @@ public class PushNotificationService : IPushNotificationService
             return 0;
         }
     }
-
-    /// <summary>
-    /// Get localized message based on language and message key
-    /// </summary>
-    private string GetLocalizedMessage(string language, string key, params object[] args)
-    {
-        // Stub implementation - in production, load from resource files
-        return language.ToUpperInvariant() switch
-        {
-            "ZU" => GetZuluMessage(key, args),
-            "ST" => GetSesothoMessage(key, args),
-            "XH" => GetXhosaMessage(key, args),
-            "AF" => GetAfrikaansMessage(key, args),
-            _ => GetEnglishMessage(key, args)
-        };
-    }
-
-    private string GetEnglishMessage(string key, params object[] args) => key switch
-    {
-        "reminder_3days" => $"Reminder: Your {args[0]} contribution of R{args[1]} is due in 3 days",
-        "reminder_1day" => $"Urgent: Your {args[0]} contribution of R{args[1]} is due tomorrow",
-        "reminder_generic" => $"Reminder: Your {args[0]} contribution of R{args[1]} is due soon",
-        "invitation" => $"{args[1]} invited you to join {args[0]}",
-        "contribution_confirmed" => $"Your contribution of R{args[0]} has been confirmed",
-        _ => "Notification"
-    };
-
-    private string GetZuluMessage(string key, params object[] args) => key switch
-    {
-        "reminder_3days" => $"Isikhumbuzo: Umnikelo wakho we-{args[0]} ka-R{args[1]} uzofika emalangeni ama-3",
-        "reminder_1day" => $"Okuphuthumayo: Umnikelo wakho we-{args[0]} ka-R{args[1]} uzofika kusasa",
-        "reminder_generic" => $"Isikhumbuzo: Umnikelo wakho we-{args[0]} ka-R{args[1]} uzofika maduze",
-        "invitation" => $"U-{args[1]} ukumeme ukuba ujoyine {args[0]}",
-        "contribution_confirmed" => $"Umnikelo wakho ka-R{args[0]} uqinisekisiwe",
-        _ => "Isaziso"
-    };
-
-    private string GetSesothoMessage(string key, params object[] args) => key switch
-    {
-        "reminder_3days" => $"Hopotso: Seabo sa hao sa {args[0]} sa R{args[1]} se tla ba matsatsing a 3",
-        "reminder_1day" => $"Potlako: Seabo sa hao sa {args[0]} sa R{args[1]} se tla ba hosane",
-        "reminder_generic" => $"Hopotso: Seabo sa hao sa {args[0]} sa R{args[1]} se haufi",
-        "invitation" => $"{args[1]} o u memile ho kena {args[0]}",
-        "contribution_confirmed" => $"Seabo sa hao sa R{args[0]} se tiisitsoe",
-        _ => "Tsebiso"
-    };
-
-    private string GetXhosaMessage(string key, params object[] args) => key switch
-    {
-        "reminder_3days" => $"Isikhumbuzo: Igalelo lakho le-{args[0]} lika-R{args[1]} liza kwiintsuku ezi-3",
-        "reminder_1day" => $"Ngxamisekile: Igalelo lakho le-{args[0]} lika-R{args[1]} liza ngomso",
-        "reminder_generic" => $"Isikhumbuzo: Igalelo lakho le-{args[0]} lika-R{args[1]} lisondele",
-        "invitation" => $"U-{args[1]} ukumeme ukuba ujoyine {args[0]}",
-        "contribution_confirmed" => $"Igalelo lakho lika-R{args[0]} liqinisekisiwe",
-        _ => "Isaziso"
-    };
-
-    private string GetAfrikaansMessage(string key, params object[] args) => key switch
-    {
-        "reminder_3days" => $"Herinnering: Jou {args[0]} bydrae van R{args[1]} is in 3 dae verskuldig",
-        "reminder_1day" => $"Dringend: Jou {args[0]} bydrae van R{args[1]} is môre verskuldig",
-        "reminder_generic" => $"Herinnering: Jou {args[0]} bydrae van R{args[1]} is binnekort verskuldig",
-        "invitation" => $"{args[1]} het jou genooi om by {args[0]} aan te sluit",
-        "contribution_confirmed" => $"Jou bydrae van R{args[0]} is bevestig",
-        _ => "Kennisgewing"
-    };
 }

@@ -16,15 +16,18 @@ namespace DigitalStokvel.Infrastructure.Notifications;
 public class SmsNotificationService : ISmsNotificationService
 {
     private readonly ILogger<SmsNotificationService> _logger;
+    private readonly ILocalizationService _localizationService;
     private readonly string? _connectionString;
     private readonly string? _senderPhoneNumber;
 
     public SmsNotificationService(
         ILogger<SmsNotificationService> logger,
+        ILocalizationService localizationService,
         string? connectionString = null,
         string? senderPhoneNumber = null)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _localizationService = localizationService ?? throw new ArgumentNullException(nameof(localizationService));
         _connectionString = connectionString;
         _senderPhoneNumber = senderPhoneNumber ?? "+27600000000"; // Default sender (stub)
     }
@@ -197,14 +200,8 @@ public class SmsNotificationService : ISmsNotificationService
     /// </summary>
     private string BuildInvitationMessage(string groupName, string inviteCode, decimal amount, string language)
     {
-        return language.ToLower() switch
-        {
-            "zu" => $"Sawubona! Umenyiwe ku-{groupName}. Ukufaka: R{amount:F2} ngenyanga. Ikhodi: {inviteCode}. Joyina manje!",
-            "st" => $"Dumela! O memelitswe ho {groupName}. Sekoloto: R{amount:F2} ka kgwedi. Khoutu: {inviteCode}. Ikopanye!",
-            "xh" => $"Molo! Umenyiwe ku-{groupName}. Igalelo: R{amount:F2} ngenyanga. Ikhowudi: {inviteCode}. Joyina ngoku!",
-            "af" => $"Hallo! Jy is genooi na {groupName}. Bydrae: R{amount:F2} per maand. Kode: {inviteCode}. Sluit nou aan!",
-            _ => $"Hi! You're invited to {groupName}. Contribution: R{amount:F2}/month. Code: {inviteCode}. Join now!"
-        };
+        var template = _localizationService.GetString("notification.sms.invitation", language);
+        return string.Format(template, groupName, amount.ToString("F2"), inviteCode);
     }
 
     /// <summary>
@@ -212,14 +209,8 @@ public class SmsNotificationService : ISmsNotificationService
     /// </summary>
     private string BuildContributionConfirmationMessage(string groupName, decimal amount, decimal balance, string language)
     {
-        return language.ToLower() switch
-        {
-            "zu" => $"Siyabonga! Ukufaka kwakho R{amount:F2} ku-{groupName} kuyaphumelela. Ibhalansi: R{balance:F2}.",
-            "st" => $"Kea leboha! Sekoloto sa hao sa R{amount:F2} ho {groupName} se atlehile. Tekanyetso: R{balance:F2}.",
-            "xh" => $"Enkosi! Igalelo lakho le-R{amount:F2} ku-{groupName} liphumelele. Ibhalansi: R{balance:F2}.",
-            "af" => $"Dankie! Jou bydrae van R{amount:F2} aan {groupName} is suksesvol. Balans: R{balance:F2}.",
-            _ => $"Thank you! Your R{amount:F2} contribution to {groupName} was successful. Balance: R{balance:F2}."
-        };
+        var template = _localizationService.GetString("notification.sms.contribution_confirmed", language);
+        return string.Format(template, amount.ToString("F2"), groupName, balance.ToString("F2"));
     }
 
     /// <summary>
@@ -227,14 +218,8 @@ public class SmsNotificationService : ISmsNotificationService
     /// </summary>
     private string BuildPayoutNotificationMessage(string groupName, decimal amount, string language)
     {
-        return language.ToLower() switch
-        {
-            "zu" => $"Halala! Ukholwa R{amount:F2} kusuka ku-{groupName} kuyeza. Bheka i-akhawunti yakho maduze!",
-            "st" => $"Kgotlelelang! Tefo ya R{amount:F2} ho tswa ho {groupName} e nne teng. Hlahloba akhaonto ya hao!",
-            "xh" => $"Uyavuya! Intlawulo ye-R{amount:F2} evela ku-{groupName} iyeza. Khangela iakhawunti yakho!",
-            "af" => $"Geluk! 'n Uitbetaling van R{amount:F2} van {groupName} is onderweg. Kyk jou rekening!",
-            _ => $"Congratulations! A payout of R{amount:F2} from {groupName} is on the way. Check your account!"
-        };
+        var template = _localizationService.GetString("notification.sms.payout_notification", language);
+        return string.Format(template, amount.ToString("F2"), "member", groupName);
     }
 
     #endregion
